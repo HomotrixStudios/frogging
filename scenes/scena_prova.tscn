@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlpvf5x7mhdde"]
+
+[ext_resource type="PackedScene" uid="uid://dq4onwmhomipc" path="res://scenes/tilemap.tscn" id="1_q07ki"]
+[ext_resource type="PackedScene" uid="uid://dt3fmyesg5len" path="res://scenes/froggy.tscn" id="2_60bov"]
+[ext_resource type="AudioStream" uid="uid://eli2ma7jbbr1" path="res://sound/songs/frogging theme.wav" id="3_0w1up"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_q07ki")]
+position = Vector2(-11, 10)
+collision_visibility_mode = 1
+
+[node name="Foxy" parent="." instance=ExtResource("2_60bov")]
+position = Vector2(157, -22)
+acceleration = 0.3
+deceleration = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0w1up")
+autoplay = true
