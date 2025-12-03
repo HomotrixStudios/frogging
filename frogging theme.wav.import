@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://blg1twger7wrq"
-path="res://.godot/imported/area1.wav-3fa60e4ee2f6d514cf4005f81ad0f0ce.sample"
+uid="uid://4j00mcf5d41v"
+path="res://.godot/imported/frogging theme.wav-787d5dad2debc339d653de60b85ad5b1.sample"
 
 [deps]
 
-source_file="res://sound/songs/area1.wav"
-dest_files=["res://.godot/imported/area1.wav-3fa60e4ee2f6d514cf4005f81ad0f0ce.sample"]
+source_file="res://frogging theme.wav"
+dest_files=["res://.godot/imported/frogging theme.wav-787d5dad2debc339d653de60b85ad5b1.sample"]
 
 [params]
 

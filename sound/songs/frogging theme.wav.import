@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://4j00mcf5d41v"
-path="res://.godot/imported/frogging theme.wav-787d5dad2debc339d653de60b85ad5b1.sample"
+path="res://.godot/imported/frogging theme.wav-df6aa7a7a6835d1f503192a5f6f9c543.sample"
 
 [deps]
 
-source_file="res://frogging theme.wav"
-dest_files=["res://.godot/imported/frogging theme.wav-787d5dad2debc339d653de60b85ad5b1.sample"]
+source_file="res://sound/songs/frogging theme.wav"
+dest_files=["res://.godot/imported/frogging theme.wav-df6aa7a7a6835d1f503192a5f6f9c543.sample"]
 
 [params]
 

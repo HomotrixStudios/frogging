@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dq4onwmhomipc" path="res://scenes/tilemap.tscn" id="1_q07ki"]
 [ext_resource type="PackedScene" uid="uid://dt3fmyesg5len" path="res://scenes/froggy.tscn" id="2_60bov"]
-[ext_resource type="AudioStream" uid="uid://eli2ma7jbbr1" path="res://sound/songs/frogging theme.wav" id="3_0w1up"]
+[ext_resource type="AudioStream" uid="uid://blg1twger7wrq" path="res://sound/songs/area1.wav" id="3_q07ki"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,5 +16,5 @@ acceleration = 0.3
 deceleration = 0.5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_0w1up")
+stream = ExtResource("3_q07ki")
 autoplay = true
