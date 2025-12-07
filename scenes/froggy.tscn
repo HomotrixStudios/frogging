@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bbtsbkesy7tfj" path="res://scripts/player_movement.gd" id="1_aku5n"]
 [ext_resource type="Shader" uid="uid://dwhkc2spuld7l" path="res://shaders/froggyShader.gdshader" id="2_aku5n"]
-[ext_resource type="Texture2D" uid="uid://c0kndkcshuy5r" path="res://sprites/frog_idle_dx.png" id="2_eb8fg"]
-[ext_resource type="Texture2D" uid="uid://1jv2daejj70i" path="res://sprites/frog idle special.png" id="3_sprct"]
+[ext_resource type="Texture2D" uid="uid://c0kndkcshuy5r" path="res://sprites/froggy/frog_idle_dx.png" id="2_eb8fg"]
+[ext_resource type="Texture2D" uid="uid://1jv2daejj70i" path="res://sprites/froggy/frog idle special.png" id="3_sprct"]
 [ext_resource type="Script" uid="uid://dd3ymu3ev0y73" path="res://scripts/dash_effect_line.gd" id="4_bhbat"]
-[ext_resource type="Texture2D" uid="uid://djspoj8wswrli" path="res://sprites/frog_idle_sx.png" id="4_kjb12"]
+[ext_resource type="Texture2D" uid="uid://djspoj8wswrli" path="res://sprites/froggy/frog_idle_sx.png" id="4_kjb12"]
 [ext_resource type="Script" uid="uid://2xsjhowkuy1y" path="res://components/health_component.gd" id="5_8r8n2"]
 
 [sub_resource type="Curve" id="Curve_7xt5n"]
@@ -165,7 +165,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_special",
-"speed": 10.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -197,13 +197,16 @@ dash_curve = SubResource("Curve_7xt5n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_sprct")
 sprite_frames = SubResource("SpriteFrames_h81db")
+animation = &"idle_special"
+frame = 14
+frame_progress = 1.0
 
 [node name="AnimationTimer" type="Timer" parent="AnimatedSprite2D"]
 wait_time = 10.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -2)
+position = Vector2(1, -1)
 shape = SubResource("CapsuleShape2D_aku5n")
 
 [node name="Camera2D" type="Camera2D" parent="."]

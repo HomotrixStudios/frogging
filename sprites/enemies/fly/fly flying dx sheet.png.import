@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0kndkcshuy5r"
-path="res://.godot/imported/frog_idle_dx.png-2edd3075abca027084d124ddaf26a9cb.ctex"
+uid="uid://cn2mjc7f0i51y"
+path="res://.godot/imported/fly flying dx sheet.png-6293368980fa8456aa589ed2ed63ed41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/frog_idle_dx.png"
-dest_files=["res://.godot/imported/frog_idle_dx.png-2edd3075abca027084d124ddaf26a9cb.ctex"]
+source_file="res://sprites/enemies/fly/fly flying dx sheet.png"
+dest_files=["res://.godot/imported/fly flying dx sheet.png-6293368980fa8456aa589ed2ed63ed41.ctex"]
 
 [params]
 

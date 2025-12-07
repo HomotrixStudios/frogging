@@ -1,20 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlpvf5x7mhdde"]
+[gd_scene load_steps=5 format=3 uid="uid://dlpvf5x7mhdde"]
 
+[ext_resource type="PackedScene" uid="uid://6d7mylrdfiop" path="res://scenes/fly.tscn" id="1_60bov"]
 [ext_resource type="PackedScene" uid="uid://dq4onwmhomipc" path="res://scenes/tilemap.tscn" id="1_q07ki"]
 [ext_resource type="PackedScene" uid="uid://dt3fmyesg5len" path="res://scenes/froggy.tscn" id="2_60bov"]
-[ext_resource type="AudioStream" uid="uid://blg1twger7wrq" path="res://sound/songs/area1.wav" id="3_q07ki"]
+[ext_resource type="AudioStream" uid="uid://blg1twger7wrq" path="res://sound/songs/area1.wav" id="4_60bov"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Fly" parent="." instance=ExtResource("1_60bov")]
+position = Vector2(61, -71)
+
+[node name="Froggy" parent="." groups=["Player"] instance=ExtResource("2_60bov")]
+position = Vector2(162, -48)
 
 [node name="TileMap" parent="." instance=ExtResource("1_q07ki")]
 position = Vector2(-11, 10)
 collision_visibility_mode = 1
 
-[node name="Foxy" parent="." instance=ExtResource("2_60bov")]
-position = Vector2(157, -22)
-acceleration = 0.3
-deceleration = 0.5
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_q07ki")
+stream = ExtResource("4_60bov")
 autoplay = true

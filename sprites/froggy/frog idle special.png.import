@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djspoj8wswrli"
-path="res://.godot/imported/frog_idle_sx.png-fdcdee0c541fcac3bbe245e1f16fa5cc.ctex"
+uid="uid://1jv2daejj70i"
+path="res://.godot/imported/frog idle special.png-995fe8722c796c89f35989b10b52a985.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/frog_idle_sx.png"
-dest_files=["res://.godot/imported/frog_idle_sx.png-fdcdee0c541fcac3bbe245e1f16fa5cc.ctex"]
+source_file="res://sprites/froggy/frog idle special.png"
+dest_files=["res://.godot/imported/frog idle special.png-995fe8722c796c89f35989b10b52a985.ctex"]
 
 [params]
 

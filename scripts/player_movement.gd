@@ -13,6 +13,7 @@ extends CharacterBody2D
 var is_jumping := false # to avoid double jump (temporarily)
 
 @onready var sprite = $AnimatedSprite2D
+var last_facing_direction : float
 
 # Dash variables
 @export var dash_speed := 500.0
@@ -73,6 +74,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, speed * direction, speed * acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
+
 	handle_animations(direction)
 	
 	# Dash activation
@@ -110,20 +112,17 @@ func setShader_BlinkIntensity(new_value: float):
 	sprite.material.set_shader_parameter("blink_intensity", new_value)
 
 func handle_animations(direction) -> void:
-	var animation := ""
-	
-	var animation_timer = $AnimatedSprite2D/AnimationTimer
-	if direction > 0: 
-		animation = "idle_dx"
-	elif direction < 0:
-		animation = "idle_sx"
-	
+	if direction == 1 || direction == -1:
+		last_facing_direction = direction
+	# var animation_timer := $AnimatedSprite2D/AnimationTimer
+		
 	if velocity == Vector2.ZERO:
-			if animation_timer.is_stopped(): 
-				animation_timer.start()
-	else: 
-		animation_timer.stop()
-	sprite.play(animation)
+		if last_facing_direction == 1:
+			sprite.play("idle_dx")
+		elif last_facing_direction == -1:
+			sprite.play("idle_sx")
+
+	
 
 func _on_animation_timer_timeout() -> void:
 	sprite.play("idle_special")
