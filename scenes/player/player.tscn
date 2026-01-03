@@ -1,0 +1,124 @@
+[gd_scene load_steps=19 format=3 uid="uid://cqlqagd2mtdp3"]
+
+[ext_resource type="Script" uid="uid://ces8bas4geyb6" path="res://scripts/SM/player_state_machine.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://ct8yvgan8g0w2" path="res://scripts/player/player.gd" id="1_lvxji"]
+[ext_resource type="Script" uid="uid://c77fm8gwicq1q" path="res://scripts/logics/stats.gd" id="2_p47bc"]
+[ext_resource type="Texture2D" uid="uid://c0kndkcshuy5r" path="res://sprites/froggy/frog_idle_dx.png" id="2_qek5x"]
+[ext_resource type="Texture2D" uid="uid://djspoj8wswrli" path="res://sprites/froggy/frog_idle_sx.png" id="3_5gtgg"]
+[ext_resource type="Script" uid="uid://cx0o0x4brkhgo" path="res://scripts/player/moving.gd" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://cmjg8vaagx1va" path="res://scripts/player/idle.gd" id="6_75vfm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myrg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je7p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm80t")
+}],
+"loop": true,
+"name": &"idle_dx",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx1jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugbui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcs02")
+}],
+"loop": true,
+"name": &"idle_sx",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmlin"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="Curve" id="Curve_gmlin"]
+_data = [Vector2(0.0044843033, 1), 0.0, 0.0, 0, 0, Vector2(0.9910314, 0.55056185), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_kvlxm"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uf5tr"]
+_data = {
+&"idle": SubResource("Animation_kvlxm")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats") groups=["Player"]]
+script = ExtResource("1_lvxji")
+stats = NodePath("Stats")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_myrg7")
+animation = &"idle_dx"
+frame = 1
+frame_progress = 0.65981513
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("2_p47bc")
+metadata/_custom_type_script = "uid://c77fm8gwicq1q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_gmlin")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player")]
+script = ExtResource("1_8afob")
+initial_state = NodePath("IdleState")
+player = NodePath("..")
+metadata/_custom_type_script = "uid://ces8bas4geyb6"
+
+[node name="MovingState" type="Node" parent="StateMachine"]
+script = ExtResource("4_lvxji")
+dash_curve = SubResource("Curve_gmlin")
+
+[node name="CoyoteTimer" type="Timer" parent="StateMachine/MovingState"]
+wait_time = 0.3
+one_shot = true
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("6_75vfm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uf5tr")
+}

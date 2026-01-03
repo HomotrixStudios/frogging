@@ -1,11 +1,23 @@
-[gd_scene load_steps=27 format=3 uid="uid://6d7mylrdfiop"]
+[gd_scene load_steps=24 format=3 uid="uid://6d7mylrdfiop"]
 
-[ext_resource type="Script" uid="uid://cejqj3y2hu0k" path="res://scenes/fly_enemy.gd" id="1_0qovp"]
 [ext_resource type="Texture2D" uid="uid://cn2mjc7f0i51y" path="res://sprites/enemies/fly/fly flying dx sheet.png" id="1_xr3pu"]
 [ext_resource type="Texture2D" uid="uid://b8rdpsdlwnibq" path="res://sprites/enemies/fly/fly flying sx sheet.png" id="2_2lkvx"]
-[ext_resource type="Script" uid="uid://ces8bas4geyb6" path="res://scripts/state_machine.gd" id="4_0qovp"]
-[ext_resource type="Script" uid="uid://c7pp82aimqpqh" path="res://scripts/enemy_idle.gd" id="4_sgyng"]
-[ext_resource type="Script" uid="uid://duywgf38saew3" path="res://scripts/enemy_follow.gd" id="6_eyt7k"]
+
+[sub_resource type="GDScript" id="GDScript_xr3pu"]
+script/source = "class_name FlyEnemy extends Enemy
+	
+@onready var sprite = $AnimatedSprite2D
+
+func _physics_process(_delta):
+	handle_animations()
+	move_and_slide()
+
+func handle_animations() -> void:
+	if velocity.x > 0:
+		sprite.play(\"flying_dx\")
+	elif velocity.x < 0:
+		sprite.play(\"flying_sx\")
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyt7k"]
 atlas = ExtResource("1_xr3pu")
@@ -151,7 +163,7 @@ radius = 4.0
 height = 12.0
 
 [node name="Fly" type="CharacterBody2D"]
-script = ExtResource("1_0qovp")
+script = SubResource("GDScript_xr3pu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 0.99999994)
@@ -165,18 +177,3 @@ offset = Vector2(-6.6666665, 1.3333333)
 position = Vector2(-1, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_eyt7k")
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_0qovp")
-initial_state = NodePath("Follow")
-metadata/_custom_type_script = "uid://duofvlhe2a8jb"
-
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("4_sgyng")
-enemy = NodePath("../..")
-metadata/_custom_type_script = "uid://c7pp82aimqpqh"
-
-[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("6_eyt7k")
-enemy = NodePath("../..")
-metadata/_custom_type_script = "uid://duywgf38saew3"

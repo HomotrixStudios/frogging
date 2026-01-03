@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 # Basic movement variables
 @export var walk_speed = 150.0
@@ -32,8 +32,23 @@ var tween := create_tween() # Lightweight object used for general-purpose animat
 signal start_trail # Sets the process of the trail to true
 signal stop_trail # Sets the process of the trail to false
 
+var current_state
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	change_state("idleState")
+
+func change_state(new_state_name : String):
+	if current_state:
+		current_state.exit_state()
+	current_state = get_node(new_state_name)
+	if current_state:
+		current_state.enter_state(self)
+
+func _physics_process(delta: float) -> void: 
+
+	if current_state:
+		current_state.handle_input(delta)
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -112,15 +127,10 @@ func setShader_BlinkIntensity(new_value: float):
 	sprite.material.set_shader_parameter("blink_intensity", new_value)
 
 func handle_animations(direction) -> void:
-	if direction == 1 || direction == -1:
-		last_facing_direction = direction
-	# var animation_timer := $AnimatedSprite2D/AnimationTimer
-		
-	if velocity == Vector2.ZERO:
-		if last_facing_direction == 1:
-			sprite.play("idle_dx")
-		elif last_facing_direction == -1:
-			sprite.play("idle_sx")
+	if direction == 1:
+		sprite.play("idle_dx")
+	elif direction == -1:
+		sprite.play("idle_sx")
 
 	
 
