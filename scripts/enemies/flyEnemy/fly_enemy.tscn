@@ -1,0 +1,152 @@
+[gd_scene load_steps=12 format=3 uid="uid://byymqrd1n1yl2"]
+
+[ext_resource type="Script" uid="uid://c1elthykoyi20" path="res://scripts/enemies/flyEnemy/fly_enemy.gd" id="1_ainqx"]
+[ext_resource type="Texture2D" uid="uid://cn2mjc7f0i51y" path="res://sprites/enemies/fly/fly flying dx sheet.png" id="1_fsvwb"]
+[ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="2_dvxfj"]
+[ext_resource type="Script" uid="uid://bht3awia62k45" path="res://scripts/enemy FSM/idleState_enemy.gd" id="4_bfqo4"]
+[ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="5_ainqx"]
+[ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsvwb"]
+radius = 6.0
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_hk0r0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fsvwb"]
+resource_name = "follow"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bfqo4"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.1310726e-06, 0.63421637, 9.62615e-07, 1), Color(1, 0, 0, 1), Color(0.36862746, 0, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hkte3"]
+_data = {
+&"RESET": SubResource("Animation_hk0r0"),
+&"follow": SubResource("Animation_fsvwb"),
+&"idle": SubResource("Animation_bfqo4")
+}
+
+[node name="FlyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player")]
+script = ExtResource("1_ainqx")
+state_machine = NodePath("EnemyStateMachine")
+action_range = 100.0
+animation_player = NodePath("AnimationPlayer")
+speed = 75.0
+x_movement = 100.0
+y_movement = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_fsvwb")
+hframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5951998
+shape = SubResource("CapsuleShape2D_fsvwb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hkte3")
+}
+
+[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
+script = ExtResource("2_dvxfj")
+initial_state = NodePath("IdleState")
+enemy = NodePath("..")
+metadata/_custom_type_script = "uid://bcfcbh1qp81vc"
+
+[node name="IdleState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("4_bfqo4")
+metadata/_custom_type_script = "uid://pk33vlb5s2as"
+
+[node name="FollowState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("5_ainqx")
+metadata/_custom_type_script = "uid://pk33vlb5s2as"
+
+[node name="MovingRandomState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("6_bfqo4")
+metadata/_custom_type_script = "uid://pk33vlb5s2as"
+
+[node name="Timer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="EnemyStateMachine/MovingRandomState/Timer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]
