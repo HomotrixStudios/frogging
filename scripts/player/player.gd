@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
-@export var stats: Stats
+@export var stats : Stats
+
 @onready var animation_player = $AnimationPlayer
 @onready var state_machine = $StateMachine
 @onready var sprite = $AnimatedSprite2D

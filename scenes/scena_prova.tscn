@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlpvf5x7mhdde"]
+[gd_scene load_steps=7 format=3 uid="uid://dlpvf5x7mhdde"]
 
 [ext_resource type="PackedScene" uid="uid://cqlqagd2mtdp3" path="res://scenes/player/player.tscn" id="1_0w1up"]
 [ext_resource type="PackedScene" uid="uid://dq4onwmhomipc" path="res://scenes/tilemap.tscn" id="1_q07ki"]
 [ext_resource type="PackedScene" uid="uid://byymqrd1n1yl2" path="res://scripts/enemies/flyEnemy/fly_enemy.tscn" id="4_0w1up"]
 [ext_resource type="AudioStream" uid="uid://blg1twger7wrq" path="res://sound/songs/area1.wav" id="4_60bov"]
+[ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="5_0w1up"]
+
+[sub_resource type="Resource" id="Resource_argm0"]
+resource_local_to_scene = true
+script = ExtResource("5_0w1up")
+metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,3 +25,4 @@ stream = ExtResource("4_60bov")
 
 [node name="FlyEnemy" parent="." instance=ExtResource("4_0w1up")]
 position = Vector2(144, -56)
+stats = SubResource("Resource_argm0")

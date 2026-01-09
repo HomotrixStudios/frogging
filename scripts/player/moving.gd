@@ -78,6 +78,9 @@ func update_physics(delta : float) -> void:
 	if player.velocity.length() < 0.1:
 		player.state_machine.change_state("IdleState")
 	
+	if Input.is_action_just_pressed("attack"):
+		player.state_machine.change_state("AttackState")
+
 	handle_animation(direction)
 
 func handle_animation(direction : float):

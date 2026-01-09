@@ -34,3 +34,6 @@ func update_physics(delta : float):
 		else:
 			player.state_machine.change_state("MovingState")
 		is_jumping = false
+	
+	if Input.is_action_just_pressed("attack"):
+		player.state_machine.change_state("AttackState")

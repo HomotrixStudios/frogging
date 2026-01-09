@@ -1,11 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://byymqrd1n1yl2"]
+[gd_scene load_steps=15 format=3 uid="uid://byymqrd1n1yl2"]
 
 [ext_resource type="Script" uid="uid://c1elthykoyi20" path="res://scripts/enemies/flyEnemy/fly_enemy.gd" id="1_ainqx"]
 [ext_resource type="Texture2D" uid="uid://cn2mjc7f0i51y" path="res://sprites/enemies/fly/fly flying dx sheet.png" id="1_fsvwb"]
+[ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_3ex3d"]
 [ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="2_dvxfj"]
 [ext_resource type="Script" uid="uid://bht3awia62k45" path="res://scripts/enemy FSM/idleState_enemy.gd" id="4_bfqo4"]
 [ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="5_ainqx"]
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
+[ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="7_7s422"]
+
+[sub_resource type="Resource" id="Resource_gg8h5"]
+resource_local_to_scene = true
+script = ExtResource("2_3ex3d")
+metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsvwb"]
 radius = 6.0
@@ -106,6 +113,7 @@ _data = {
 
 [node name="FlyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player")]
 script = ExtResource("1_ainqx")
+stats = SubResource("Resource_gg8h5")
 state_machine = NodePath("EnemyStateMachine")
 action_range = 100.0
 animation_player = NodePath("AnimationPlayer")
@@ -148,5 +156,13 @@ metadata/_custom_type_script = "uid://pk33vlb5s2as"
 [node name="Timer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
 wait_time = 5.0
 one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("7_7s422")
+metadata/_custom_type_script = "uid://c5c2xnusswlil"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+rotation = 1.5951998
+shape = SubResource("CapsuleShape2D_fsvwb")
 
 [connection signal="timeout" from="EnemyStateMachine/MovingRandomState/Timer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]

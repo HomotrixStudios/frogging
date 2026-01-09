@@ -1,12 +1,39 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqlqagd2mtdp3"]
+[gd_scene load_steps=30 format=3 uid="uid://cqlqagd2mtdp3"]
 
 [ext_resource type="Script" uid="uid://ces8bas4geyb6" path="res://scripts/SM/player_state_machine.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ct8yvgan8g0w2" path="res://scripts/player/player.gd" id="1_lvxji"]
-[ext_resource type="Script" uid="uid://c77fm8gwicq1q" path="res://scripts/logics/stats.gd" id="2_p47bc"]
+[ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_0owmy"]
 [ext_resource type="Texture2D" uid="uid://c0kndkcshuy5r" path="res://sprites/froggy/frog_idle_dx.png" id="2_qek5x"]
 [ext_resource type="Texture2D" uid="uid://djspoj8wswrli" path="res://sprites/froggy/frog_idle_sx.png" id="3_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://cl0qtqgtjxq7s" path="res://sprites/froggy/frog-dxAttack-spritesheet.png" id="3_h17s1"]
 [ext_resource type="Script" uid="uid://cx0o0x4brkhgo" path="res://scripts/player/moving.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://cmjg8vaagx1va" path="res://scripts/player/idle.gd" id="6_75vfm"]
+[ext_resource type="Script" uid="uid://c7i7alw77r3de" path="res://scripts/player/attack_state.gd" id="8_qek5x"]
+
+[sub_resource type="Resource" id="Resource_qek5x"]
+script = ExtResource("2_0owmy")
+faction = 0
+metadata/_custom_type_script = "uid://bjovqc3gf20nb"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
+atlas = ExtResource("3_h17s1")
+region = Rect2(0, 0, 92, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
+atlas = ExtResource("3_h17s1")
+region = Rect2(92, 0, 92, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
+atlas = ExtResource("3_h17s1")
+region = Rect2(184, 0, 92, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
+atlas = ExtResource("3_h17s1")
+region = Rect2(276, 0, 92, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydkj"]
+atlas = ExtResource("3_h17s1")
+region = Rect2(368, 0, 92, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
 atlas = ExtResource("2_qek5x")
@@ -36,6 +63,26 @@ region = Rect2(64, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_myrg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvlxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf5tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgqa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ydkj")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_h17s1")
 }, {
 "duration": 1.0,
@@ -44,7 +91,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fm80t")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_dx",
 "speed": 5.0
 }, {
@@ -63,6 +110,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_75vfm"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmlin"]
 radius = 6.0
 height = 16.0
@@ -71,27 +120,31 @@ height = 16.0
 _data = [Vector2(0.0044843033, 1), 0.0, 0.0, 0, 0, Vector2(0.9910314, 0.55056185), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gtgg"]
+radius = 32.0
+
 [sub_resource type="Animation" id="Animation_kvlxm"]
 resource_name = "idle"
 
+[sub_resource type="Animation" id="Animation_3j4b4"]
+resource_name = "attack"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uf5tr"]
 _data = {
+&"attack": SubResource("Animation_3j4b4"),
 &"idle": SubResource("Animation_kvlxm")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_lvxji")
-stats = NodePath("Stats")
+stats = SubResource("Resource_qek5x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_myrg7")
 animation = &"idle_dx"
-frame = 1
-frame_progress = 0.65981513
 
 [node name="Stats" type="Node" parent="."]
-script = ExtResource("2_p47bc")
-metadata/_custom_type_script = "uid://c77fm8gwicq1q"
+script = SubResource("GDScript_75vfm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -113,6 +166,10 @@ one_shot = true
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("6_75vfm")
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("8_qek5x")
+hitbox_shape = SubResource("CircleShape2D_5gtgg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

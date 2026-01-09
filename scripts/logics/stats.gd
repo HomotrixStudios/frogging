@@ -1,33 +1,36 @@
-extends Node
-class_name Stats
+class_name Stats extends Resource
 
-# Based on the tutorial by "Queble" - a very simplified version withouth the xp and level stats (so far)
-# It was a resource once, but I know nothing about resources so I changed it to Node
+# I want to add a buff/debuff system here 
 
-@export var max_health : float = 100.0
-@export var defense : float = 10.0
-@export var attack : float = 10.0
-@export var speed : float = 30.0
-
+enum Faction {
+    PLAYER,
+    ENEMY,
+}
 
 signal health_depleted
-signal health_changed(current_health : float, max_health : float)
+signal health_changed(cur_health : int, max_health : int)
 
-var current_health : float = 0.0 : set = set_current_health, get = get_current_health
+@export var max_health : int = 100
+@export var defense : int = 10
+@export var damage : int = 10
+@export var faction : Faction = Faction.ENEMY
+
+var health : int = 0 : set = set_health
 
 func _init() -> void:
-	setup_stats.call_deferred()
-	
+    setup_stats.call_deferred()
 
 func setup_stats() -> void:
-	current_health = max_health
-	
+    health = max_health
 
-func set_current_health(new_value : float) -> void:
-	current_health = clampf(new_value, 0, max_health)
-	health_changed.emit(current_health, max_health)
-	if current_health <= 0:
-		health_depleted.emit()
+func take_damage(amount : int) -> void:
+    health -= amount
+    print("ouch: my health is", health)
+    set_health(health)
 
-func get_current_health():
-	return current_health
+func set_health(new_value : int) -> void:
+    health = new_value
+    health_changed.emit(health, max_health)
+    
+    if health <= 0:
+        health_depleted.emit()
