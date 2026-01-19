@@ -122,7 +122,6 @@ _data = [Vector2(0.0044843033, 1), 0.0, 0.0, 0, 0, Vector2(0.9910314, 0.55056185
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gtgg"]
-radius = 32.0
 
 [sub_resource type="Animation" id="Animation_3j4b4"]
 resource_name = "attack"

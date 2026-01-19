@@ -28,10 +28,9 @@ func enter() -> void:
 	pass
 
 func update_physics(delta : float) -> void:
-	print(Input.is_action_just_pressed("jump")) #NON SALTA DA FERMO PER QUESTOOO!!!!
-	print("floor: ", player.is_on_floor())
+
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (player.is_on_floor() || !coyote_timer.is_stopped()) and !is_jumping: # If the player wants to jump and is not on floor anymore 
+	if Input.is_action_pressed("jump") and (player.is_on_floor() || !coyote_timer.is_stopped()) and !is_jumping: # If the player wants to jump and is not on floor anymore 
 		player.velocity.y = jump_force
 		is_jumping = true
 	elif player.is_on_floor():

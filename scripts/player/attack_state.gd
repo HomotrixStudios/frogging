@@ -6,14 +6,15 @@ var attack_timer := 0.3
 func enter():
 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape)
 	add_child(hitbox)
-	hitbox.position = player.position
+	hitbox.position = player.position + Vector2(15.0, 0)
 	hitbox.hitting.connect(_on_hit)
 	
 	# var hit_log : Hitlog = Hitlog.new()
-	# 	for n in 3:
-	# 		var hitbox = Hitbox.new(stats, 0.5, hitbox_shape, hit_log)
-	# 		hitbox.position.x = (n*20-20)
-	# 		add_child(hitbox)
+	# for n in range(1,4):
+	# 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, hit_log)
+	# 	hitbox.position = player.position + Vector2(n * 10, n*5)
+	# 	add_child(hitbox)
+	# 	hitbox.hitting.connect(_on_hit)
 
 func update(delta : float) -> void:
 	attack_timer -= delta
