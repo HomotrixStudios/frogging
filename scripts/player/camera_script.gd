@@ -1,0 +1,20 @@
+extends Camera2D
+
+@export var initial_shake_strength : float = 30.0
+@export var shake_fade : float = 5.0
+
+var shake_strength : float
+
+func apply_shake() -> void:
+    shake_strength = initial_shake_strength
+
+func _process(delta: float) -> void:
+    if shake_strength > 0:
+        shake_strength = lerpf(shake_strength, 0, shake_fade * delta)
+
+        offset = randomOffset()
+
+
+func randomOffset() -> Vector2:
+    return Vector2(randf_range(-shake_strength, shake_strength), randf_range(-shake_strength, shake_strength))
+    

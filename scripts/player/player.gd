@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var state_machine = $StateMachine
 @onready var sprite = $AnimatedSprite2D
+@onready var camera = $Camera2D
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

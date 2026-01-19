@@ -5,7 +5,7 @@ class_name Hurtbox extends Area2D
 func _ready() -> void:
 	monitorable = true
 	monitoring = false
-	print("gay")
+	
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	match owner_stats.faction:

@@ -5,6 +5,8 @@ var hitbox_lifetime : float
 var shape : Shape2D
 var hit_log : Hitlog
 
+signal hitting
+
 func _init(_attacker_stats : Stats, _hitbox_lifetime : float, _shape : Shape2D, _hitlog : Hitlog = null) -> void:
 	attacker_stats = _attacker_stats
 	hitbox_lifetime = _hitbox_lifetime
@@ -29,7 +31,7 @@ func _ready() -> void:
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	match attacker_stats.faction:
-		#enables to targeting these hurtbox layer, I should store these values in some enum or dictionary
+		#enables to target these hurtbox layer, I should store these values in some enum or dictionary
 		Stats.Faction.PLAYER:
 			set_collision_mask_value(1, true) 
 		Stats.Faction.ENEMY:
@@ -47,3 +49,4 @@ func _on_area_entered(area : Area2D) -> void:
 			hit_log.log_hit(hurtbox_owner)
 
 	area.receive_hit(attacker_stats.damage)
+	hitting.emit()

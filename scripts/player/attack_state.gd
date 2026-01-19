@@ -7,7 +7,8 @@ func enter():
 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape)
 	add_child(hitbox)
 	hitbox.position = player.position
-
+	hitbox.hitting.connect(_on_hit)
+	
 	# var hit_log : Hitlog = Hitlog.new()
 	# 	for n in 3:
 	# 		var hitbox = Hitbox.new(stats, 0.5, hitbox_shape, hit_log)
@@ -26,3 +27,6 @@ func update(delta : float) -> void:
 
 func handle_animations():
 	player.sprite.play("attack")
+
+func _on_hit():
+	owner.camera.apply_shake()
