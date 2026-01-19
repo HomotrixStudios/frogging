@@ -24,8 +24,12 @@ var dash_timer := 0.0
 @onready var coyote_timer = $CoyoteTimer
 var is_jumping := false # to avoid double jump 
 
+func enter() -> void:
+	pass
 
 func update_physics(delta : float) -> void:
+	print(Input.is_action_just_pressed("jump")) #NON SALTA DA FERMO PER QUESTOOO!!!!
+	print("floor: ", player.is_on_floor())
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (player.is_on_floor() || !coyote_timer.is_stopped()) and !is_jumping: # If the player wants to jump and is not on floor anymore 
 		player.velocity.y = jump_force
