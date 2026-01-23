@@ -4,14 +4,16 @@ var attacker_stats : Stats
 var hitbox_lifetime : float
 var shape : Shape2D
 var hit_log : Hitlog
+var father : Node2D
 
 signal hitting
 
-func _init(_attacker_stats : Stats, _hitbox_lifetime : float, _shape : Shape2D, _hitlog : Hitlog = null) -> void:
+func _init(_attacker_stats : Stats, _hitbox_lifetime : float, _shape : Shape2D, _father : Node2D = self, _hitlog : Hitlog = null) -> void:
 	attacker_stats = _attacker_stats
 	hitbox_lifetime = _hitbox_lifetime
 	shape = _shape
 	hit_log = _hitlog
+	father = _father
 
 func _ready() -> void:
 	monitorable = false
@@ -22,6 +24,7 @@ func _ready() -> void:
 		add_child(new_timer)
 		new_timer.timeout.connect(queue_free)
 		new_timer.call_deferred("start", hitbox_lifetime)
+
 
 	if shape:
 		var collision_shape = CollisionShape2D.new()
