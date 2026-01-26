@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://byymqrd1n1yl2"]
+[gd_scene load_steps=16 format=3 uid="uid://byymqrd1n1yl2"]
 
 [ext_resource type="Script" uid="uid://c1elthykoyi20" path="res://scripts/enemies/flyEnemy/fly_enemy.gd" id="1_ainqx"]
 [ext_resource type="Texture2D" uid="uid://cn2mjc7f0i51y" path="res://sprites/enemies/fly/fly flying dx sheet.png" id="1_fsvwb"]
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_3ex3d"]
 [ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="2_dvxfj"]
+[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/health_bar.tscn" id="3_twhab"]
 [ext_resource type="Script" uid="uid://bht3awia62k45" path="res://scripts/enemy FSM/idleState_enemy.gd" id="4_bfqo4"]
 [ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="5_ainqx"]
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
@@ -120,6 +121,10 @@ animation_player = NodePath("AnimationPlayer")
 speed = 75.0
 x_movement = 100.0
 y_movement = 100.0
+
+[node name="ProgressBar" parent="." instance=ExtResource("3_twhab")]
+offset_top = -21.0
+offset_bottom = -15.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)

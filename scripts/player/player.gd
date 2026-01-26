@@ -7,6 +7,9 @@ class_name Player extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
 
+func _ready() -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta

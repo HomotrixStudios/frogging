@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cqlqagd2mtdp3"]
+[gd_scene load_steps=32 format=3 uid="uid://cqlqagd2mtdp3"]
 
 [ext_resource type="Script" uid="uid://ces8bas4geyb6" path="res://scripts/SM/player_state_machine.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ct8yvgan8g0w2" path="res://scripts/player/player.gd" id="1_lvxji"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cmjg8vaagx1va" path="res://scripts/player/idle.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://c7i7alw77r3de" path="res://scripts/player/attack_state.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://dnmca51bn0u3i" path="res://scripts/player/camera_script.gd" id="10_h17s1"]
+[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/health_bar.tscn" id="11_je7p5"]
 
 [sub_resource type="Resource" id="Resource_qek5x"]
 script = ExtResource("2_0owmy")
@@ -182,3 +183,7 @@ shake_fade = 10.0
 libraries = {
 &"": SubResource("AnimationLibrary_uf5tr")
 }
+
+[node name="ProgressBar" parent="." instance=ExtResource("11_je7p5")]
+offset_top = -19.0
+offset_bottom = -13.0
