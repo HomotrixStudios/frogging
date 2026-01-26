@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cqlqagd2mtdp3" path="res://scenes/player/player.tscn" id="1_0w1up"]
 [ext_resource type="PackedScene" uid="uid://dq4onwmhomipc" path="res://scenes/tilemap.tscn" id="1_q07ki"]
 [ext_resource type="PackedScene" uid="uid://byymqrd1n1yl2" path="res://scenes/enemies/fly_enemy.tscn" id="4_0w1up"]
-[ext_resource type="AudioStream" uid="uid://c2vm0q6yq3wik" path="res://sound/songs/area1.wav" id="4_60bov"]
+[ext_resource type="AudioStream" uid="uid://b45kxv6fxxtjv" path="res://sound/songs/area1.ogg" id="5_0w1up"]
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="5_argm0"]
 
 [sub_resource type="Resource" id="Resource_4pdif"]
@@ -26,6 +26,6 @@ collision_visibility_mode = 1
 position = Vector2(172, -54)
 stats = SubResource("Resource_4pdif")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_60bov")
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0w1up")
 autoplay = true
