@@ -51,17 +51,16 @@ func update_physics(delta : float) -> void:
 		speed = walk_speed
 		
 	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis("left", "right")
-	if direction:
-		player.velocity.x = move_toward(player.velocity.x, speed * direction, speed * acceleration)
+	if player.direction:
+		player.velocity.x = move_toward(player.velocity.x, speed * player.direction, speed * acceleration)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, speed * deceleration)
 	
 	# Dash activation
-	if Input.is_action_just_pressed("dash") and direction and not is_dashing and dash_timer <= 0:
+	if Input.is_action_just_pressed("dash") and player.direction and not is_dashing and dash_timer <= 0:
 		is_dashing = true
 		dash_start_position = player.position.x
-		dash_direction = direction
+		dash_direction = player.direction
 		dash_timer = dash_cooldown
 	
 	#Performs dash
@@ -84,7 +83,7 @@ func update_physics(delta : float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		player.state_machine.change_state("AttackState")
 
-	handle_animation(direction)
+	handle_animation(player.direction)
 
 func handle_animation(direction : float):
 	player.animation_player.play("idle")

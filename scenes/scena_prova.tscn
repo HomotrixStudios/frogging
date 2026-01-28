@@ -13,14 +13,9 @@ metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_0w1up")]
-position = Vector2(16, -15)
-
 [node name="TileMap" parent="." instance=ExtResource("1_q07ki")]
 position = Vector2(-11, 10)
 collision_visibility_mode = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="FlyEnemy" parent="." instance=ExtResource("4_0w1up")]
 position = Vector2(172, -54)
@@ -28,4 +23,5 @@ stats = SubResource("Resource_4pdif")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_0w1up")
-autoplay = true
+
+[node name="Player" parent="." instance=ExtResource("1_0w1up")]

@@ -1,19 +1,16 @@
 extends PlayerState
 
 @export var hitbox_shape : Shape2D
-var attack_timer := 0.3
-var direction : int
+var attack_timer : float = 0.3
 
 func enter():
-	if player.velocity.x > 0:
-		direction = 1
-	elif player.velocity.x < 0:
-		direction = -1
+	
 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, player)
 	player.add_child(hitbox)
-	hitbox.position += Vector2(15.0, 0) * direction
+	hitbox.position += Vector2(15.0, 0) * player.last_facing_direction
 	hitbox.hitting.connect(_on_hit)
-	print(player.position, hitbox.position)
+	
+
 	# var hit_log : Hitlog = Hitlog.new()
 	# for n in range(1,4):
 	# 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, hit_log)

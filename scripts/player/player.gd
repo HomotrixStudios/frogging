@@ -6,11 +6,21 @@ class_name Player extends CharacterBody2D
 @onready var state_machine = $StateMachine
 @onready var sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
+var direction : float 
+var last_facing_direction : int = 1
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	handle_direction()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
+
+func handle_direction() -> void:
+	direction = Input.get_axis("left", "right")
+	if direction == 1:
+		last_facing_direction = 1
+	elif direction == -1:
+		last_facing_direction = -1
