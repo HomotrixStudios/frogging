@@ -1,6 +1,6 @@
 class_name Enemy extends CharacterBody2D
 
-# @export var stats: Stats
+@export var stats : Stats
 
 #logic variables
 @export var state_machine : EnemyStateMachine
@@ -19,6 +19,7 @@ var player : Player
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
+	stats.health_depleted.connect(queue_free)
 
 func is_player_near() -> bool:
 	if player == null:

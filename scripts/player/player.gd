@@ -6,11 +6,9 @@ class_name Player extends CharacterBody2D
 @onready var state_machine = $StateMachine
 @onready var sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
+
 var direction : float 
 var last_facing_direction : int = 1
-
-func _ready() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	handle_direction()

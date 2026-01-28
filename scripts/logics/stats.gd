@@ -19,7 +19,6 @@ var health : int = 0 : set = set_health
 
 func _init() -> void:
     setup_stats.call_deferred()
-    # health_depleted.
 
 func setup_stats() -> void:
     health = max_health
@@ -35,4 +34,4 @@ func set_health(new_value : int) -> void:
     
     if health <= 0:
         health_depleted.emit()
-        
+   
