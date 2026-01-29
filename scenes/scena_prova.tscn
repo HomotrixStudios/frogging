@@ -12,6 +12,7 @@ script = ExtResource("5_argm0")
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(1, 0)
 
 [node name="TileMap" parent="." instance=ExtResource("1_q07ki")]
 position = Vector2(-11, 10)

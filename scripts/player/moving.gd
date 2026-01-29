@@ -22,26 +22,28 @@ var dash_timer := 0.0
 @export var jump_force := -350.0
 @export_range(0, 1) var decrease_on_jump_release := 0.5
 @onready var coyote_timer = $CoyoteTimer
-var is_jumping := false # to avoid double jump 
+var is_jumping := false # to avoid double jump
+@onready var jump_buffer_timer = $JumpBufferTimer
 
-func enter() -> void:
-	pass
 
 func update_physics(delta : float) -> void:
 
-	# Handle jump.
-	if Input.is_action_pressed("jump") and (player.is_on_floor() || !coyote_timer.is_stopped()) and !is_jumping: # If the player wants to jump and is not on floor anymore 
+	if Input.is_action_pressed("jump"): 
+		if (player.is_on_floor() || !coyote_timer.is_stopped()) and !is_jumping: # If the player wants to jump and is not on floor anymore 
+			player.velocity.y = jump_force
+			is_jumping = true
+	if player.is_on_floor():
+		is_jumping = false
+	
+	if !is_jumping and !jump_buffer_timer.is_stopped():
 		player.velocity.y = jump_force
 		is_jumping = true
-	elif player.is_on_floor():
-		is_jumping = false
+
+	if Input.is_action_just_pressed("jump") and is_jumping and jump_buffer_timer.is_stopped():
+		jump_buffer_timer.start()
 
 	if !player.is_on_floor() and coyote_timer.is_stopped():
 		coyote_timer.start()
-
-	# Modify the jump height based on the release of jump button
-	if Input.is_action_just_released("jump") and player.velocity.y < 0:
-		player.velocity.y *= decrease_on_jump_release * delta	
 
 	# Modify the speed based on the input action "run"
 	var speed := 0.0
@@ -76,16 +78,16 @@ func update_physics(delta : float) -> void:
 	if dash_timer > 0:
 		dash_timer -= delta
 
-
 	if player.velocity.length() < 0.1:
+		is_jumping = false
 		player.state_machine.change_state("IdleState")
 	
 	if Input.is_action_just_pressed("attack"):
 		player.state_machine.change_state("AttackState")
 
-	handle_animation(player.direction)
+	handle_animation(player.last_facing_direction)
 
-func handle_animation(direction : float):
+func handle_animation(direction : float) -> void:
 	player.animation_player.play("idle")
 	if direction == 1:
 		player.sprite.play("idle_dx")

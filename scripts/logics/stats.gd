@@ -25,7 +25,6 @@ func setup_stats() -> void:
 
 func take_damage(amount : int) -> void:
     health -= amount
-    print("ouch: my health is", health)
     set_health(health)
 
 func set_health(new_value : int) -> void:

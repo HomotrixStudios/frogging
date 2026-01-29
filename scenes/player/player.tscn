@@ -162,6 +162,10 @@ script = ExtResource("4_lvxji")
 dash_curve = SubResource("Curve_gmlin")
 
 [node name="CoyoteTimer" type="Timer" parent="StateMachine/MovingState"]
+wait_time = 0.2
+one_shot = true
+
+[node name="JumpBufferTimer" type="Timer" parent="StateMachine/MovingState"]
 wait_time = 0.3
 one_shot = true
 

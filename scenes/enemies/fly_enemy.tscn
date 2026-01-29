@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://byymqrd1n1yl2"]
+[gd_scene load_steps=17 format=3 uid="uid://byymqrd1n1yl2"]
 
 [ext_resource type="Script" uid="uid://c1elthykoyi20" path="res://scripts/enemies/flyEnemy/fly_enemy.gd" id="1_ainqx"]
 [ext_resource type="Texture2D" uid="uid://cn2mjc7f0i51y" path="res://sprites/enemies/fly/fly flying dx sheet.png" id="1_fsvwb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="5_ainqx"]
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
 [ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="7_7s422"]
+[ext_resource type="Script" uid="uid://pk33vlb5s2as" path="res://scripts/enemy FSM/enemy_state.gd" id="9_i7j5w"]
 
 [sub_resource type="Resource" id="Resource_gg8h5"]
 resource_local_to_scene = true
@@ -161,6 +162,10 @@ metadata/_custom_type_script = "uid://pk33vlb5s2as"
 [node name="Timer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
 wait_time = 5.0
 one_shot = true
+
+[node name="AttackState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("9_i7j5w")
+metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("7_7s422")
