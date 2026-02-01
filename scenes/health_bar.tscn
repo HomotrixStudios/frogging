@@ -8,7 +8,7 @@ bg_color = Color(0.8235294, 0.23137255, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3kqx"]
 bg_color = Color(0, 0.72156864, 0, 1)
 
-[node name="ProgressBar" type="ProgressBar"]
+[node name="HealthBar" type="ProgressBar"]
 offset_left = -9.0
 offset_top = -3.0
 offset_right = 9.0

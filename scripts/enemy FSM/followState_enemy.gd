@@ -9,8 +9,8 @@ func update_physics(delta : float) -> void:
 		return
 	var direction = Vector2(player.position.x - enemy.position.x, player.position.y - enemy.position.y)
 
-	enemy.velocity.x = direction.x * enemy.speed * delta
-	enemy.velocity.y = direction.y * enemy.speed * delta
+	enemy.velocity.x = direction.x * enemy.x_speed * delta 
+	enemy.velocity.y = direction.y * enemy.y_speed * delta
 
 	handle_animations(direction.x)
 

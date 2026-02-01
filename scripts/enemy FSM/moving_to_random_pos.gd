@@ -4,13 +4,13 @@ var target_pos : Vector2
 @onready var timer = $Timer
 
 func enter() -> void:
-	target_pos = enemy.global_position + Vector2(randf_range(-enemy.x_movement, enemy.x_movement), randf_range(-enemy.y_movement, enemy.y_movement))
+	target_pos = enemy.global_position + Vector2(randf_range(-enemy.x_speed, enemy.x_speed), randf_range(-enemy.y_speed, enemy.y_speed))
 
 func update_physics(delta : float) -> void:
 	var direction := Vector2(target_pos.x - enemy.global_position.x, target_pos.y - enemy.global_position.y)
 
-	enemy.velocity.x = (direction.x * enemy.speed) * delta
-	enemy.velocity.y = (direction.y * enemy.speed) * delta
+	enemy.velocity.x = (direction.x * enemy.x_speed) * delta
+	enemy.velocity.y = (direction.y * enemy.y_speed) * delta
 
 	if target_pos.distance_to(enemy.global_position) <= 0.1:
 		enemy.state_machine.change_state("IdleState")

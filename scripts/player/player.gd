@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 
 func handle_direction() -> void:
 	direction = Input.get_axis("left", "right")
-	print(direction)
 	if direction > 0:
 		last_facing_direction = 1
 	elif direction < 0:

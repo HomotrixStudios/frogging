@@ -1,0 +1,130 @@
+[gd_scene load_steps=16 format=3 uid="uid://dkcuj87kdpkde"]
+
+[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/health_bar.tscn" id="1_3eqri"]
+[ext_resource type="Script" uid="uid://cx0e3jluj4i57" path="res://scripts/enemies/snake_enemy.gd" id="1_skqqu"]
+[ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_mmrdk"]
+[ext_resource type="Texture2D" uid="uid://b2l30y4svjnmy" path="res://sprites/enemies/snake/snake_walk.png" id="2_skqqu"]
+[ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="3_mmrdk"]
+[ext_resource type="Script" uid="uid://bht3awia62k45" path="res://scripts/enemy FSM/idleState_enemy.gd" id="4_7oohf"]
+[ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="7_7oohf"]
+[ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="7_ysukb"]
+[ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="8_vqh41"]
+
+[sub_resource type="Resource" id="Resource_7oohf"]
+script = ExtResource("2_mmrdk")
+metadata/_custom_type_script = "uid://bjovqc3gf20nb"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eqri"]
+
+[sub_resource type="Animation" id="Animation_ysukb"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6666667, 0.8, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_owqif"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_25c27"]
+resource_name = "follow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6666667, 0.8, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25c27"]
+_data = {
+&"RESET": SubResource("Animation_owqif"),
+&"follow": SubResource("Animation_25c27"),
+&"idle": SubResource("Animation_ysukb")
+}
+
+[node name="SnakeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player")]
+script = ExtResource("1_skqqu")
+stats = SubResource("Resource_7oohf")
+state_machine = NodePath("EnemyStateMachine")
+action_range = 80.0
+animation_player = NodePath("AnimationPlayer")
+x_speed = 45.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_skqqu")
+hframes = 8
+
+[node name="HealthBar" parent="." instance=ExtResource("1_3eqri")]
+offset_left = -10.0
+offset_top = -23.0
+offset_right = 8.0
+offset_bottom = -17.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1)
+shape = SubResource("CapsuleShape2D_3eqri")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_25c27")
+}
+
+[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
+script = ExtResource("3_mmrdk")
+initial_state = NodePath("IdleState")
+enemy = NodePath("..")
+metadata/_custom_type_script = "uid://bcfcbh1qp81vc"
+
+[node name="IdleState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("4_7oohf")
+metadata/_custom_type_script = "uid://pk33vlb5s2as"
+
+[node name="FollowState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("7_ysukb")
+metadata/_custom_type_script = "uid://pk33vlb5s2as"
+
+[node name="MovingRandomState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("7_7oohf")
+metadata/_custom_type_script = "uid://pk33vlb5s2as"
+
+[node name="Timer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("8_vqh41")
+metadata/_custom_type_script = "uid://c5c2xnusswlil"
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-2, 1)
+shape = SubResource("CapsuleShape2D_3eqri")
+
+[connection signal="timeout" from="EnemyStateMachine/MovingRandomState/Timer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]

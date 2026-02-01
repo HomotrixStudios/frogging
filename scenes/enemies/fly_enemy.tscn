@@ -119,11 +119,10 @@ stats = SubResource("Resource_gg8h5")
 state_machine = NodePath("EnemyStateMachine")
 action_range = 100.0
 animation_player = NodePath("AnimationPlayer")
-speed = 75.0
-x_movement = 100.0
-y_movement = 100.0
+x_speed = 45.0
+y_speed = 45.0
 
-[node name="ProgressBar" parent="." instance=ExtResource("3_twhab")]
+[node name="HealthBar" parent="." instance=ExtResource("3_twhab")]
 offset_top = -21.0
 offset_bottom = -15.0
 

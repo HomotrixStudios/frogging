@@ -12,9 +12,9 @@ var player : Player
 @export var animation_player : AnimationPlayer
 
 #movement variables
-@export var speed := 45.0
-@export_range(0.0, 100.0) var x_movement : float 
-@export_range(0.0, 100.0) var y_movement : float 
+# @export var speed := 45.0
+@export_range(0.0, 100.0) var x_speed : float 
+@export_range(0.0, 100.0) var y_speed : float 
 
 
 func _ready():
