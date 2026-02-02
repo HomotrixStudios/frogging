@@ -7,7 +7,7 @@ func enter() -> void:
 func update_physics(delta : float) -> void:
 	if player == null:
 		return
-	var direction = Vector2(player.position.x - enemy.position.x, player.position.y - enemy.position.y)
+	var direction = Vector2(player.position.x - enemy.position.x,player.position.y - enemy.position.y)
 
 	enemy.velocity.x = direction.x * enemy.x_speed * delta 
 	enemy.velocity.y = direction.y * enemy.y_speed * delta
@@ -15,7 +15,8 @@ func update_physics(delta : float) -> void:
 	handle_animations(direction.x)
 
 	if direction.length() >= (enemy.action_range) * 1.5:
-		enemy.state_machine.change_state("IdleState")
+		enemy.state_machine.change_state("MovingRandomState")
+
 
 
 func handle_animations(direction : float) -> void:

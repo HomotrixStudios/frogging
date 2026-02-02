@@ -5,11 +5,10 @@
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_3ex3d"]
 [ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="2_dvxfj"]
 [ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/health_bar.tscn" id="3_twhab"]
-[ext_resource type="Script" uid="uid://bht3awia62k45" path="res://scripts/enemy FSM/idleState_enemy.gd" id="4_bfqo4"]
 [ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="5_ainqx"]
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
 [ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="7_7s422"]
-[ext_resource type="Script" uid="uid://pk33vlb5s2as" path="res://scripts/enemy FSM/enemy_state.gd" id="9_i7j5w"]
+[ext_resource type="Script" uid="uid://chq368x3sr6nh" path="res://scripts/enemy FSM/attack_state.gd" id="9_i7j5w"]
 
 [sub_resource type="Resource" id="Resource_gg8h5"]
 resource_local_to_scene = true
@@ -113,14 +112,18 @@ _data = {
 &"idle": SubResource("Animation_bfqo4")
 }
 
-[node name="FlyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_twhab"]
+radius = 60.00833
+
+[node name="FlyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "muzzle")]
 script = ExtResource("1_ainqx")
 stats = SubResource("Resource_gg8h5")
 state_machine = NodePath("EnemyStateMachine")
-action_range = 100.0
+action_range = 150.0
 animation_player = NodePath("AnimationPlayer")
 x_speed = 45.0
 y_speed = 45.0
+muzzle = NodePath("Marker2D")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_twhab")]
 offset_top = -21.0
@@ -135,6 +138,9 @@ hframes = 10
 rotation = 1.5951998
 shape = SubResource("CapsuleShape2D_fsvwb")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(19, 8)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_hkte3")
@@ -142,13 +148,9 @@ libraries = {
 
 [node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
 script = ExtResource("2_dvxfj")
-initial_state = NodePath("IdleState")
+initial_state = NodePath("MovingRandomState")
 enemy = NodePath("..")
 metadata/_custom_type_script = "uid://bcfcbh1qp81vc"
-
-[node name="IdleState" type="Node" parent="EnemyStateMachine"]
-script = ExtResource("4_bfqo4")
-metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
 [node name="FollowState" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("5_ainqx")
@@ -158,13 +160,15 @@ metadata/_custom_type_script = "uid://pk33vlb5s2as"
 script = ExtResource("6_bfqo4")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
-[node name="Timer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
+[node name="RandomPosTimer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
 wait_time = 5.0
 one_shot = true
 
 [node name="AttackState" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("9_i7j5w")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
+
+[node name="AttackTimer" type="Timer" parent="EnemyStateMachine/AttackState"]
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("7_7s422")
@@ -174,4 +178,12 @@ metadata/_custom_type_script = "uid://c5c2xnusswlil"
 rotation = 1.5951998
 shape = SubResource("CapsuleShape2D_fsvwb")
 
-[connection signal="timeout" from="EnemyStateMachine/MovingRandomState/Timer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]
+[node name="ShootableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootableArea"]
+shape = SubResource("CircleShape2D_twhab")
+debug_color = Color(0.7006124, 0.49228144, 0, 0.41960785)
+
+[connection signal="timeout" from="EnemyStateMachine/MovingRandomState/RandomPosTimer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyStateMachine/AttackState/AttackTimer" to="EnemyStateMachine/AttackState" method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="ShootableArea" to="." method="_on_shootable_area_body_entered"]
