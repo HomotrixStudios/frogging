@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="5_ainqx"]
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
 [ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="7_7s422"]
-[ext_resource type="Script" uid="uid://chq368x3sr6nh" path="res://scripts/enemy FSM/attack_state.gd" id="9_i7j5w"]
+[ext_resource type="Script" uid="uid://chq368x3sr6nh" path="res://scripts/enemy FSM/attackState_enemy.gd" id="9_i7j5w"]
 
 [sub_resource type="Resource" id="Resource_gg8h5"]
 resource_local_to_scene = true
@@ -113,7 +113,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twhab"]
-radius = 60.00833
+radius = 104.0769
 
 [node name="FlyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "muzzle")]
 script = ExtResource("1_ainqx")

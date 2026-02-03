@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c65vsndh0qvmy"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 188.0
+offset_right = 791.0
+offset_bottom = 284.0
+theme_override_font_sizes/font_size = 38
+text = "PLAY"
+
+[node name="Credits" type="Button" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 288.0
+offset_right = 894.0
+offset_bottom = 319.0
+text = "CREDITS"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 323.0
+offset_right = 894.0
+offset_bottom = 354.0
+text = "QUIT"

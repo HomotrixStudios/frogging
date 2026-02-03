@@ -10,6 +10,9 @@ class_name Player extends CharacterBody2D
 var direction : float 
 var last_facing_direction : int = 1
 
+func _ready():
+	stats.health_depleted.connect(queue_free)
+
 func _physics_process(delta: float) -> void:
 	handle_direction()
 	if not is_on_floor():

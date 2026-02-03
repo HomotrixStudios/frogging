@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkcuj87kdpkde"]
+[gd_scene load_steps=15 format=3 uid="uid://dkcuj87kdpkde"]
 
 [ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/health_bar.tscn" id="1_3eqri"]
 [ext_resource type="Script" uid="uid://cx0e3jluj4i57" path="res://scripts/enemies/snake_enemy.gd" id="1_skqqu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2l30y4svjnmy" path="res://sprites/enemies/snake/snake_walk.png" id="2_skqqu"]
 [ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="3_mmrdk"]
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="7_7oohf"]
+[ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="7_vqh41"]
 [ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="8_vqh41"]
 
 [sub_resource type="Resource" id="Resource_7oohf"]
@@ -109,6 +110,10 @@ metadata/_custom_type_script = "uid://pk33vlb5s2as"
 [node name="RandomPosTimer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
 wait_time = 5.0
 one_shot = true
+
+[node name="FollowState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("7_vqh41")
+metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("8_vqh41")

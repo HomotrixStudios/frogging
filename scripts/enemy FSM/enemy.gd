@@ -1,6 +1,5 @@
 class_name Enemy extends CharacterBody2D
 
-
 #logic variables
 @export var stats : Stats
 @export var state_machine : EnemyStateMachine

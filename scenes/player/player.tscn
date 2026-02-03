@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cqlqagd2mtdp3"]
+[gd_scene load_steps=34 format=3 uid="uid://cqlqagd2mtdp3"]
 
 [ext_resource type="Script" uid="uid://ces8bas4geyb6" path="res://scripts/SM/player_state_machine.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ct8yvgan8g0w2" path="res://scripts/player/player.gd" id="1_lvxji"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c7i7alw77r3de" path="res://scripts/player/attack_state.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://dnmca51bn0u3i" path="res://scripts/player/camera_script.gd" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/health_bar.tscn" id="11_je7p5"]
+[ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="12_fm80t"]
 
 [sub_resource type="Resource" id="Resource_qek5x"]
 script = ExtResource("2_0owmy")
@@ -137,6 +138,10 @@ _data = {
 &"idle": SubResource("Animation_kvlxm")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm80t"]
+radius = 8.0
+height = 20.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_lvxji")
 stats = SubResource("Resource_qek5x")
@@ -192,3 +197,11 @@ libraries = {
 [node name="ProgressBar" parent="." instance=ExtResource("11_je7p5")]
 offset_top = -19.0
 offset_bottom = -13.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("12_fm80t")
+metadata/_custom_type_script = "uid://c5c2xnusswlil"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, -1)
+shape = SubResource("CapsuleShape2D_fm80t")

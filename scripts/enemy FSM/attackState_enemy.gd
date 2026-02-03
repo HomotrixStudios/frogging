@@ -20,6 +20,13 @@ func shoot() -> void:
 	bullet.spawnRot = enemy.global_rotation
 	enemy.get_parent().add_child(bullet)
 
+func multipleShoot() -> void: #this doesn't work :(
+	for n in range(1,4):
+		var bullet = projectile.instantiate()
+		bullet.spawnPos = enemy.muzzle.position + Vector2(n * 10, n * 5)
+		bullet.spawnRot = enemy.global_rotation
+		bullet.direction = (enemy.player.position - (enemy.muzzle.position + Vector2(n * 10, n * 5))).angle()
+		enemy.get_parent().add_child(bullet)
 
 func _on_attack_timer_timeout() -> void:
 	shoot()
