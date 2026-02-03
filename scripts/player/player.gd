@@ -11,7 +11,7 @@ var direction : float
 var last_facing_direction : int = 1
 
 func _ready():
-	stats.health_depleted.connect(queue_free)
+	stats.health_depleted.connect(handle_death)
 
 func _physics_process(delta: float) -> void:
 	handle_direction()
@@ -25,3 +25,6 @@ func handle_direction() -> void:
 		last_facing_direction = 1
 	elif direction < 0:
 		last_facing_direction = -1
+
+func handle_death() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/logics/game_over.tscn")
