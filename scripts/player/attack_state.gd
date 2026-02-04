@@ -4,11 +4,11 @@ extends PlayerState
 var attack_timer : float = 0.3
 
 func enter():
-	
-	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, player)
-	player.add_child(hitbox)
-	hitbox.position += Vector2(15.0, 0) * player.last_facing_direction
-	hitbox.hitting.connect(_on_hit)
+	if Input.is_action_pressed("attack"):
+		var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, player)
+		player.add_child(hitbox)
+		hitbox.position += Vector2(15.0, 0) * player.last_facing_direction
+		hitbox.hitting.connect(_on_hit)
 	
 
 	# var hit_log : Hitlog = Hitlog.new()
@@ -25,11 +25,14 @@ func update(delta : float) -> void:
 			player.state_machine.change_state("MovingState")
 		else:
 			player.state_machine.change_state("IdleState")
-
 	handle_animations()
-
-func handle_animations():
-	player.sprite.play("attack")
 
 func _on_hit():
 	owner.camera.apply_shake()
+
+func handle_animations():
+	if Input.is_action_pressed("lick_attack"):
+		if player.last_facing_direction == 1:
+			player.animation_player.play("lick_attack")
+		elif player.last_facing_direction == -1:
+			player.animation_player.play("lick_attack")

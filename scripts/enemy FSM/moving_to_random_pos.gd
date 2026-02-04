@@ -17,15 +17,6 @@ func update_physics(delta : float) -> void:
 	if enemy.state_machine.find_child("FollowState"):
 		if enemy.is_player_near():
 			enemy.state_machine.change_state("FollowState")
-	
-	handle_animations(direction.x)
-	
-func handle_animations(facing_direction : float):
-	enemy.animation_player.play("follow")
-	if facing_direction >= 0:
-		enemy.sprite.flip_h = false
-	else:
-		enemy.sprite.flip_h = true
 
 func _on_timer_timeout() -> void:
 	enemy.state_machine.change_state("MovingRandomState")

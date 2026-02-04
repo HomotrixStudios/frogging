@@ -12,17 +12,5 @@ func update_physics(delta : float) -> void:
 	enemy.velocity.x = direction.x * enemy.x_speed * delta 
 	enemy.velocity.y = direction.y * enemy.y_speed * delta
 
-	handle_animations(direction.x)
-
 	if direction.length() >= (enemy.action_range) * 1.5:
 		enemy.state_machine.change_state("MovingRandomState")
-
-
-
-func handle_animations(direction : float) -> void:
-	enemy.animation_player.play("follow")
-	if direction >= 0:
-		enemy.sprite.flip_h = false
-	if direction < 0:
-		enemy.sprite.flip_h = true
-	

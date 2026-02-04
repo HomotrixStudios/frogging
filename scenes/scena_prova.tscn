@@ -18,6 +18,7 @@ position = Vector2(1, 0)
 [node name="TileMap" parent="." instance=ExtResource("1_q07ki")]
 position = Vector2(-11, 10)
 collision_visibility_mode = 1
+layer_0/tile_data = PackedInt32Array(-589824, 983040, 14, -589823, 1114112, 14, -589822, 1114112, 14, -589821, 1114112, 14, -589820, 1114112, 14, -589819, 1245184, 14, -327668, 983040, 14, -327667, 1114112, 14, -327666, 1114112, 14, -327665, 1114112, 14, -327664, 1114112, 14, -327663, 1245184, 14)
 
 [node name="FlyEnemy" parent="." instance=ExtResource("4_0w1up")]
 position = Vector2(172, -54)
@@ -25,9 +26,9 @@ stats = SubResource("Resource_4pdif")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_argm0")
-autoplay = true
-
-[node name="Player" parent="." instance=ExtResource("1_0w1up")]
 
 [node name="SnakeEnemy" parent="." instance=ExtResource("6_argm0")]
 position = Vector2(89, -30)
+
+[node name="Player" parent="." instance=ExtResource("1_0w1up")]
+position = Vector2(13, 0)

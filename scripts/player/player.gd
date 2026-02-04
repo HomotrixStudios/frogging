@@ -4,8 +4,8 @@ class_name Player extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
 @onready var state_machine = $StateMachine
-@onready var sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
+@onready var sprite = $Sprite2D
 
 var direction : float 
 var last_facing_direction : int = 1
@@ -15,6 +15,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	handle_direction()
+	handle_animations()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
@@ -28,3 +29,7 @@ func handle_direction() -> void:
 
 func handle_death() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/logics/game_over.tscn")
+
+func handle_animations():
+	pass
+	

@@ -73,7 +73,7 @@ func update_physics(delta : float) -> void:
 		else:
 			player.velocity.x = dash_direction * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
 			player.velocity.y = 0
-	
+
 	# Reduces dash timer
 	if dash_timer > 0:
 		dash_timer -= delta
@@ -82,14 +82,24 @@ func update_physics(delta : float) -> void:
 		is_jumping = false
 		player.state_machine.change_state("IdleState")
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("lick_attack"):
 		player.state_machine.change_state("AttackState")
 
-	handle_animation(player.last_facing_direction)
+	handle_animations()
 
-func handle_animation(direction : float) -> void:
-	player.animation_player.play("idle")
-	if direction == 1:
-		player.sprite.play("idle_dx")
-	elif direction == -1:
-		player.sprite.play("idle_sx")
+func handle_animations():
+	if player.direction > 0:
+		player.animation_player.play("idle_dx")
+	elif player.direction < 0:
+		player.animation_player.play("idle_sx")
+	if is_jumping:
+		if player.velocity.y < 0:
+			if player.direction > 0:
+				player.animation_player.play("jump_dx")
+			elif player.direction < 0:
+				player.animation_player.play("jump_sx")
+		elif player.velocity.y > 0:
+			if player.direction > 0:
+				player.animation_player.play("fall_dx")
+			elif player.direction < 0:
+				player.animation_player.play("fall_sx")

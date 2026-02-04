@@ -4,7 +4,6 @@ extends EnemyState
 
 func enter() -> void:
 	player = get_tree().get_first_node_in_group("Player")
-	enemy.animation_player.play("idle")
 	enemy.velocity = Vector2.ZERO
 	idle_timer = 3.0
 	
