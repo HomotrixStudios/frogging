@@ -25,6 +25,7 @@ stats = SubResource("Resource_4pdif")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_argm0")
+autoplay = true
 
 [node name="Player" parent="." instance=ExtResource("1_0w1up")]
 
