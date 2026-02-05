@@ -92,14 +92,15 @@ func handle_animations():
 		player.animation_player.play("idle_dx")
 	elif player.direction < 0:
 		player.animation_player.play("idle_sx")
+
 	if is_jumping:
-		if player.velocity.y < 0:
-			if player.direction > 0:
+		# if player.velocity.y < 0:
+			if player.last_facing_direction == 1:
 				player.animation_player.play("jump_dx")
-			elif player.direction < 0:
+			elif player.last_facing_direction == -1:
 				player.animation_player.play("jump_sx")
-		elif player.velocity.y > 0:
-			if player.direction > 0:
-				player.animation_player.play("fall_dx")
-			elif player.direction < 0:
-				player.animation_player.play("fall_sx")
+		# elif player.velocity.y > 0:
+		# 	if player.last_facing_direction == 1:
+		# 		player.animation_player.play("fall_dx")
+		# 	elif player.last_facing_direction == -1:
+		# 		player.animation_player.play("fall_sx")
