@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cqlqagd2mtdp3"]
+[gd_scene load_steps=34 format=3 uid="uid://cqlqagd2mtdp3"]
 
 [ext_resource type="Script" uid="uid://ces8bas4geyb6" path="res://scripts/SM/player_state_machine.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ct8yvgan8g0w2" path="res://scripts/player/player.gd" id="1_lvxji"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="12_fm80t"]
 [ext_resource type="Texture2D" uid="uid://d4jfwus117bh2" path="res://sprites/froggy/froggy-fallsheet_dx.png" id="12_ugbui"]
 [ext_resource type="Texture2D" uid="uid://cfjilqb7a0k8t" path="res://sprites/froggy/frog jumpAttackSheet.png" id="13_fcs02"]
+[ext_resource type="Texture2D" uid="uid://dprmpg38xf322" path="res://sprites/froggy/froggy spiralAttack.png" id="14_myrg7"]
 
 [sub_resource type="Resource" id="Resource_qek5x"]
 script = ExtResource("2_0owmy")
@@ -233,6 +234,46 @@ tracks/2/keys = {
 "values": [0, 2, 4]
 }
 
+[sub_resource type="Animation" id="Animation_uf5tr"]
+resource_name = "jumpAttack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_fcs02")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+
 [sub_resource type="Animation" id="Animation_ugbui"]
 resource_name = "lick_attack"
 length = 0.8
@@ -273,8 +314,8 @@ tracks/2/keys = {
 "values": [6]
 }
 
-[sub_resource type="Animation" id="Animation_uf5tr"]
-resource_name = "jumpAttack"
+[sub_resource type="Animation" id="Animation_fcs02"]
+resource_name = "attack2"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -286,7 +327,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("13_fcs02")]
+"values": [ExtResource("12_fcs02")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -298,7 +339,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [9]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -307,21 +348,104 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [2, 3, 4]
+"values": [3, 4, 1]
+}
+
+[sub_resource type="Animation" id="Animation_lgqa7"]
+resource_name = "attack3"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_fcs02")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 6, 1]
+}
+
+[sub_resource type="Animation" id="Animation_8ydkj"]
+resource_name = "spin_attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_myrg7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uf5tr"]
 _data = {
 &"RESET": SubResource("Animation_fm80t"),
 &"attack1": SubResource("Animation_3j4b4"),
+&"attack2": SubResource("Animation_fcs02"),
+&"attack3": SubResource("Animation_lgqa7"),
 &"fall": SubResource("Animation_myrg7"),
 &"idle": SubResource("Animation_kvlxm"),
 &"jump": SubResource("Animation_je7p5"),
 &"jumpAttack": SubResource("Animation_uf5tr"),
-&"lick_attack": SubResource("Animation_ugbui")
+&"lick_attack": SubResource("Animation_ugbui"),
+&"spin_attack": SubResource("Animation_8ydkj")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm80t"]
@@ -365,10 +489,11 @@ script = ExtResource("8_qek5x")
 hitbox_shape = SubResource("CircleShape2D_5gtgg")
 
 [node name="AttackCooldown" type="Timer" parent="StateMachine/AttackState"]
-wait_time = 0.5
+wait_time = 0.4
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/AttackState"]
+wait_time = 0.8
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

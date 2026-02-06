@@ -7,6 +7,7 @@ class_name Player extends CharacterBody2D
 @onready var camera = $Camera2D
 @onready var sprite = $Sprite2D
 
+var animation_priority : bool = false
 var direction : float 
 var last_facing_direction : int = 1
 
@@ -19,8 +20,7 @@ func _physics_process(delta: float) -> void:
 	handle_animations()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	# print($StateMachine/AttackState/AttackCooldown.time_left)
-	
+		
 	move_and_slide()
 
 func handle_direction() -> void:

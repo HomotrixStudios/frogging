@@ -87,8 +87,10 @@ func update_physics(delta : float) -> void:
 
 	handle_animations()
 
-func handle_animations():
-
+func handle_animations(): 
+	if player.animation_priority:
+		await player.animation_player.animation_finished
+		player.animation_priority = false
 	if not is_jumping:
 		player.animation_player.play("idle")
 	elif is_jumping:
