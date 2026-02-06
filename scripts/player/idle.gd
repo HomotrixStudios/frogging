@@ -10,9 +10,6 @@ func update(_delta : float) -> void:
     handle_animations()
 
 
-func handle_animations():
+func handle_animations(): 
     if not player.animation_player.is_playing():
-        if player.last_facing_direction > 0:
-            player.animation_player.play("idle_dx")
-        elif player.last_facing_direction < 0:
-            player.animation_player.play("idle_sx")
+        player.animation_player.play("idle")

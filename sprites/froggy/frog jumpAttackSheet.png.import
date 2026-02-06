@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://le1x0hnffw0u"
-path="res://.godot/imported/froggy-jumpsheet_sx.png-4da3931b02ad3323a81f0e7399fb641d.ctex"
+uid="uid://cfjilqb7a0k8t"
+path="res://.godot/imported/frog jumpAttackSheet.png-cdf46abde7ec6bfbdeaf9ec8b8665270.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-jumpsheet_sx.png"
-dest_files=["res://.godot/imported/froggy-jumpsheet_sx.png-4da3931b02ad3323a81f0e7399fb641d.ctex"]
+source_file="res://sprites/froggy/frog jumpAttackSheet.png"
+dest_files=["res://.godot/imported/frog jumpAttackSheet.png-cdf46abde7ec6bfbdeaf9ec8b8665270.ctex"]
 
 [params]
 

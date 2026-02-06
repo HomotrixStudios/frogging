@@ -88,19 +88,11 @@ func update_physics(delta : float) -> void:
 	handle_animations()
 
 func handle_animations():
-	if player.direction > 0:
-		player.animation_player.play("idle_dx")
-	elif player.direction < 0:
-		player.animation_player.play("idle_sx")
 
-	if is_jumping:
-		# if player.velocity.y < 0:
-			if player.last_facing_direction == 1:
-				player.animation_player.play("jump_dx")
-			elif player.last_facing_direction == -1:
-				player.animation_player.play("jump_sx")
-		# elif player.velocity.y > 0:
-		# 	if player.last_facing_direction == 1:
-		# 		player.animation_player.play("fall_dx")
-		# 	elif player.last_facing_direction == -1:
-		# 		player.animation_player.play("fall_sx")
+	if not is_jumping:
+		player.animation_player.play("idle")
+	elif is_jumping:
+		if player.velocity.y < 0:
+			player.animation_player.play("jump")
+	if player.velocity.y > 0:
+		player.animation_player.play("fall")

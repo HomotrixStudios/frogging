@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpuj3tvj86wpn"
-path="res://.godot/imported/froggy-fallsheet_sx.png-46b9c24d6551fa9a5931dee12cf651b3.ctex"
+uid="uid://06fidevpqqhw"
+path="res://.godot/imported/frog attackSheetpng.png-7cd22f3e9a6d5cf6714ee560fd9a2543.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-fallsheet_sx.png"
-dest_files=["res://.godot/imported/froggy-fallsheet_sx.png-46b9c24d6551fa9a5931dee12cf651b3.ctex"]
+source_file="res://sprites/froggy/frog attackSheetpng.png"
+dest_files=["res://.godot/imported/frog attackSheetpng.png-7cd22f3e9a6d5cf6714ee560fd9a2543.ctex"]
 
 [params]
 
