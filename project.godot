@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="frogging"
-run/main_scene="uid://dlpvf5x7mhdde"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 
 [file_customization]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dkcuj87kdpkde"]
 
-[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/health_bar.tscn" id="1_3eqri"]
+[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/logics/health_bar.tscn" id="1_3eqri"]
 [ext_resource type="Script" uid="uid://cx0e3jluj4i57" path="res://scripts/enemies/snake_enemy.gd" id="1_skqqu"]
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_mmrdk"]
 [ext_resource type="Texture2D" uid="uid://b2l30y4svjnmy" path="res://sprites/enemies/snake/snake_walk.png" id="2_skqqu"]
