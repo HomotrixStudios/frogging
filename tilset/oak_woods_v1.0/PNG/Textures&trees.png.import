@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bek1i1kub20tv"
-path="res://.godot/imported/froggy-jumpsheet.png-92d50c614f6d929cc92af030850f82ed.ctex"
+uid="uid://bxhmekyg63tgd"
+path="res://.godot/imported/Textures&trees.png-0165d7b8e909aad48dbf61702e27ee71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-jumpsheet.png"
-dest_files=["res://.godot/imported/froggy-jumpsheet.png-92d50c614f6d929cc92af030850f82ed.ctex"]
+source_file="res://tilset/oak_woods_v1.0/PNG/Textures&trees.png"
+dest_files=["res://.godot/imported/Textures&trees.png-0165d7b8e909aad48dbf61702e27ee71.ctex"]
 
 [params]
 
