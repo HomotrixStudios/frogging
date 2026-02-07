@@ -7,7 +7,6 @@ var combo : int = 0
 
 func enter():
 	#this timer will know if we can do a combo
-
 	if attack_cooldown.time_left > 0: #if the combo-timer fails, this will say when we can attack again
 		return
 	

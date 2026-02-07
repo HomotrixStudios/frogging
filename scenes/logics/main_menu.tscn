@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c65vsndh0qvmy"]
+[gd_scene load_steps=6 format=3 uid="uid://c65vsndh0qvmy"]
 
-[ext_resource type="FontFile" uid="uid://dale3a3ho8kmt" path="res://fonts/Cormorant_Unicase/CormorantUnicase-Bold.ttf" id="1_nses8"]
 [ext_resource type="Script" uid="uid://l0x3fud5f1d" path="res://scripts/logics/main_menu.gd" id="1_w06se"]
-[ext_resource type="FontFile" uid="uid://8b7vlrei7eei" path="res://fonts/Uncial_Antiqua/UncialAntiqua-Regular.ttf" id="2_pk6l0"]
+[ext_resource type="Theme" uid="uid://cdi4h7vmq1rpf" path="res://resources/buttonsTheme.tres" id="3_hok1m"]
+[ext_resource type="Texture2D" uid="uid://dm2t55mbv5uih" path="res://images/logo.png" id="3_w06se"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nses8"]
-bg_color = Color(0.052817293, 0.2841816, 0.09781391, 1)
+bg_color = Color(0.28583774, 0.21110415, 7.219613e-08, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hok1m"]
+texture = ExtResource("3_w06se")
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -40,34 +43,32 @@ alignment = 1
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_nses8")
-theme_override_font_sizes/font_size = 38
+theme = ExtResource("3_hok1m")
 text = "PLAY"
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_nses8")
-theme_override_font_sizes/font_size = 38
+theme = ExtResource("3_hok1m")
 text = "CREDITS"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_nses8")
-theme_override_font_sizes/font_size = 38
+theme = ExtResource("3_hok1m")
 text = "QUIT"
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 257.0
-offset_top = 37.0
-offset_right = 889.0
-offset_bottom = 176.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_pk6l0")
-theme_override_font_sizes/font_size = 105
-text = "FROGGING"
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.0
+offset_top = -118.0
+offset_right = 316.0
+offset_bottom = 326.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_hok1m")
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
