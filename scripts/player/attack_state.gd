@@ -6,6 +6,8 @@ extends PlayerState
 var combo : int = 0
 
 func enter():
+	handle_animations()
+
 	#this timer will know if we can do a combo
 	if attack_cooldown.time_left > 0: #if the combo-timer fails, this will say when we can attack again
 		return
@@ -22,20 +24,22 @@ func enter():
 	else:
 		combo = 0
 	
-
 	var hit_log : Hitlog = Hitlog.new()
+
+	if Input.is_action_pressed("down"):
+		var raggio : int = 10
+		for angolo in range(0,181, 30):
+			var spin_hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, player, hit_log)
+			spin_hitbox.position = player.position + raggio * Vector2(cos(angolo), sin(angolo)) 
+			player.add_child(spin_hitbox)
+			spin_hitbox.hitting.connect(_on_hit)
+		return
+
 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, player, hit_log)
 	player.add_child(hitbox)
 	hitbox.position += Vector2(15.0, 0) * player.last_facing_direction
 	hitbox.hitting.connect(_on_hit)
-
-	handle_animations()
-
-	# for n in range(1,4):
-	# 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, hit_log)
-	# 	hitbox.position = player.position + Vector2(n * 10, n*5)
-	# 	add_child(hitbox)
-	# 	hitbox.hitting.connect(_on_hit)
+	
 
 func update(_delta : float) -> void:
 	if player.velocity.length() > 0.1:
@@ -48,10 +52,10 @@ func exit() -> void:
 	if attack_cooldown.is_stopped():
 		attack_cooldown.start()
 
-func _on_hit():
+func _on_hit() -> void:
 	player.camera.apply_shake()
 
-func handle_animations():
+func handle_animations() -> void:
 	player.animation_priority = true
 	if Input.is_action_pressed("lick_attack"):
 		player.animation_player.play("lick_attack")

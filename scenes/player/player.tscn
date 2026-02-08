@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://cqlqagd2mtdp3"]
+[gd_scene load_steps=37 format=3 uid="uid://cqlqagd2mtdp3"]
 
 [ext_resource type="Script" uid="uid://ces8bas4geyb6" path="res://scripts/SM/player_state_machine.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ct8yvgan8g0w2" path="res://scripts/player/player.gd" id="1_lvxji"]
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_0owmy"]
 [ext_resource type="Texture2D" uid="uid://c0kndkcshuy5r" path="res://sprites/froggy/frog_idle_dx.png" id="2_qek5x"]
+[ext_resource type="Shader" uid="uid://cj6n7sqk1wdpk" path="res://shaders/hit_shader.gdshader" id="3_kvlxm"]
 [ext_resource type="Script" uid="uid://cx0o0x4brkhgo" path="res://scripts/player/moving.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://cmjg8vaagx1va" path="res://scripts/player/idle.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://c7i7alw77r3de" path="res://scripts/player/attack_state.gd" id="8_qek5x"]
@@ -17,12 +18,16 @@
 [ext_resource type="Texture2D" uid="uid://cfjilqb7a0k8t" path="res://sprites/froggy/frog jumpAttackSheet.png" id="13_fcs02"]
 [ext_resource type="Texture2D" uid="uid://dprmpg38xf322" path="res://sprites/froggy/froggy spiralAttack.png" id="14_myrg7"]
 
-
 [sub_resource type="Resource" id="Resource_qek5x"]
 script = ExtResource("2_0owmy")
 damage = 40
 faction = 0
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uf5tr"]
+shader = ExtResource("3_kvlxm")
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
 
 [sub_resource type="GDScript" id="GDScript_75vfm"]
 
@@ -234,6 +239,35 @@ tracks/2/keys = {
 "values": [0, 1, 1]
 }
 
+[sub_resource type="Animation" id="Animation_yj68g"]
+resource_name = "hit"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_uf5tr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0047223363, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
 [sub_resource type="Animation" id="Animation_kvlxm"]
 resource_name = "idle_dx"
 length = 0.6
@@ -442,6 +476,7 @@ _data = {
 &"attack2": SubResource("Animation_fcs02"),
 &"attack3": SubResource("Animation_lgqa7"),
 &"fall": SubResource("Animation_myrg7"),
+&"hit": SubResource("Animation_yj68g"),
 &"idle": SubResource("Animation_kvlxm"),
 &"jump": SubResource("Animation_je7p5"),
 &"jumpAttack": SubResource("Animation_uf5tr"),
@@ -456,6 +491,11 @@ height = 20.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_lvxji")
 stats = SubResource("Resource_qek5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uf5tr")
+texture = ExtResource("2_qek5x")
+hframes = 3
 
 [node name="Stats" type="Node" parent="."]
 script = SubResource("GDScript_75vfm")
@@ -498,6 +538,7 @@ wait_time = 0.8
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 script = ExtResource("10_h17s1")
@@ -520,10 +561,6 @@ metadata/_custom_type_script = "uid://c5c2xnusswlil"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(1, -1)
 shape = SubResource("CapsuleShape2D_fm80t")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qek5x")
-hframes = 3
 
 [connection signal="timeout" from="StateMachine/AttackState/AttackCooldown" to="StateMachine/AttackState" method="_on_attack_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

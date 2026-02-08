@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://byymqrd1n1yl2"]
+[gd_scene load_steps=20 format=3 uid="uid://byymqrd1n1yl2"]
 
 [ext_resource type="Script" uid="uid://c1elthykoyi20" path="res://scripts/enemies/flyEnemy/fly_enemy.gd" id="1_ainqx"]
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_3ex3d"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
 [ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="7_7s422"]
 [ext_resource type="Script" uid="uid://chq368x3sr6nh" path="res://scripts/enemy FSM/attackState_enemy.gd" id="9_i7j5w"]
+[ext_resource type="AudioStream" uid="uid://dp8m0aaa00rbs" path="res://sound/sfx/fly_cry.wav" id="10_i7j5w"]
+[ext_resource type="Shader" uid="uid://cj6n7sqk1wdpk" path="res://shaders/hit_shader.gdshader" id="10_slyqx"]
 
 [sub_resource type="Resource" id="Resource_gg8h5"]
 resource_local_to_scene = true
@@ -57,10 +59,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bfqo4"]
 resource_name = "idle"
-length = 0.6
+length = 0.4
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -94,20 +108,42 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_opnd5"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hkte3"]
 _data = {
 &"RESET": SubResource("Animation_hk0r0"),
+&"hit": SubResource("Animation_opnd5"),
 &"idle": SubResource("Animation_bfqo4")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twhab"]
 radius = 104.0769
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rm8ax"]
+shader = ExtResource("10_slyqx")
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
 
 [node name="FlyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "muzzle")]
 script = ExtResource("1_ainqx")
@@ -175,9 +211,15 @@ shape = SubResource("CircleShape2D_twhab")
 debug_color = Color(0.7006124, 0.49228144, 0, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rm8ax")
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_twhab")
 hframes = 5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_i7j5w")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="timeout" from="EnemyStateMachine/MovingRandomState/RandomPosTimer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyStateMachine/AttackState/AttackTimer" to="EnemyStateMachine/AttackState" method="_on_attack_timer_timeout"]

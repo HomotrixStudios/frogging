@@ -1477,8 +1477,7 @@ sources/0 = SubResource("TileSetAtlasSource_7mgb6")
 sources/98 = SubResource("TileSetAtlasSource_25m40")
 sources/99 = SubResource("TileSetAtlasSource_nycrt")
 
-[node name="Node2D" type="Node2D" unique_id=1561423344]
-position = Vector2(1, 0)
+[node name="Node2D" type="Node2D"]
 
 [node name="FlyEnemy" parent="." unique_id=1496435803 instance=ExtResource("1_25m40")]
 position = Vector2(52, 60)

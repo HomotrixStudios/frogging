@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://0uy0p3jpkw1q"]
+[gd_scene load_steps=7 format=3 uid="uid://0uy0p3jpkw1q"]
 
 [ext_resource type="Texture2D" uid="uid://b6as3micbtf3o" path="res://images/sad_froggy.png" id="1_i83c6"]
 [ext_resource type="Script" uid="uid://dho6yoi45t54q" path="res://scripts/logics/game_over.gd" id="1_idp8h"]
 [ext_resource type="FontFile" uid="uid://8b7vlrei7eei" path="res://fonts/Uncial_Antiqua/UncialAntiqua-Regular.ttf" id="1_uvtm3"]
 [ext_resource type="AudioStream" uid="uid://b45kxv6fxxtjv" path="res://sound/songs/area1.ogg" id="4_q1p3f"]
+[ext_resource type="Theme" uid="uid://cdi4h7vmq1rpf" path="res://resources/buttonsTheme.tres" id="4_yo41k"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rkwh"]
 texture = ExtResource("1_i83c6")
@@ -38,6 +39,7 @@ offset_top = 67.0
 offset_right = 244.0
 offset_bottom = 211.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8666667, 0, 0.02745098, 1)
 theme_override_fonts/font = ExtResource("1_uvtm3")
 theme_override_font_sizes/font_size = 105
 text = "YOU DIED"
@@ -49,12 +51,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.25
-offset_top = -81.0
-offset_right = 151.25
-offset_bottom = 81.0
+offset_left = -205.625
+offset_top = -98.0
+offset_right = 205.625
+offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_yo41k")
 
 [node name="PlayAgain" type="Button" parent="VBoxContainer"]
 layout_mode = 2

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bek1i1kub20tv"
-path="res://.godot/imported/froggy-jumpsheet.png-92d50c614f6d929cc92af030850f82ed.ctex"
+path="res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-jumpsheet.png"
-dest_files=["res://.godot/imported/froggy-jumpsheet.png-92d50c614f6d929cc92af030850f82ed.ctex"]
+source_file="res://sprites/froggy/froggy-jumpSheet.png"
+dest_files=["res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"]
 
 [params]
 
