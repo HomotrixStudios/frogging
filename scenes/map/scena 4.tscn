@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ben8nqttsip7r"]
+[gd_scene load_steps=26 format=3 uid="uid://ben8nqttsip7r"]
 
 [ext_resource type="AudioStream" uid="uid://bqsid7x3ypxq0" path="res://sound/songs/frogging theme.ogg" id="3_74foj"]
 [ext_resource type="PackedScene" uid="uid://cqlqagd2mtdp3" path="res://scenes/player/player.tscn" id="5_swexy"]
@@ -1280,175 +1280,174 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_r1apk")
 sources/1 = SubResource("TileSetAtlasSource_ds70t")
 
-[node name="Node2D" type="Node2D" unique_id=5681568]
-position = Vector2(1, 0)
+[node name="Node2D" type="Node2D"]
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1332173348]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_74foj")
 
-[node name="Player" parent="." unique_id=223332812 instance=ExtResource("5_swexy")]
+[node name="Player" parent="." instance=ExtResource("5_swexy")]
 position = Vector2(-77, 40)
 
-[node name="TileMap" type="TileMap" parent="." unique_id=930284335]
+[node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_5dywf")
 format = 2
 layer_0/tile_data = PackedInt32Array(262135, 0, 0, 327671, 0, 1, 393207, 0, 2, 458743, 0, 3, 524279, 0, 4, 589815, 0, 5, 262136, 65536, 0, 327672, 0, 536870933, 393208, 0, 536870932, 458744, 65536, 1879048213, 524280, 0, 1879048213, 589816, 65536, 5, 262137, 131072, 0, 327673, 65536, 536870933, 393209, 65536, 536870932, 524281, 0, 1879048212, 589817, 131072, 5, 262138, 196608, 0, 327674, 0, 1073741844, 524282, 196608, 1073741844, 589818, 196608, 5, 262139, 262144, 0, 327675, 0, 1073741845, 393211, 65536, 1073741845, 458747, 131072, 1073741845, 524283, 0, 1610612757, 589819, 262144, 5, 262140, 327680, 0, 327676, 327680, 1, 393212, 327680, 2, 458748, 327680, 3, 524284, 327680, 4, 589820, 327680, 5, 262141, 0, 0, 327677, 0, 1, 393213, 0, 2, 458749, 0, 3, 524285, 0, 4, 589821, 0, 5, 262142, 65536, 0, 327678, 65536, 1, 393214, 196608, 18, 458750, 196608, 19, 524286, 196608, 20, 589822, 65536, 5, 262143, 131072, 0, 327679, 196608, 18, 393215, 262144, 18, 524287, 262144, 20, 589823, 131072, 5, 196608, 196608, 0, 262144, 262144, 18, 458752, 327680, 20, 524288, 196608, 5, 196609, 262144, 0, 262145, 327680, 18, 327681, 327680, 19, 393217, 327680, 20, 458753, 0, 18, 524289, 262144, 5, 196610, 327680, 0, 262146, 327680, 1, 327682, 327680, 2, 393218, 327680, 3, 458754, 327680, 4, 524290, 327680, 5, 196611, 0, 0, 262147, 0, 1, 327683, 0, 2, 393219, 0, 3, 458755, 0, 4, 524291, 0, 5, 196612, 65536, 0, 262148, 196608, 1610612756, 327684, 131072, 1610612756, 393220, 65536, 1610612756, 458756, 0, 1610612756, 524292, 65536, 5, 196613, 131072, 0, 262149, 0, 1342177301, 327685, 131072, 1610612757, 458757, 0, 1610612757, 524293, 131072, 5, 196614, 196608, 0, 262150, 0, 1342177301, 458758, 196608, 1342177300, 524294, 196608, 5, 196615, 262144, 0, 262151, 0, 1342177300, 327687, 65536, 1342177300, 393223, 131072, 1342177300, 458759, 196608, 1342177300, 524295, 262144, 5, 196616, 327680, 0, 262152, 327680, 1, 327688, 327680, 2, 393224, 327680, 3, 458760, 327680, 4, 524296, 327680, 5, 196617, 0, 0, 262153, 0, 1, 327689, 0, 2, 393225, 0, 3, 458761, 0, 4, 524297, 0, 5, 196618, 65536, 0, 262154, 65536, 1, 327690, 65536, 2, 393226, 0, 20, 458762, 0, 21, 524298, 65536, 5, 196619, 131072, 0, 262155, 131072, 1, 327691, 131072, 2, 458763, 65536, 21, 524299, 131072, 5, 196620, 196608, 0, 262156, 0, 1342177301, 458764, 131072, 21, 524300, 196608, 5, 196621, 262144, 0, 262157, 0, 1342177300, 327693, 65536, 1342177300, 393229, 131072, 1342177300, 458765, 196608, 1342177300, 524301, 262144, 5, 196622, 327680, 0, 262158, 327680, 1, 327694, 327680, 2, 393230, 327680, 3, 458766, 327680, 4, 524302, 327680, 5, 196623, 0, 0, 262159, 0, 1, 327695, 0, 2, 393231, 0, 3, 458767, 0, 4, 524303, 0, 5, 196624, 65536, 0, 262160, 196608, 18, 327696, 589824, 268435477, 393232, 196608, 20, 458768, 327680, 268435471, 524304, 65536, 5, 196625, 131072, 0, 262161, 196608, 18, 327697, 524288, 268435477, 458769, 262144, 268435471, 524305, 131072, 5, 196626, 196608, 0, 262162, 262144, 18, 458770, 262144, 536870927, 524306, 196608, 5, 196627, 262144, 0, 262163, 327680, 18, 327699, 327680, 19, 393235, 327680, 20, 458771, 327680, 536870927, 524307, 262144, 5, 196628, 327680, 0, 262164, 327680, 1, 327700, 327680, 2, 393236, 327680, 3, 458772, 327680, 4, 524308, 327680, 5, 196629, 0, 0, 262165, 0, 1, 327701, 0, 2, 393237, 0, 3, 458773, 0, 4, 524309, 0, 5, 196630, 65536, 0, 262166, 65536, 1, 327702, 65536, 2, 393238, 262144, 15, 458774, 327680, 805306383, 524310, 65536, 5, 196631, 131072, 0, 327703, 131072, 2, 458775, 262144, 805306383, 524311, 131072, 5, 458776, 262144, 536870927, 524312, 196608, 5, 262169, 262144, 268435471, 327705, 262144, 1073741839, 393241, 327680, 1073741839, 458777, 327680, 536870927, 524313, 262144, 5, 262170, 327680, 1, 327706, 327680, 2, 393242, 327680, 3, 458778, 327680, 4, 524314, 327680, 5, 393239, 327680, 15, 327704, 262144, 1342177295, 393240, 327680, 1342177295, 393233, 196608, 20, 327698, 262144, 19, 393234, 262144, 20, 393227, 65536, 20, 393228, 131072, 1342177301, 327692, 65536, 1342177301, 393222, 131072, 1342177301, 393221, 65536, 1610612757, 327686, 65536, 1342177301, 458746, 131072, 1073741844, 393210, 65536, 1073741844, 458745, 65536, 1879048212, 458751, 262144, 19, 327680, 327680, 18, 393216, 327680, 19, 196634, 327680, 0, 196633, 262144, 0, 196632, 196608, 0, 262168, 327680, 268435471, 262167, 131072, 1, 196635, 0, 0, 262171, 0, 1, 327707, 0, 2, 393243, 0, 3, 458779, 0, 4, 524315, 0, 5, 196636, 65536, 0, 262172, 65536, 268435457, 327708, 65536, 268435458, 393244, 262144, 268435471, 458780, 327680, 536870927, 524316, 65536, 268435461, 589858, 1179648, 1342177284, 196637, 65536, 0, 196638, 65536, 0, 196639, 65536, 0, 262173, 0, 268435457, 327709, 0, 268435458, 393245, 0, 268435459, 458781, 0, 268435460, 524317, 0, 268435461, 262175, 65536, 1, 262174, 0, 1, 327711, 65536, 2, 327710, 0, 2, 393247, 262144, 15, 393246, 0, 3, 458783, 327680, 805306383, 458782, 0, 4, 524319, 65536, 5, 524318, 0, 5)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1669889403]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1703231434]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1251551231]
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground/ParallaxLayer"]
 
-[node name="1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=170430372]
+[node name="1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(21, -59)
 scale = Vector2(1, 1.1777778)
 texture = ExtResource("8_ds70t")
 
-[node name="2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1696441821]
+[node name="2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(448.5, -63)
 scale = Vector2(1.9093751, 1.2999998)
 texture = ExtResource("8_ds70t")
 
-[node name="3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=2031414239]
+[node name="3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(606, 39.5)
 scale = Vector2(0.91249996, 1.1166667)
 texture = ExtResource("8_ds70t")
 
-[node name="4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=171006658]
+[node name="4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(593.5, 40.000004)
 scale = Vector2(0.990625, 1.1555556)
 texture = ExtResource("9_5dywf")
 
-[node name="5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1037147780]
+[node name="5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(175.5, -33)
 scale = Vector2(1.9468751, 0.9)
 texture = ExtResource("9_5dywf")
 
-[node name="6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1700771810]
+[node name="6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(21, -51.5)
 scale = Vector2(1, 1.1611111)
 texture = ExtResource("10_khmbn")
 
-[node name="7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1452030677]
+[node name="7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(332.5, -53.5)
 scale = Vector2(1.015625, 1.1388888)
 texture = ExtResource("10_khmbn")
 
-[node name="8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=779653368]
+[node name="8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(594.5, 19.500004)
 scale = Vector2(0.984375, 1.3833333)
 texture = ExtResource("10_khmbn")
 
-[node name="9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1941168535]
+[node name="9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(593, 3.5)
 scale = Vector2(1, 1.55)
 texture = ExtResource("11_13r5y")
 
-[node name="10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=104791557]
+[node name="10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(344.5, -24)
 scale = Vector2(1.065625, 1.7555555)
 texture = ExtResource("11_13r5y")
 
-[node name="11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=199254803]
+[node name="11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(18.50001, -42)
 scale = Vector2(0.9906251, 1)
 texture = ExtResource("11_13r5y")
 
-[node name="12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1534724153]
+[node name="12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(17, -42)
 scale = Vector2(0.99375, 1)
 texture = ExtResource("12_xshvt")
 
-[node name="13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1336837586]
+[node name="13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(338, -42)
 texture = ExtResource("12_xshvt")
 
-[node name="14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1719879135]
+[node name="14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(583, -53.5)
 scale = Vector2(1.0624999, 2.1722224)
 texture = ExtResource("12_xshvt")
 
-[node name="15" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=703872694]
+[node name="15" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(592.5, -30.50001)
 scale = Vector2(1.0031248, 1.9388888)
 texture = ExtResource("13_2hbnb")
 
-[node name="16" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=51033822]
+[node name="16" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(482, -24.999998)
 scale = Vector2(1.7, 1)
 texture = ExtResource("13_2hbnb")
 
-[node name="Sign" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/16" unique_id=897622781]
+[node name="Sign" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/16"]
 position = Vector2(-104.117645, 54)
 scale = Vector2(0.8235292, 1.2096775)
 texture = ExtResource("14_gg035")
 
-[node name="Rock3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/16" unique_id=1274551936]
+[node name="Rock3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/16"]
 position = Vector2(-1.7647095, 64)
 scale = Vector2(0.5261441, 1)
 texture = ExtResource("17_n4qau")
 
-[node name="Rock2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/16" unique_id=169090660]
+[node name="Rock2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/16"]
 position = Vector2(7.955887, 68)
 scale = Vector2(0.717865, 0.8333327)
 texture = ExtResource("13_a2flv")
 
-[node name="17" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=205465196]
+[node name="17" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(35, -9.5)
 scale = Vector2(1.10625, 0.62777776)
 texture = ExtResource("13_2hbnb")
 
-[node name="Fence2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1785987561]
+[node name="Fence2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(93, 39)
 texture = ExtResource("16_v2cdg")
 
-[node name="Fence3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=2143822881]
+[node name="Fence3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(26, 40)
 texture = ExtResource("15_7nw5h")
 
-[node name="Rock3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=368108829]
+[node name="Rock3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(-29, 39)
 texture = ExtResource("17_n4qau")
 
-[node name="Grass12" type="Sprite2D" parent="." unique_id=432793676]
+[node name="Grass12" type="Sprite2D" parent="."]
 position = Vector2(-39, 40)
 texture = ExtResource("18_vsvwu")
 
-[node name="Grass13" type="Sprite2D" parent="." unique_id=1448068693]
+[node name="Grass13" type="Sprite2D" parent="."]
 position = Vector2(203, 39)
 texture = ExtResource("18_vsvwu")
 
-[node name="Rocks3" type="Sprite2D" parent="." unique_id=274200243]
+[node name="Rocks3" type="Sprite2D" parent="."]
 position = Vector2(426, 40)
 texture = ExtResource("21_y2r5s")
 
-[node name="Rocks4" type="Sprite2D" parent="." unique_id=2005307511]
+[node name="Rocks4" type="Sprite2D" parent="."]
 position = Vector2(426, 40)
 texture = ExtResource("22_muhp8")
 
-[node name="Rocks5" type="Sprite2D" parent="." unique_id=1058306105]
+[node name="Rocks5" type="Sprite2D" parent="."]
 position = Vector2(426, 40)
 texture = ExtResource("23_1qu2c")
 
-[node name="Rocks6" type="Sprite2D" parent="." unique_id=1887526777]
+[node name="Rocks6" type="Sprite2D" parent="."]
 position = Vector2(458, 40)
 texture = ExtResource("24_wydtm")
 
-[node name="Fence1" type="Sprite2D" parent="." unique_id=1871738470]
+[node name="Fence1" type="Sprite2D" parent="."]
 position = Vector2(425, 39)
 texture = ExtResource("15_7nw5h")
 
-[node name="Fence2" type="Sprite2D" parent="." unique_id=1325541781]
+[node name="Fence2" type="Sprite2D" parent="."]
 position = Vector2(357, 39)
 texture = ExtResource("15_7nw5h")
 
-[node name="Lamp" type="Sprite2D" parent="." unique_id=183260594]
+[node name="Lamp" type="Sprite2D" parent="."]
 position = Vector2(-55.000004, 24)
 scale = Vector2(0.9347826, 0.81578946)
 texture = ExtResource("21_48li0")
 
-[node name="Shop" type="Sprite2D" parent="." unique_id=602293838]
+[node name="Shop" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(225, -1)
 texture = ExtResource("22_gg035")

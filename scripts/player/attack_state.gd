@@ -30,8 +30,8 @@ func enter():
 		var raggio : int = 10
 		for angolo in range(0,181, 30):
 			var spin_hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, player, hit_log)
-			spin_hitbox.position = player.position + raggio * Vector2(cos(angolo), sin(angolo)) 
 			player.add_child(spin_hitbox)
+			spin_hitbox.global_position = player.position + raggio * Vector2(cos(angolo), sin(angolo)) 
 			spin_hitbox.hitting.connect(_on_hit)
 		return
 
