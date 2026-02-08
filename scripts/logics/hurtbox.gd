@@ -16,5 +16,4 @@ func _ready() -> void:
 	
 
 func receive_hit(damage : int) -> void:
-	owner.animation_player.play("hit")
 	owner_stats.take_damage(damage)

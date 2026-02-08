@@ -14,7 +14,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	self.value = parent.stats.health
-
 # func _on_health_changed(_value : int, _max_value : int) -> void:
 # 	max_value = _max_value
 # 	value = _value

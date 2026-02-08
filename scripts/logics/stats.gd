@@ -30,7 +30,7 @@ func take_damage(amount : int) -> void:
 func set_health(new_value : int) -> void:
     health = new_value
     health_changed.emit(health, max_health)
-    
+  
     if health <= 0:
         health_depleted.emit()
    

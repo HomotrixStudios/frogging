@@ -27,7 +27,6 @@ var is_jumping := false # to avoid double jump
 
 
 func update_physics(delta : float) -> void:
-	print(player.is_on_floor())
 	if Input.is_action_pressed("jump"): 
 		if (player.is_on_floor() || !coyote_timer.is_stopped()) and !is_jumping: # If the player wants to jump and is not on floor anymore 
 			player.velocity.y = jump_force

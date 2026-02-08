@@ -11,7 +11,6 @@ var animation_priority : bool = false
 var direction : float 
 var last_facing_direction : int = 1
 
-
 func _ready():
 	stats.health_depleted.connect(handle_death)
 
