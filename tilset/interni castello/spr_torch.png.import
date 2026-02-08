@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bek1i1kub20tv"
-path="res://.godot/imported/froggy-jumpsheet.png-92d50c614f6d929cc92af030850f82ed.ctex"
+uid="uid://wciydbka2lie"
+path="res://.godot/imported/spr_torch.png-57394a727b8ea9545984a9cd71df6dc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-jumpsheet.png"
-dest_files=["res://.godot/imported/froggy-jumpsheet.png-92d50c614f6d929cc92af030850f82ed.ctex"]
+source_file="res://tilset/interni castello/spr_torch.png"
+dest_files=["res://.godot/imported/spr_torch.png-57394a727b8ea9545984a9cd71df6dc0.ctex"]
 
 [params]
 

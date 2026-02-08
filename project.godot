@@ -8,10 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="frogging"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="uid://dlpvf5x7mhdde"
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
