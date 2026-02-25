@@ -321,6 +321,8 @@ stats = SubResource("Resource_gdvdk")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_bgk1c")
+volume_db = -15.0
+autoplay = true
 
 [node name="SnakeEnemy" parent="." instance=ExtResource("4_7r0t2")]
 position = Vector2(100, -16)
