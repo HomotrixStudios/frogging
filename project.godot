@@ -14,8 +14,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
+<<<<<<< HEAD
+config/name="prototipo"
+run/main_scene="uid://dlpvf5x7mhdde"
+=======
 config/name="frogging"
 run/main_scene="uid://c65vsndh0qvmy"
+>>>>>>> f3be21e7141de87d13b292b7fa56187ee47721fd
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
