@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cdi4h7vmq1rpf"]
+[gd_resource type="Theme" format=3 uid="uid://cdi4h7vmq1rpf"]
 
 [ext_resource type="FontFile" uid="uid://dale3a3ho8kmt" path="res://fonts/Cormorant_Unicase/CormorantUnicase-Bold.ttf" id="1_1iaa6"]
 [ext_resource type="Texture2D" uid="uid://dyv1dvrbcnwaj" path="res://images/manuscript_pixelArt.png" id="2_pkqw8"]
