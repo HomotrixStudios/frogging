@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://c65vsndh0qvmy"]
+
+[ext_resource type="Script" uid="uid://l0x3fud5f1d" path="res://scripts/logics/main_menu.gd" id="1_w06se"]
+[ext_resource type="Theme" uid="uid://cdi4h7vmq1rpf" path="res://resources/buttonsTheme.tres" id="3_hok1m"]
+[ext_resource type="Texture2D" uid="uid://dm2t55mbv5uih" path="res://images/logo.png" id="3_w06se"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nses8"]
+bg_color = Color(0.28583774, 0.21110415, 7.219613e-08, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hok1m"]
+texture = ExtResource("3_w06se")
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w06se")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 644.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nses8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.75
+offset_top = -133.25
+offset_right = 242.75
+offset_bottom = 133.25
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_hok1m")
+text = "PLAY"
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_hok1m")
+text = "CREDITS"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_hok1m")
+text = "QUIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.0
+offset_top = -118.0
+offset_right = 316.0
+offset_bottom = 326.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_hok1m")
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bqsid7x3ypxq0"
+path="res://.godot/imported/frogging theme.ogg-7e374f4f071e28015bbceaada870575c.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/songs/frogging theme.ogg"
+dest_files=["res://.godot/imported/frogging theme.ogg-7e374f4f071e28015bbceaada870575c.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=130.0
+beat_count=0
+bar_beats=4
