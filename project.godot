@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="frogging"
+config/name="prototipo"
 run/main_scene="uid://dlpvf5x7mhdde"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
