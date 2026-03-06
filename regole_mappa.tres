@@ -1432,6 +1432,7 @@ texture = ExtResource("2_6uer6")
 1:18/0 = 0
 2:18/0 = 0
 3:18/0 = 0
+3:18/0/modulate = Color(0.040268797, 0.040268805, 0.040268797, 1)
 4:18/0 = 0
 5:18/0 = 0
 27:18/0 = 0
@@ -1517,6 +1518,7 @@ texture = ExtResource("2_6uer6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6i0c0"]
 texture = ExtResource("3_mw47d")
+4:18/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmwsu"]
 texture = ExtResource("4_xpdxj")
@@ -1605,8 +1607,15 @@ texture = ExtResource("4_xpdxj")
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0.34820938, -8, 3.482067, -3.7432194, -0.17410278, 4.78784, -8, 5.6583557)
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/next_alternative_id = 4
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/1 = 1
+4:2/1/modulate = Color(0.032967977, 0.032967992, 0.03296798, 1)
+4:2/2 = 2
+4:2/2/modulate = Color(0.029506557, 0.029506557, 0.029506557, 1)
+4:2/3 = 3
+4:2/3/modulate = Color(0.04755766, 0.047557645, 0.047557645, 1)
 5:2/0 = 0
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 6.441822, -2.6985989, -4.526684, -3.0468063)
 6:2/0 = 0
@@ -1678,6 +1687,7 @@ texture = ExtResource("4_xpdxj")
 5:4/0 = 0
 6:4/0 = 0
 0:0/0 = 0
+17:4/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 1
