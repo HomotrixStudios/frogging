@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bek1i1kub20tv"
-path="res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"
+uid="uid://dcpeyj8m8dhyk"
+path="res://.godot/imported/2.png-d3e9a3d6d55092e59e09a72e4e3df756.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-jumpSheet.png"
-dest_files=["res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"]
+source_file="res://tilesets/swamp/3 Objects/Fence/2.png"
+dest_files=["res://.godot/imported/2.png-d3e9a3d6d55092e59e09a72e4e3df756.ctex"]
 
 [params]
 

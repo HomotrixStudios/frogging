@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bek1i1kub20tv"
-path="res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"
+uid="uid://cc2120jul2d0k"
+path="res://.godot/imported/10.png-29332fd0b6b5bc8e843e99d096f5d0ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-jumpSheet.png"
-dest_files=["res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"]
+source_file="res://tilesets/swamp/3 Objects/Grass/10.png"
+dest_files=["res://.godot/imported/10.png-29332fd0b6b5bc8e843e99d096f5d0ef.ctex"]
 
 [params]
 

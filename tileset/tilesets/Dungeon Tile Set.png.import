@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bek1i1kub20tv"
-path="res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"
+uid="uid://bbq3vpmae7e2"
+path="res://.godot/imported/Dungeon Tile Set.png-488a6f6996ad31d247fd321f72c0e57f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-jumpSheet.png"
-dest_files=["res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"]
+source_file="res://tilesets/Dungeon Tile Set.png"
+dest_files=["res://.godot/imported/Dungeon Tile Set.png-488a6f6996ad31d247fd321f72c0e57f.ctex"]
 
 [params]
 

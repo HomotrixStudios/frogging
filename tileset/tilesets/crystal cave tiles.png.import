@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bek1i1kub20tv"
-path="res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"
+uid="uid://dkedg2mq8v53g"
+path="res://.godot/imported/crystal cave tiles.png-b332a756c48cccb8c32cb38ae6f8e817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froggy/froggy-jumpSheet.png"
-dest_files=["res://.godot/imported/froggy-jumpSheet.png-846a161959ebf31ebfb2622dfc8f985f.ctex"]
+source_file="res://tilesets/crystal cave tiles.png"
+dest_files=["res://.godot/imported/crystal cave tiles.png-b332a756c48cccb8c32cb38ae6f8e817.ctex"]
 
 [params]
 
