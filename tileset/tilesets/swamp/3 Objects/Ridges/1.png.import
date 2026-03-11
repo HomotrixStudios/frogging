@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ds0y2r1t83m80"
-path="res://.godot/imported/1.png-dffd283e99baea844a7f398780c6de6f.ctex"
+path="res://.godot/imported/1.png-e67c14bbbb6679f5bc301d98727fed1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/swamp/3 Objects/Ridges/1.png"
-dest_files=["res://.godot/imported/1.png-dffd283e99baea844a7f398780c6de6f.ctex"]
+source_file="res://tileset/tilesets/swamp/3 Objects/Ridges/1.png"
+dest_files=["res://.godot/imported/1.png-e67c14bbbb6679f5bc301d98727fed1f.ctex"]
 
 [params]
 

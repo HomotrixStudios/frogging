@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bllshet3xhkf6"
-path="res://.godot/imported/ladders_tileset.png-4050f7140fd0468b226ba59313837b94.ctex"
+path="res://.godot/imported/ladders_tileset.png-a207ab907036529848f0705d6ae59f12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/swamp/3 Objects/Ladders/ladders_tileset.png"
-dest_files=["res://.godot/imported/ladders_tileset.png-4050f7140fd0468b226ba59313837b94.ctex"]
+source_file="res://tileset/tilesets/swamp/3 Objects/Ladders/ladders_tileset.png"
+dest_files=["res://.godot/imported/ladders_tileset.png-a207ab907036529848f0705d6ae59f12.ctex"]
 
 [params]
 
