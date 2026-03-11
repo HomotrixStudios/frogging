@@ -19,10 +19,6 @@ run/main_scene="uid://c65vsndh0qvmy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
-
 [display]
 
 window/stretch/mode="canvas_items"
