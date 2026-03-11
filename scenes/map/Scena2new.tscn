@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://clwft1gll0suh"]
+
+[ext_resource type="TileSet" uid="uid://cwd0fl4yktrr8" path="res://regole_mappa.tres" id="1_mg6wc"]
+[ext_resource type="PackedScene" uid="uid://cqlqagd2mtdp3" path="res://scenes/player/player.tscn" id="2_keeoq"]
+
+[node name="Scena1New" type="Node2D" unique_id=1473038844]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1407156947]
+position = Vector2(47, -170)
+tile_set = ExtResource("1_mg6wc")
+
+[node name="Player" parent="." unique_id=1794392217 instance=ExtResource("2_keeoq")]
+position = Vector2(277, -210)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1582658858]
