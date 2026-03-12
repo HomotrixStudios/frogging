@@ -20,15 +20,18 @@
 [ext_resource type="Texture2D" uid="uid://c7xv31i5vdmsd" path="res://tilset/oak_woods_v1.0/decorations/grass_1.png" id="17_c8yr2"]
 [ext_resource type="Texture2D" uid="uid://bmiv6ueesxcuu" path="res://tilset/oak_woods_v1.0/decorations/grass_2.png" id="18_w3ayv"]
 [ext_resource type="Texture2D" uid="uid://ddneowr4vwoaq" path="res://tilset/oak_woods_v1.0/decorations/grass_3.png" id="19_t7b15"]
-
-[sub_resource type="Resource" id="Resource_gdvdk"]
-resource_local_to_scene = true
-script = ExtResource("2_qyc15")
-metadata/_custom_type_script = "uid://bjovqc3gf20nb"
+[ext_resource type="PackedScene" uid="uid://4jokp7eylpfh" path="res://scenes/logics/HUD.tscn" id="21_bmu66"]
 
 [sub_resource type="Resource" id="Resource_bmu66"]
 resource_local_to_scene = true
 script = ExtResource("2_qyc15")
+damage = 30
+metadata/_custom_type_script = "uid://bjovqc3gf20nb"
+
+[sub_resource type="Resource" id="Resource_n0030"]
+resource_local_to_scene = true
+script = ExtResource("2_qyc15")
+damage = 30
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vebqo"]
@@ -305,7 +308,7 @@ texture = ExtResource("7_qyc15")
 7:13/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_o5clt"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 sources/0 = SubResource("TileSetAtlasSource_vebqo")
 sources/1 = SubResource("TileSetAtlasSource_bgk1c")
 
@@ -313,11 +316,11 @@ sources/1 = SubResource("TileSetAtlasSource_bgk1c")
 
 [node name="FlyEnemy" parent="." unique_id=1022659570 instance=ExtResource("1_bfulj")]
 position = Vector2(77, -175)
-stats = SubResource("Resource_gdvdk")
+stats = SubResource("Resource_bmu66")
 
 [node name="FlyEnemy2" parent="." unique_id=1568699883 instance=ExtResource("1_bfulj")]
 position = Vector2(-206, -269)
-stats = SubResource("Resource_bmu66")
+stats = SubResource("Resource_n0030")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=438597446]
 stream = ExtResource("3_bgk1c")
@@ -445,3 +448,5 @@ texture = ExtResource("17_c8yr2")
 [node name="Grass8" type="Sprite2D" parent="." unique_id=1838787464]
 position = Vector2(233, -161)
 texture = ExtResource("17_c8yr2")
+
+[node name="HUD" parent="." unique_id=808222231 instance=ExtResource("21_bmu66")]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkcuj87kdpkde"]
+[gd_scene format=3 uid="uid://dkcuj87kdpkde"]
 
-[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/logics/health_bar.tscn" id="1_3eqri"]
 [ext_resource type="Script" uid="uid://cx0e3jluj4i57" path="res://scripts/enemies/snake_enemy.gd" id="1_skqqu"]
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_mmrdk"]
 [ext_resource type="Texture2D" uid="uid://b2l30y4svjnmy" path="res://sprites/enemies/snake/snake_walk.png" id="2_skqqu"]
@@ -70,7 +69,7 @@ _data = {
 &"idle": SubResource("Animation_ysukb")
 }
 
-[node name="SnakeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player")]
+[node name="SnakeEnemy" type="CharacterBody2D" unique_id=1632796958 node_paths=PackedStringArray("state_machine", "animation_player")]
 script = ExtResource("1_skqqu")
 stats = SubResource("Resource_7oohf")
 state_machine = NodePath("EnemyStateMachine")
@@ -78,48 +77,40 @@ action_range = 80.0
 animation_player = NodePath("AnimationPlayer")
 x_speed = 45.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=109832347]
 texture = ExtResource("2_skqqu")
 hframes = 8
 
-[node name="HealthBar" parent="." instance=ExtResource("1_3eqri")]
-offset_left = -10.0
-offset_top = -23.0
-offset_right = 8.0
-offset_bottom = -17.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1440926768]
 position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_3eqri")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_25c27")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1140443519]
+libraries/ = SubResource("AnimationLibrary_25c27")
 
-[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=173848755 node_paths=PackedStringArray("initial_state", "enemy")]
 script = ExtResource("3_mmrdk")
 initial_state = NodePath("MovingRandomState")
 enemy = NodePath("..")
 metadata/_custom_type_script = "uid://bcfcbh1qp81vc"
 
-[node name="MovingRandomState" type="Node" parent="EnemyStateMachine"]
+[node name="MovingRandomState" type="Node" parent="EnemyStateMachine" unique_id=1555447330]
 script = ExtResource("7_7oohf")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
-[node name="RandomPosTimer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
+[node name="RandomPosTimer" type="Timer" parent="EnemyStateMachine/MovingRandomState" unique_id=260843388]
 wait_time = 5.0
 one_shot = true
 
-[node name="FollowState" type="Node" parent="EnemyStateMachine"]
+[node name="FollowState" type="Node" parent="EnemyStateMachine" unique_id=17785099]
 script = ExtResource("7_vqh41")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1381339434]
 script = ExtResource("8_vqh41")
 metadata/_custom_type_script = "uid://c5c2xnusswlil"
 
-[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" unique_id=833080773]
 position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_3eqri")
 

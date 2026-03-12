@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://byymqrd1n1yl2"]
+[gd_scene format=3 uid="uid://byymqrd1n1yl2"]
 
 [ext_resource type="Script" uid="uid://c1elthykoyi20" path="res://scripts/enemies/flyEnemy/fly_enemy.gd" id="1_ainqx"]
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_3ex3d"]
 [ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="2_dvxfj"]
-[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/logics/health_bar.tscn" id="3_twhab"]
 [ext_resource type="Texture2D" uid="uid://b4r1d8ai0pc5w" path="res://sprites/enemies/fly/mosca movimentoSheet.png" id="4_twhab"]
 [ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="5_ainqx"]
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
@@ -12,9 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://dp8m0aaa00rbs" path="res://sound/sfx/fly_cry.wav" id="10_i7j5w"]
 [ext_resource type="Shader" uid="uid://cj6n7sqk1wdpk" path="res://shaders/hit_shader.gdshader" id="10_slyqx"]
 
-[sub_resource type="Resource" id="Resource_gg8h5"]
+[sub_resource type="Resource" id="Resource_i7j5w"]
 resource_local_to_scene = true
 script = ExtResource("2_3ex3d")
+damage = 30
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsvwb"]
@@ -72,6 +72,22 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_opnd5"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
 [sub_resource type="Animation" id="Animation_bfqo4"]
 resource_name = "idle"
 length = 0.4
@@ -114,28 +130,15 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_opnd5"]
-resource_name = "hit"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hkte3"]
 _data = {
 &"RESET": SubResource("Animation_hk0r0"),
 &"hit": SubResource("Animation_opnd5"),
 &"idle": SubResource("Animation_bfqo4")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7j5w"]
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twhab"]
 radius = 104.0769
@@ -145,9 +148,9 @@ shader = ExtResource("10_slyqx")
 shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
 shader_parameter/hit_flash_on = false
 
-[node name="FlyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "muzzle")]
+[node name="FlyEnemy" type="CharacterBody2D" unique_id=1836153360 node_paths=PackedStringArray("state_machine", "animation_player", "muzzle")]
 script = ExtResource("1_ainqx")
-stats = SubResource("Resource_gg8h5")
+stats = SubResource("Resource_i7j5w")
 state_machine = NodePath("EnemyStateMachine")
 action_range = 150.0
 animation_player = NodePath("AnimationPlayer")
@@ -155,68 +158,63 @@ x_speed = 45.0
 y_speed = 45.0
 muzzle = NodePath("Marker2D")
 
-[node name="HealthBar" parent="." instance=ExtResource("3_twhab")]
-offset_top = -21.0
-offset_bottom = -15.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=552249971]
 position = Vector2(1, 3)
 rotation = 1.5951998
 shape = SubResource("CapsuleShape2D_fsvwb")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1096630926]
 position = Vector2(19, 8)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hkte3")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=32495600]
+libraries/ = SubResource("AnimationLibrary_hkte3")
 
-[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=854313640 node_paths=PackedStringArray("initial_state", "enemy")]
 script = ExtResource("2_dvxfj")
 initial_state = NodePath("MovingRandomState")
 enemy = NodePath("..")
 metadata/_custom_type_script = "uid://bcfcbh1qp81vc"
 
-[node name="FollowState" type="Node" parent="EnemyStateMachine"]
+[node name="FollowState" type="Node" parent="EnemyStateMachine" unique_id=630267328]
 script = ExtResource("5_ainqx")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
-[node name="MovingRandomState" type="Node" parent="EnemyStateMachine"]
+[node name="MovingRandomState" type="Node" parent="EnemyStateMachine" unique_id=1398928950]
 script = ExtResource("6_bfqo4")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
-[node name="RandomPosTimer" type="Timer" parent="EnemyStateMachine/MovingRandomState"]
+[node name="RandomPosTimer" type="Timer" parent="EnemyStateMachine/MovingRandomState" unique_id=1252710854]
 wait_time = 5.0
 one_shot = true
 
-[node name="AttackState" type="Node" parent="EnemyStateMachine"]
+[node name="AttackState" type="Node" parent="EnemyStateMachine" unique_id=448935350]
 script = ExtResource("9_i7j5w")
+hitbox_shape = SubResource("CircleShape2D_i7j5w")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
-[node name="AttackTimer" type="Timer" parent="EnemyStateMachine/AttackState"]
+[node name="AttackTimer" type="Timer" parent="EnemyStateMachine/AttackState" unique_id=2121510368]
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1005025373]
 script = ExtResource("7_7s422")
 metadata/_custom_type_script = "uid://c5c2xnusswlil"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1442173538]
 rotation = 1.5951998
 shape = SubResource("CapsuleShape2D_fsvwb")
 
-[node name="ShootableArea" type="Area2D" parent="."]
+[node name="ShootableArea" type="Area2D" parent="." unique_id=1084492572]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootableArea" unique_id=306803548]
 shape = SubResource("CircleShape2D_twhab")
 debug_color = Color(0.7006124, 0.49228144, 0, 0.41960785)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1080694340]
 material = SubResource("ShaderMaterial_rm8ax")
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_twhab")
 hframes = 5
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2031344913]
 stream = ExtResource("10_i7j5w")
 volume_db = -10.0
 autoplay = true

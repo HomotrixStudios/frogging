@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cqlqagd2mtdp3"]
+[gd_scene format=3 uid="uid://cqlqagd2mtdp3"]
 
 [ext_resource type="Script" uid="uid://ces8bas4geyb6" path="res://scripts/SM/player_state_machine.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ct8yvgan8g0w2" path="res://scripts/player/player.gd" id="1_lvxji"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://c7i7alw77r3de" path="res://scripts/player/attack_state.gd" id="8_qek5x"]
 [ext_resource type="Texture2D" uid="uid://h7vie7sh4uf5" path="res://sprites/froggy/frog-lick-attack.png" id="10_fm80t"]
 [ext_resource type="Script" uid="uid://dnmca51bn0u3i" path="res://scripts/player/camera_script.gd" id="10_h17s1"]
-[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/logics/health_bar.tscn" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bek1i1kub20tv" path="res://sprites/froggy/froggy-jumpSheet.png" id="11_myrg7"]
 [ext_resource type="Texture2D" uid="uid://06fidevpqqhw" path="res://sprites/froggy/frog attackSheetpng.png" id="12_fcs02"]
 [ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="12_fm80t"]
@@ -490,56 +489,56 @@ _data = {
 radius = 8.0
 height = 20.0
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=523694876 groups=["Player"]]
 script = ExtResource("1_lvxji")
 stats = SubResource("Resource_qek5x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=538709328]
 material = SubResource("ShaderMaterial_uf5tr")
 texture = ExtResource("2_qek5x")
 hframes = 3
 
-[node name="Stats" type="Node" parent="."]
+[node name="Stats" type="Node" parent="." unique_id=352350118]
 script = SubResource("GDScript_75vfm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460454201]
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_gmlin")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player")]
+[node name="StateMachine" type="Node" parent="." unique_id=1671521317 node_paths=PackedStringArray("initial_state", "player")]
 script = ExtResource("1_8afob")
 initial_state = NodePath("IdleState")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://ces8bas4geyb6"
 
-[node name="MovingState" type="Node" parent="StateMachine"]
+[node name="MovingState" type="Node" parent="StateMachine" unique_id=120609297]
 script = ExtResource("4_lvxji")
 dash_curve = SubResource("Curve_gmlin")
 
-[node name="CoyoteTimer" type="Timer" parent="StateMachine/MovingState"]
+[node name="CoyoteTimer" type="Timer" parent="StateMachine/MovingState" unique_id=2113912857]
 wait_time = 0.2
 one_shot = true
 
-[node name="JumpBufferTimer" type="Timer" parent="StateMachine/MovingState"]
+[node name="JumpBufferTimer" type="Timer" parent="StateMachine/MovingState" unique_id=529801869]
 wait_time = 0.1
 one_shot = true
 
-[node name="IdleState" type="Node" parent="StateMachine"]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=151737357]
 script = ExtResource("6_75vfm")
 
-[node name="AttackState" type="Node" parent="StateMachine"]
+[node name="AttackState" type="Node" parent="StateMachine" unique_id=1030516351]
 script = ExtResource("8_qek5x")
 hitbox_shape = SubResource("CircleShape2D_5gtgg")
 
-[node name="AttackCooldown" type="Timer" parent="StateMachine/AttackState"]
+[node name="AttackCooldown" type="Timer" parent="StateMachine/AttackState" unique_id=895345160]
 wait_time = 0.4
 one_shot = true
 
-[node name="AttackTimer" type="Timer" parent="StateMachine/AttackState"]
+[node name="AttackTimer" type="Timer" parent="StateMachine/AttackState" unique_id=1149517782]
 wait_time = 0.8
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=328292753]
 process_mode = 3
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
@@ -547,20 +546,14 @@ script = ExtResource("10_h17s1")
 initial_shake_strength = 10.0
 shake_fade = 10.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_uf5tr")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1220923036]
+libraries/ = SubResource("AnimationLibrary_uf5tr")
 
-[node name="ProgressBar" parent="." instance=ExtResource("11_je7p5")]
-offset_top = -19.0
-offset_bottom = -13.0
-
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=902524819]
 script = ExtResource("12_fm80t")
 metadata/_custom_type_script = "uid://c5c2xnusswlil"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=521051194]
 position = Vector2(1, -1)
 shape = SubResource("CapsuleShape2D_fm80t")
 
