@@ -50,5 +50,6 @@ func _on_area_entered(area : Area2D) -> void:
 			return
 		else:
 			hit_log.log_hit(hurtbox_owner)
+			
 	area.receive_hit(attacker_stats.damage)
 	hitting.emit()

@@ -17,7 +17,8 @@ func _on_shootable_area_body_entered(body: Node2D) -> void:
 		state_machine.change_state("AttackState")
 
 func handle_animations() -> void:
-	animation_player.play("idle")
+	if not animation_player.is_playing():
+		animation_player.play("idle")
 	if direction == 1:
 		sprite.flip_h = false
 	elif direction == -1:
