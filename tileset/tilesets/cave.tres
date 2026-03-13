@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://cnircr86qwckd"]
 
-[ext_resource type="Texture2D" uid="uid://dkedg2mq8v53g" path="res://tilesets/crystal cave tiles.png" id="1_ru23c"]
+[ext_resource type="Texture2D" uid="uid://dkedg2mq8v53g" path="res://tileset/tilesets/crystal cave tiles.png" id="1_ru23c"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7qmaw"]
 polygon = PackedVector2Array(-8, -8, -8, 8, 2.3381634, -3.2374563, 8, -3.4173155, 8, -8)
