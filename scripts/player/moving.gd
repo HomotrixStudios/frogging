@@ -7,7 +7,7 @@ extends PlayerState
 @export_range(0,1) var deceleration := 0.1
 
 # Dash variables
-@export var dash_speed := 500.0
+@export var dash_speed := 400.0
 @export var dash_max_distance = 100.0
 @export var dash_curve : Curve
 @export var dash_cooldown := 1.0
@@ -67,11 +67,18 @@ func update_physics(delta : float) -> void:
 	
 	#Performs dash
 	if is_dashing:
-		var current_distance = abs(player.position.x - dash_start_position)
-		if current_distance >= dash_max_distance or player.is_on_wall():
+		var current_distance = abs(player.position.x - dash_start_position) #measures the distance froggy has done
+		
+		#Calculates the expected motion 
+		var next_velocity = dash_direction * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
+		var expected_motion = Vector2(next_velocity, 0) * get_physics_process_delta_time()
+		# checks if there are any collisions to avoid
+		var impending_collision = player.move_and_collide(expected_motion, true)
+
+		if current_distance >= dash_max_distance or player.is_on_wall() or impending_collision:
 			is_dashing = false
 		else:
-			player.velocity.x = dash_direction * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
+			player.velocity.x = next_velocity #dash
 			player.velocity.y = 0
 
 	# Reduces dash timer

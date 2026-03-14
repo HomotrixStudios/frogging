@@ -519,6 +519,7 @@ radius = 8.0
 height = 20.0
 
 [node name="Player" type="CharacterBody2D" unique_id=523694876 groups=["Player"]]
+safe_margin = 0.2
 script = ExtResource("1_lvxji")
 stats = SubResource("Resource_qek5x")
 
@@ -542,6 +543,7 @@ metadata/_custom_type_script = "uid://ces8bas4geyb6"
 
 [node name="MovingState" type="Node" parent="StateMachine" unique_id=120609297]
 script = ExtResource("4_lvxji")
+dash_speed = 400.0
 dash_curve = SubResource("Curve_gmlin")
 
 [node name="CoyoteTimer" type="Timer" parent="StateMachine/MovingState" unique_id=2113912857]

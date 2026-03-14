@@ -190,6 +190,7 @@ shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
 shader_parameter/hit_flash_on = false
 
 [node name="FlyEnemy" type="CharacterBody2D" unique_id=1836153360 node_paths=PackedStringArray("state_machine", "animation_player", "muzzle")]
+safe_margin = 0.2
 script = ExtResource("1_ainqx")
 stats = SubResource("Resource_i7j5w")
 state_machine = NodePath("EnemyStateMachine")
