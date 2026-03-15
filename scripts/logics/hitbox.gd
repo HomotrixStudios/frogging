@@ -36,7 +36,7 @@ func _ready() -> void:
 	match attacker_stats.faction:
 		#enables to target these hurtbox layer, I should store these values in some enum or dictionary
 		Stats.Faction.PLAYER:
-			set_collision_mask_value(1, true) 
+			set_collision_mask_value(3, true) 
 		Stats.Faction.ENEMY:
 			set_collision_mask_value(2, true)
 

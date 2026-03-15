@@ -1,28 +1,22 @@
-extends CharacterBody2D
+extends Area2D
 
 @export var speed : int = 200
-var direction : float
-var spawnPos : Vector2
-var spawnRot : float
+var direction : Vector2 = Vector2.ZERO
 
-@onready var shape = $CollisionShape2D
-
-func _ready():
-	global_position = spawnPos
-	global_rotation = spawnRot
+func head_to(trajectory : Vector2):
+	direction = trajectory.normalized()
+	rotation = trajectory.angle()
 
 func _physics_process(delta: float) -> void:
-	velocity = Vector2(speed, get_gravity().y*delta).rotated(direction)
-	move_and_slide()
+	position += direction * speed * delta
 
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	if area.find_parent("FlyEnemy"):
 		return
+	print(area)
 	queue_free()
 
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	if not body is FlyEnemy or body != self:
 		print(body)
 		queue_free()

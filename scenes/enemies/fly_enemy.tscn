@@ -17,16 +17,19 @@ script = ExtResource("2_3ex3d")
 damage = 30
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_slyqx"]
+radius = 6.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsvwb"]
 radius = 6.0
-height = 26.0
+height = 21.99345
 
 [sub_resource type="Animation" id="Animation_hk0r0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +41,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/path = NodePath("Pivot/Sprite2D:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -50,7 +53,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/path = NodePath("Pivot/Sprite2D:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -62,7 +65,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/3/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -74,7 +77,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_color")
+tracks/4/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -90,7 +93,7 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_color")
+tracks/0/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -102,7 +105,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/1/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -118,7 +121,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/0/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -136,7 +139,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -148,7 +151,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -160,7 +163,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -182,31 +185,31 @@ _data = {
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twhab"]
-radius = 104.0769
+radius = 131.01526
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rm8ax"]
 shader = ExtResource("10_slyqx")
 shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
 shader_parameter/hit_flash_on = false
 
-[node name="FlyEnemy" type="CharacterBody2D" unique_id=1836153360 node_paths=PackedStringArray("state_machine", "animation_player", "muzzle")]
+[node name="FlyEnemy" type="CharacterBody2D" unique_id=1836153360 node_paths=PackedStringArray("state_machine", "animation_player")]
+collision_layer = 4
+collision_mask = 3
 safe_margin = 0.2
 script = ExtResource("1_ainqx")
 stats = SubResource("Resource_i7j5w")
 state_machine = NodePath("EnemyStateMachine")
 action_range = 150.0
 animation_player = NodePath("AnimationPlayer")
-x_speed = 45.0
-y_speed = 45.0
-muzzle = NodePath("Marker2D")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1404499622]
+position = Vector2(18, 8)
+shape = SubResource("CircleShape2D_slyqx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=552249971]
-position = Vector2(1, 3)
+position = Vector2(1.0000001, 2)
 rotation = 1.5951998
 shape = SubResource("CapsuleShape2D_fsvwb")
-
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1096630926]
-position = Vector2(19, 8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=32495600]
 libraries/ = SubResource("AnimationLibrary_hkte3")
@@ -217,16 +220,22 @@ initial_state = NodePath("MovingRandomState")
 enemy = NodePath("..")
 metadata/_custom_type_script = "uid://bcfcbh1qp81vc"
 
-[node name="FollowState" type="Node" parent="EnemyStateMachine" unique_id=630267328]
+[node name="FollowState" type="Node" parent="EnemyStateMachine" unique_id=630267328 node_paths=PackedStringArray("state_machine", "enemy")]
 script = ExtResource("5_ainqx")
+state_machine = NodePath("..")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
+
+[node name="FollowTimer" type="Timer" parent="EnemyStateMachine/FollowState" unique_id=1664502997]
+wait_time = 3.0
+one_shot = true
 
 [node name="MovingRandomState" type="Node" parent="EnemyStateMachine" unique_id=1398928950]
 script = ExtResource("6_bfqo4")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
 [node name="RandomPosTimer" type="Timer" parent="EnemyStateMachine/MovingRandomState" unique_id=1252710854]
-wait_time = 5.0
+wait_time = 6.0
 one_shot = true
 
 [node name="AttackState" type="Node" parent="EnemyStateMachine" unique_id=448935350]
@@ -235,32 +244,56 @@ hitbox_shape = SubResource("CircleShape2D_i7j5w")
 metadata/_custom_type_script = "uid://pk33vlb5s2as"
 
 [node name="AttackTimer" type="Timer" parent="EnemyStateMachine/AttackState" unique_id=2121510368]
+one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1005025373]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("7_7s422")
 metadata/_custom_type_script = "uid://c5c2xnusswlil"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1442173538]
+position = Vector2(1.0000001, 2)
 rotation = 1.5951998
 shape = SubResource("CapsuleShape2D_fsvwb")
 
-[node name="ShootableArea" type="Area2D" parent="." unique_id=1084492572]
+[node name="SightArea" type="Area2D" parent="." unique_id=1084492572]
+collision_layer = 0
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootableArea" unique_id=306803548]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightArea" unique_id=306803548]
 shape = SubResource("CircleShape2D_twhab")
 debug_color = Color(0.7006124, 0.49228144, 0, 0.41960785)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1080694340]
-material = SubResource("ShaderMaterial_rm8ax")
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("4_twhab")
-hframes = 5
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2031344913]
 stream = ExtResource("10_i7j5w")
 volume_db = -10.0
 autoplay = true
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1050111210]
+target_desired_distance = 70.0
+avoidance_enabled = true
+radius = 30.0
+debug_enabled = true
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1435351682]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=1080694340]
+material = SubResource("ShaderMaterial_rm8ax")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_twhab")
+hframes = 5
+
+[node name="Marker2D" type="Marker2D" parent="Pivot" unique_id=1096630926]
+position = Vector2(18, 8)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="PointA" type="Marker2D" parent="." unique_id=980868420]
+position = Vector2(-62, 35)
+
+[node name="PointB" type="Marker2D" parent="." unique_id=737636001]
+position = Vector2(106, -37)
+
+[connection signal="timeout" from="EnemyStateMachine/FollowState/FollowTimer" to="EnemyStateMachine/FollowState" method="_on_follow_timer_timeout"]
 [connection signal="timeout" from="EnemyStateMachine/MovingRandomState/RandomPosTimer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyStateMachine/AttackState/AttackTimer" to="EnemyStateMachine/AttackState" method="_on_attack_timer_timeout"]
-[connection signal="body_entered" from="ShootableArea" to="." method="_on_shootable_area_body_entered"]
