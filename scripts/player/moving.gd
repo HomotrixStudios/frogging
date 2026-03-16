@@ -34,6 +34,8 @@ func update_physics(delta : float) -> void:
 			
 	if player.is_on_floor():
 		is_jumping = false
+	else:
+		is_jumping = true
 	
 	if !is_jumping and !jump_buffer_timer.is_stopped():
 		player.velocity.y = jump_force

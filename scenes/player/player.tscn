@@ -42,6 +42,9 @@ point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gtgg"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_myrg7"]
+radius = 13.0
+
 [sub_resource type="Animation" id="Animation_fm80t"]
 length = 0.001
 tracks/0/type = "value"
@@ -531,6 +534,8 @@ script = ExtResource("6_75vfm")
 [node name="AttackState" type="Node" parent="StateMachine" unique_id=1030516351]
 script = ExtResource("8_qek5x")
 hitbox_shape = SubResource("CircleShape2D_5gtgg")
+spin_hitbox_shape = SubResource("CircleShape2D_myrg7")
+knockback_intensity = 150
 
 [node name="AttackCooldown" type="Timer" parent="StateMachine/AttackState" unique_id=895345160]
 wait_time = 0.4
@@ -542,7 +547,7 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=328292753]
 process_mode = 3
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 script = ExtResource("10_h17s1")
 initial_shake_strength = 10.0

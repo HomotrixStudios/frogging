@@ -7,6 +7,9 @@ var hit_log : Hitlog
 var father : Node2D
 
 signal hitting
+#This is for the spinning attack
+signal hitbox_collided(body)
+signal bullet_collided(area)
 
 func _init(_attacker_stats : Stats, _hitbox_lifetime : float, _shape : Shape2D, _father : Node2D = self, _hitlog : Hitlog = null) -> void:
 	attacker_stats = _attacker_stats
@@ -16,6 +19,7 @@ func _init(_attacker_stats : Stats, _hitbox_lifetime : float, _shape : Shape2D, 
 	father = _father
 
 func _ready() -> void:
+	body_entered.connect(_on_body_entered)
 	monitorable = false
 	area_entered.connect(_on_area_entered)
 
@@ -37,13 +41,13 @@ func _ready() -> void:
 		#enables to target these hurtbox layer, I should store these values in some enum or dictionary
 		Stats.Faction.PLAYER:
 			set_collision_mask_value(3, true) 
+			set_collision_mask_value(1, true)
 		Stats.Faction.ENEMY:
 			set_collision_mask_value(2, true)
 
 func _on_area_entered(area : Area2D) -> void:
 	if not area is Hurtbox:
 		return
-
 	var hurtbox_owner = area.owner
 	if hit_log:
 		if hit_log.has_hit(hurtbox_owner):
@@ -52,4 +56,9 @@ func _on_area_entered(area : Area2D) -> void:
 			hit_log.log_hit(hurtbox_owner)
 			
 	area.receive_hit(attacker_stats.damage)
+	bullet_collided.emit(area)
 	hitting.emit()
+
+func _on_body_entered(body) -> void:
+	if body != get_parent():
+		hitbox_collided.emit(body)

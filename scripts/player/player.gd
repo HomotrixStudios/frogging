@@ -7,9 +7,12 @@ class_name Player extends CharacterBody2D
 @onready var camera = $Camera2D
 @onready var sprite = $Sprite2D
 
+#helps me to avoid overlapping animations
 var animation_priority : bool = false
+#I think I could avoid using these two, but I won't
 var direction : float 
 var last_facing_direction : int = 1
+var velocity_before_collision : Vector2
 
 func _ready():
 	stats.health_depleted.connect(handle_death)
@@ -19,7 +22,9 @@ func _physics_process(delta: float) -> void:
 	handle_animations()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
+	
+	velocity_before_collision = velocity
+
 	move_and_slide()
 
 func handle_direction() -> void:

@@ -34,5 +34,4 @@ func change_state(new_state_name : String) -> void:
 		current_state.exit()
 
 	new_state.enter()
-	print(new_state)
 	current_state = new_state

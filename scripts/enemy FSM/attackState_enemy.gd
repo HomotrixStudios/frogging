@@ -25,10 +25,8 @@ func shoot() -> void:
 	var bullet = projectile.instantiate()
 	enemy.get_parent().add_child(bullet)
 	bullet.global_position = enemy.muzzle.global_position
-	print(bullet.global_position)
-	bullet.head_to(enemy.global_position.direction_to(enemy.player.global_position))
+	bullet.head_to(enemy.muzzle.global_position.direction_to(enemy.player.global_position))
 
-	# print("enemy position", enemy.muzzle.global_position)
 	var hitbox = Hitbox.new(enemy.stats, 0.5, hitbox_shape, enemy)
 	bullet.add_child(hitbox)
 
