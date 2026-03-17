@@ -24,7 +24,8 @@ var dash_timer := 0.0
 @onready var coyote_timer = $CoyoteTimer
 var is_jumping := false # to avoid double jump
 @onready var jump_buffer_timer = $JumpBufferTimer
-
+#wall jump or wall stick
+var spiderman : bool = false
 
 func update_physics(delta : float) -> void:
 	if Input.is_action_pressed("jump"): 
@@ -34,9 +35,15 @@ func update_physics(delta : float) -> void:
 			
 	if player.is_on_floor():
 		is_jumping = false
+		spiderman = true
 	else:
 		is_jumping = true
 	
+	if player.is_on_wall():
+		if spiderman:
+			player.velocity = Vector2.ZERO
+			is_jumping = false
+
 	if !is_jumping and !jump_buffer_timer.is_stopped():
 		player.velocity.y = jump_force
 		is_jumping = true

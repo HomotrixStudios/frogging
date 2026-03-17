@@ -48,7 +48,9 @@ func _ready() -> void:
 func _on_area_entered(area : Area2D) -> void:
 	if not area is Hurtbox:
 		return
+
 	var hurtbox_owner = area.owner
+
 	if hit_log:
 		if hit_log.has_hit(hurtbox_owner):
 			return

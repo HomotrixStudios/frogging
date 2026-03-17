@@ -14,8 +14,10 @@ var direction : float
 var last_facing_direction : int = 1
 var velocity_before_collision : Vector2
 
+
 func _ready():
 	stats.health_depleted.connect(handle_death)
+	# set_floor_max_angle(35)
 
 func _physics_process(delta: float) -> void:
 	handle_direction()

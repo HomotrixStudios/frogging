@@ -14,7 +14,7 @@
 [sub_resource type="Resource" id="Resource_i7j5w"]
 resource_local_to_scene = true
 script = ExtResource("2_3ex3d")
-damage = 30
+damage = 100
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_slyqx"]
@@ -192,6 +192,10 @@ shader = ExtResource("10_slyqx")
 shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
 shader_parameter/hit_flash_on = false
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i7j5w"]
+radius = 7.0
+height = 26.0
+
 [node name="FlyEnemy" type="CharacterBody2D" unique_id=1836153360 node_paths=PackedStringArray("state_machine", "animation_player")]
 collision_layer = 4
 collision_mask = 3
@@ -246,6 +250,24 @@ metadata/_custom_type_script = "uid://pk33vlb5s2as"
 [node name="AttackTimer" type="Timer" parent="EnemyStateMachine/AttackState" unique_id=2121510368]
 one_shot = true
 
+[node name="SightArea" type="Area2D" parent="." unique_id=1084492572]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightArea" unique_id=306803548]
+shape = SubResource("CircleShape2D_twhab")
+debug_color = Color(1.92523e-07, 0.6098098, 0.508111, 0.41960785)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2031344913]
+stream = ExtResource("10_i7j5w")
+volume_db = -10.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1050111210]
+target_desired_distance = 70.0
+avoidance_enabled = true
+radius = 30.0
+debug_enabled = true
+
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1005025373]
 collision_layer = 4
 collision_mask = 0
@@ -256,25 +278,6 @@ metadata/_custom_type_script = "uid://c5c2xnusswlil"
 position = Vector2(1.0000001, 2)
 rotation = 1.5951998
 shape = SubResource("CapsuleShape2D_fsvwb")
-
-[node name="SightArea" type="Area2D" parent="." unique_id=1084492572]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SightArea" unique_id=306803548]
-shape = SubResource("CircleShape2D_twhab")
-debug_color = Color(0.7006124, 0.49228144, 0, 0.41960785)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2031344913]
-stream = ExtResource("10_i7j5w")
-volume_db = -10.0
-autoplay = true
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1050111210]
-target_desired_distance = 70.0
-avoidance_enabled = true
-radius = 30.0
-debug_enabled = true
 
 [node name="Pivot" type="Node2D" parent="." unique_id=1435351682]
 
@@ -294,6 +297,17 @@ position = Vector2(-62, 35)
 [node name="PointB" type="Marker2D" parent="." unique_id=737636001]
 position = Vector2(106, -37)
 
+[node name="DamageArea" type="Area2D" parent="." unique_id=2144111783]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DamageAreaCollision" type="CollisionShape2D" parent="DamageArea" unique_id=1024112183]
+position = Vector2(1, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_i7j5w")
+
 [connection signal="timeout" from="EnemyStateMachine/FollowState/FollowTimer" to="EnemyStateMachine/FollowState" method="_on_follow_timer_timeout"]
 [connection signal="timeout" from="EnemyStateMachine/MovingRandomState/RandomPosTimer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyStateMachine/AttackState/AttackTimer" to="EnemyStateMachine/AttackState" method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

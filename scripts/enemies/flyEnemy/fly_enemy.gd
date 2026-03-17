@@ -75,3 +75,7 @@ func check_raycast() -> void:
 		
 		can_see_player = not shapecast.is_colliding()
 		
+
+func _on_damage_area_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Player:
+		area.receive_hit(stats.defense)
