@@ -19,6 +19,9 @@ var spinning : bool = false
 @export var small_lift : float = -100.0
 @export var bounce_lift : float = -250.0 #intensity of vertical 
 
+var facing_up : bool = false
+
+
 func enter():
 	handle_animations()
 
@@ -49,10 +52,10 @@ func enter():
 		spin_hitbox.hitting.connect(_on_hit)
 		spin_hitbox.hitbox_collided.connect(_on_spinning_hitbox_hit)
 		return
-
+	
 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, player, hit_log)
 	player.add_child(hitbox)
-	hitbox.position += Vector2(15.0, 0) * player.last_facing_direction
+	hitbox.global_position = player.hitbox_spawn.global_position
 	attack_direction = player.last_facing_direction
 	hitbox.hitting.connect(_on_hit)
 	
@@ -65,8 +68,12 @@ func update(_delta : float) -> void:
 		player.state_machine.change_state("IdleState")
 
 func exit() -> void:
+	#Eventually restore used variables
 	if spinning:
-		spinning = false #I don't think this is necessary, 'meglio prevenire che curare'
+		spinning = false 
+	if facing_up:
+		facing_up = false
+	
 	if attack_cooldown.is_stopped():
 		attack_cooldown.start()
 
@@ -75,7 +82,7 @@ func _on_hit() -> void:
 	#Otherwise we could detect other unexpected collisions
 	set_deferred("disabled",true)
 	#If we are facing a wall we don't want to push our player against it
-	if player.is_on_wall(): 
+	if not player.is_on_wall(): 
 		player.velocity.x = -attack_direction * knockback_intensity
 	else:
 		player.velocity.x = 0

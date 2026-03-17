@@ -199,6 +199,7 @@ height = 26.0
 [node name="FlyEnemy" type="CharacterBody2D" unique_id=1836153360 node_paths=PackedStringArray("state_machine", "animation_player")]
 collision_layer = 4
 collision_mask = 3
+motion_mode = 1
 safe_margin = 0.2
 script = ExtResource("1_ainqx")
 stats = SubResource("Resource_i7j5w")
@@ -266,7 +267,6 @@ volume_db = -10.0
 target_desired_distance = 70.0
 avoidance_enabled = true
 radius = 30.0
-debug_enabled = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1005025373]
 collision_layer = 4

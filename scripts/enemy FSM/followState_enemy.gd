@@ -27,6 +27,8 @@ func update_physics(_delta : float) -> void:
 	if player == null:
 		return
 
+	
+
 	#We change the desired distance based on the fact we're seeing the player or not (raycast)
 	if enemy.can_see_player:
 		enemy.nav.target_desired_distance = 70.0
