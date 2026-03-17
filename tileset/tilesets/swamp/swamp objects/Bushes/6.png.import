@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://t4w1ykvnf1nu"
-path="res://.godot/imported/6.png-50f5822458e6566d5561fa74387b59aa.ctex"
+path="res://.godot/imported/6.png-8348f243fb07e4f381fa3aaa94b7b4c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset/tilesets/swamp/3 Objects/Bushes/6.png"
-dest_files=["res://.godot/imported/6.png-50f5822458e6566d5561fa74387b59aa.ctex"]
+source_file="res://tileset/tilesets/swamp/swamp objects/Bushes/6.png"
+dest_files=["res://.godot/imported/6.png-8348f243fb07e4f381fa3aaa94b7b4c4.ctex"]
 
 [params]
 

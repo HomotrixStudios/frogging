@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv5bdvnud7ort"
-path="res://.godot/imported/4.png-539606c10639303338fa788406a77efc.ctex"
+path="res://.godot/imported/4.png-a8ccbde6c344824538ab4ac56af1bce4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset/tilesets/swamp/3 Objects/Grass/4.png"
-dest_files=["res://.godot/imported/4.png-539606c10639303338fa788406a77efc.ctex"]
+source_file="res://tileset/tilesets/swamp/swamp objects/Grass/4.png"
+dest_files=["res://.godot/imported/4.png-a8ccbde6c344824538ab4ac56af1bce4.ctex"]
 
 [params]
 

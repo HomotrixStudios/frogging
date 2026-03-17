@@ -667,7 +667,7 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=328292753]
 process_mode = 3
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("10_h17s1")
 initial_shake_strength = 10.0

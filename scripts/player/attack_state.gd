@@ -72,12 +72,18 @@ func exit() -> void:
 
 func _on_hit() -> void:
 	player.camera.apply_shake()
-	player.velocity.x = -attack_direction * knockback_intensity
+	#Otherwise we could detect other unexpected collisions
+	set_deferred("disabled",true)
+	#If we are facing a wall we don't want to push our player against it
+	if player.is_on_wall(): 
+		player.velocity.x = -attack_direction * knockback_intensity
+	else:
+		player.velocity.x = 0
 
 func _on_spinning_hitbox_hit(body) -> void:
 	#we take the direction of the hit
 	var hit_direction = (player.global_position - body.global_position).normalized()
-	
+	set_deferred("disabled", true) #We don't want to detect collisions more than one time per attack
 	# #we choose an axis based on the velocity of the player
 	if abs(player.velocity_before_collision.x) > abs(player.velocity_before_collision.y):
 		player.velocity.x = sign(player.velocity_before_collision.x) * bounce_force

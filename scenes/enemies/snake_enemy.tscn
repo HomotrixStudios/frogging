@@ -109,12 +109,17 @@ shader = ExtResource("6_7oohf")
 shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
 shader_parameter/hit_flash_on = false
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqh41"]
+radius = 53.15073
+
 [node name="SnakeEnemy" type="CharacterBody2D" unique_id=1632796958]
+collision_layer = 4
+collision_mask = 3
+safe_margin = 0.2
 script = ExtResource("1_skqqu")
 stats = SubResource("Resource_mmrdk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1440926768]
-visible = false
 position = Vector2(3, 1)
 shape = SubResource("CapsuleShape2D_3eqri")
 
@@ -139,6 +144,7 @@ one_shot = true
 script = ExtResource("5_vqh41")
 
 [node name="FollowTimer" type="Timer" parent="EnemyStateMachine/FollowState" unique_id=563894246]
+wait_time = 4.0
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1381339434]
 position = Vector2(4, 0)
@@ -174,8 +180,21 @@ texture = ExtResource("2_skqqu")
 hframes = 8
 
 [node name="RayCast2D" type="RayCast2D" parent="Pivot" unique_id=2037683675]
+position = Vector2(0, 4)
 target_position = Vector2(100, 0)
+collision_mask = 2
+
+[node name="SightArea" type="Area2D" parent="." unique_id=1848760646]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="SightShape" type="CollisionShape2D" parent="SightArea" unique_id=1330317218]
+shape = SubResource("CircleShape2D_vqh41")
+debug_color = Color(0.21176471, 0.6313726, 0.31764707, 0.72156864)
 
 [connection signal="timeout" from="EnemyStateMachine/MovingRandomState/RandomPosTimer" to="EnemyStateMachine/MovingRandomState" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyStateMachine/FollowState/FollowTimer" to="EnemyStateMachine/FollowState" method="_on_follow_timer_timeout"]
 [connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="body_entered" from="SightArea" to="." method="_on_sight_area_body_entered"]
+[connection signal="body_exited" from="SightArea" to="." method="_on_sight_area_body_exited"]

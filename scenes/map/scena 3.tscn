@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ddneowr4vwoaq" path="res://tilset/oak_woods_v1.0/decorations/grass_3.png" id="19_t7b15"]
 [ext_resource type="PackedScene" uid="uid://4jokp7eylpfh" path="res://scenes/logics/HUD.tscn" id="21_bmu66"]
 
-[sub_resource type="Resource" id="Resource_dnh0v"]
+[sub_resource type="Resource" id="Resource_8ul4p"]
 resource_local_to_scene = true
 script = ExtResource("2_qyc15")
 damage = 30
@@ -97,12 +97,16 @@ texture = ExtResource("6_qe0gg")
 12:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(2.589964, 2.661909, 5.467703, 4.964102, 8, 8, -8, 8, -8, 8, -8, 3.956892, -8, -2.5180206, -2.3021927, 0.9352665)
 13:1/0 = 0
 13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5395756, -5.3957615, 8, -8, 8, 8, 3.057598, 1.6187286)
+13:1/0/physics_layer_0/polygon_0/one_way_margin = 2.0
 14:1/0 = 0
 14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:1/0/physics_layer_0/polygon_0/one_way_margin = 2.0
 15:1/0 = 0
 15:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:1/0/physics_layer_0/polygon_0/one_way_margin = 2.0
 16:1/0 = 0
 16:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.7432184, -8, 1.7837219, -5.0538816, 1.0405045, -0.44593048, -8, 8)
+16:1/0/physics_layer_0/polygon_0/one_way_margin = 2.0
 17:1/0 = 0
 17:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:1/0 = 0
@@ -312,7 +316,7 @@ sources/1 = SubResource("TileSetAtlasSource_bgk1c")
 
 [node name="FlyEnemy" parent="." unique_id=1022659570 instance=ExtResource("1_bfulj")]
 position = Vector2(153, -198)
-stats = SubResource("Resource_dnh0v")
+stats = SubResource("Resource_8ul4p")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=438597446]
 stream = ExtResource("3_bgk1c")

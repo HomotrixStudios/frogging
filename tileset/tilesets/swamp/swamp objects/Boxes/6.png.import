@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cd81tlv1svcbe"
-path="res://.godot/imported/6.png-b16c403aaf94f9a83a9071f21f5f7440.ctex"
+path="res://.godot/imported/6.png-730e9b0edceeb5ad85f6dcca3b624bfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset/tilesets/swamp/3 Objects/Boxes/6.png"
-dest_files=["res://.godot/imported/6.png-b16c403aaf94f9a83a9071f21f5f7440.ctex"]
+source_file="res://tileset/tilesets/swamp/swamp objects/Boxes/6.png"
+dest_files=["res://.godot/imported/6.png-730e9b0edceeb5ad85f6dcca3b624bfa.ctex"]
 
 [params]
 
