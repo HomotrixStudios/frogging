@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_0owmy"]
 [ext_resource type="Texture2D" uid="uid://c0kndkcshuy5r" path="res://sprites/froggy/frog_idle_dx.png" id="2_qek5x"]
 [ext_resource type="Shader" uid="uid://cj6n7sqk1wdpk" path="res://shaders/hit_shader.gdshader" id="3_kvlxm"]
+[ext_resource type="PackedScene" uid="uid://iy32sk7jk401" path="res://scenes/player/ghost_effect.tscn" id="3_uf5tr"]
 [ext_resource type="Script" uid="uid://cx0o0x4brkhgo" path="res://scripts/player/moving.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://cmjg8vaagx1va" path="res://scripts/player/idle.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://c7i7alw77r3de" path="res://scripts/player/attack_state.gd" id="8_qek5x"]
@@ -617,6 +618,7 @@ collision_mask = 5
 safe_margin = 0.2
 script = ExtResource("1_lvxji")
 stats = SubResource("Resource_qek5x")
+ghost_effect = ExtResource("3_uf5tr")
 
 [node name="Stats" type="Node" parent="." unique_id=352350118]
 script = SubResource("GDScript_75vfm")
@@ -647,6 +649,10 @@ one_shot = true
 [node name="JumpBufferTimer" type="Timer" parent="StateMachine/MovingState" unique_id=529801869]
 wait_time = 0.1
 one_shot = true
+
+[node name="GhostTimer" type="Timer" parent="StateMachine/MovingState" unique_id=1063944141]
+wait_time = 0.15
+autostart = true
 
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=151737357]
 script = ExtResource("6_75vfm")

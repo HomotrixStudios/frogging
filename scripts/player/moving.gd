@@ -87,6 +87,10 @@ func update_physics(delta : float) -> void:
 			player.velocity.x = next_velocity #dash
 			player.velocity.y = 0
 
+		var ghost = player.ghost_effect.instantiate()
+		ghost.set_property(player.position, player.sprite.flip_h)
+		get_tree().current_scene.add_child(ghost)
+
 	# Reduces dash timer
 	if dash_timer > 0:
 		dash_timer -= delta

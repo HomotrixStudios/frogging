@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @export var stats : Stats
+@export var ghost_effect : PackedScene
 
 @onready var animation_player = $AnimationPlayer
 @onready var state_machine = $StateMachine
@@ -60,7 +61,6 @@ func handle_death() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/logics/game_over.tscn")
 
 func handle_animations():
-	pass
 	if last_facing_direction == 1:
 		sprite.flip_h = false
 	elif last_facing_direction == -1:

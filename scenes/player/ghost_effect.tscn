@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://iy32sk7jk401"]
+
+[ext_resource type="Texture2D" uid="uid://c0kndkcshuy5r" path="res://sprites/froggy/frog_idle_dx.png" id="1_jcmi5"]
+[ext_resource type="Script" uid="uid://c5aqhit8dhokv" path="res://scripts/player/ghost_effect.gd" id="1_lso0u"]
+
+[node name="Ghost" type="Sprite2D" unique_id=302587715]
+texture = ExtResource("1_jcmi5")
+hframes = 3
+script = ExtResource("1_lso0u")
