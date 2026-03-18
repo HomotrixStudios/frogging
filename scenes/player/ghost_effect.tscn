@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c5aqhit8dhokv" path="res://scripts/player/ghost_effect.gd" id="1_lso0u"]
 
 [node name="Ghost" type="Sprite2D" unique_id=302587715]
+modulate = Color(0.573792, 0.5737919, 0.5737919, 0.5411765)
 texture = ExtResource("1_jcmi5")
 hframes = 3
 script = ExtResource("1_lso0u")

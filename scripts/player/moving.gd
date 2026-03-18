@@ -11,11 +11,12 @@ extends PlayerState
 @export var dash_curve : Curve
 @export var dash_cooldown := 1.0
 
-# Track dash variables
+# dash variables
 var is_dashing := false
 var dash_start_position := 0.0
 var dash_direction := 0.0
 var dash_timer := 0.0
+@onready var ghost_timer : Timer = $GhostTimer
 
 # Jump variables
 @export var jump_force := -350.0
@@ -66,6 +67,7 @@ func update_physics(delta : float) -> void:
 	
 	# Dash activation
 	if Input.is_action_just_pressed("dash") and player.direction.x and not is_dashing and dash_timer <= 0:
+		ghost_timer.start()
 		is_dashing = true
 		dash_start_position = player.position.x
 		dash_direction = player.direction.x
@@ -86,14 +88,14 @@ func update_physics(delta : float) -> void:
 		else:
 			player.velocity.x = next_velocity #dash
 			player.velocity.y = 0
-
-		var ghost = player.ghost_effect.instantiate()
-		ghost.set_property(player.position, player.sprite.flip_h)
-		get_tree().current_scene.add_child(ghost)
+	else:
+		ghost_timer.stop()
+		
 
 	# Reduces dash timer
 	if dash_timer > 0:
 		dash_timer -= delta
+		
 
 
 	if player.velocity.length() < 0.1:
@@ -104,6 +106,9 @@ func update_physics(delta : float) -> void:
 		player.state_machine.change_state("AttackState")
 
 	handle_animations()
+
+func exit() -> void:
+	ghost_timer.stop()
 
 func handle_animations(): 
 	if player.animation_priority:
@@ -116,3 +121,9 @@ func handle_animations():
 			player.animation_player.play("jump")
 	if player.velocity.y > 0:
 		player.animation_player.play("fall")
+
+
+func _on_ghost_timer_timeout() -> void:
+	var ghost = player.ghost_effect.instantiate()
+	ghost.set_property(player.position, player.sprite.texture, player.sprite.flip_h, player.sprite.hframes)
+	get_tree().current_scene.add_child(ghost)

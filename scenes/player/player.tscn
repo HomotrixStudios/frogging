@@ -651,7 +651,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="GhostTimer" type="Timer" parent="StateMachine/MovingState" unique_id=1063944141]
-wait_time = 0.15
+wait_time = 0.04
 autostart = true
 
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=151737357]
@@ -706,6 +706,7 @@ target_position = Vector2(0, 15)
 [node name="HitboxSpawn" type="Marker2D" parent="Pivot" unique_id=688811966]
 position = Vector2(20, 0)
 
+[connection signal="timeout" from="StateMachine/MovingState/GhostTimer" to="StateMachine/MovingState" method="_on_ghost_timer_timeout"]
 [connection signal="timeout" from="StateMachine/AttackState/AttackCooldown" to="StateMachine/AttackState" method="_on_attack_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Hurtbox" to="Hurtbox" method="_on_body_entered"]
