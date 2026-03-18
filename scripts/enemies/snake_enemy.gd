@@ -21,7 +21,7 @@ var player : Player
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	stats.health_depleted.connect(queue_free) #to fucking die
-	
+	animation_player.play("RESET")
 	pos_a = point_a.global_position
 	pos_b = point_b.global_position
 
