@@ -1,22 +1,22 @@
 extends PlayerState
 
 # Basic movement variables
-@export var walk_speed = 150.0
-@export var run_speed = 250.0
+@export var speed = 150.0
 @export_range(0, 1) var acceleration := 0.1
 @export_range(0,1) var deceleration := 0.1
 
 # Dash variables
-@export var dash_speed := 500.0
+@export var dash_speed := 400.0
 @export var dash_max_distance = 100.0
 @export var dash_curve : Curve
 @export var dash_cooldown := 1.0
 
-# Track dash variables
+# dash variables
 var is_dashing := false
 var dash_start_position := 0.0
 var dash_direction := 0.0
 var dash_timer := 0.0
+@onready var ghost_timer : Timer = $GhostTimer
 
 # Jump variables
 @export var jump_force := -350.0
@@ -27,14 +27,28 @@ var is_jumping := false # to avoid double jump
 
 
 func update_physics(delta : float) -> void:
+	#Might have to improve 'last facing direction'
+	if player.last_facing_direction == 1:
+		player.pivot.scale.x = 1
+	elif player.last_facing_direction == -1:
+		player.pivot.scale.x = -1
+
 	if Input.is_action_pressed("jump"): 
 		if (player.is_on_floor() || !coyote_timer.is_stopped()) and !is_jumping: # If the player wants to jump and is not on floor anymore 
 			player.velocity.y = jump_force
 			is_jumping = true
-			
+
 	if player.is_on_floor():
 		is_jumping = false
+	else:
+		is_jumping = true
 	
+	if player.is_on_wall() and Input.is_action_pressed("shift"):
+		#If both the raycasts cast a collision we are on a wall, otherwise we are on a platform
+			if player.wall_check_top.is_colliding() and player.wall_check_bottom.is_colliding():
+				player.velocity = Vector2.ZERO
+				is_jumping = false
+
 	if !is_jumping and !jump_buffer_timer.is_stopped():
 		player.velocity.y = jump_force
 		is_jumping = true
@@ -44,39 +58,45 @@ func update_physics(delta : float) -> void:
 
 	if !player.is_on_floor() and coyote_timer.is_stopped():
 		coyote_timer.start()
-
-	# Modify the speed based on the input action "run"
-	var speed := 0.0
-	if Input.is_action_pressed("run"):
-		speed = run_speed 
-	else:
-		speed = walk_speed
 		
 	# Get the input direction and handle the movement/deceleration.
-	if player.direction:
-		player.velocity.x = move_toward(player.velocity.x, speed * player.direction, speed * acceleration)
+	if player.direction.x:
+		player.velocity.x = move_toward(player.velocity.x, speed * player.direction.x, speed * acceleration)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, speed * deceleration)
 	
 	# Dash activation
-	if Input.is_action_just_pressed("dash") and player.direction and not is_dashing and dash_timer <= 0:
+	if Input.is_action_just_pressed("dash") and player.direction.x and not is_dashing and dash_timer <= 0:
+		ghost_timer.start()
 		is_dashing = true
 		dash_start_position = player.position.x
-		dash_direction = player.direction
+		dash_direction = player.direction.x
 		dash_timer = dash_cooldown
 	
 	#Performs dash
 	if is_dashing:
-		var current_distance = abs(player.position.x - dash_start_position)
-		if current_distance >= dash_max_distance or player.is_on_wall():
+		var current_distance = abs(player.position.x - dash_start_position) #measures the distance froggy has done
+		
+		#Calculates the expected motion 
+		var next_velocity = dash_direction * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
+		var expected_motion = Vector2(next_velocity, 0) * get_physics_process_delta_time()
+		# checks if there are any collisions to avoid
+		var impending_collision = player.move_and_collide(expected_motion, true)
+	
+		if current_distance >= dash_max_distance or player.is_on_wall() or impending_collision:
 			is_dashing = false
 		else:
-			player.velocity.x = dash_direction * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
+			player.velocity.x = next_velocity #dash
 			player.velocity.y = 0
+	else:
+		ghost_timer.stop()
+		
 
 	# Reduces dash timer
 	if dash_timer > 0:
 		dash_timer -= delta
+		
+
 
 	if player.velocity.length() < 0.1:
 		is_jumping = false
@@ -86,6 +106,9 @@ func update_physics(delta : float) -> void:
 		player.state_machine.change_state("AttackState")
 
 	handle_animations()
+
+func exit() -> void:
+	ghost_timer.stop()
 
 func handle_animations(): 
 	if player.animation_priority:
@@ -98,3 +121,9 @@ func handle_animations():
 			player.animation_player.play("jump")
 	if player.velocity.y > 0:
 		player.animation_player.play("fall")
+
+
+func _on_ghost_timer_timeout() -> void:
+	var ghost = player.ghost_effect.instantiate()
+	ghost.set_property(player.position, player.sprite.texture, player.sprite.flip_h, player.sprite.hframes)
+	get_tree().current_scene.add_child(ghost)

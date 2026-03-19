@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cwd0fl4yktrr8" path="res://regole_mappa.tres" id="1_7o122"]
 [ext_resource type="PackedScene" uid="uid://cqlqagd2mtdp3" path="res://scenes/player/player.tscn" id="2_g1sda"]
+[ext_resource type="PackedScene" uid="uid://4jokp7eylpfh" path="res://scenes/logics/HUD.tscn" id="3_g1sda"]
 
 [node name="Scena1New" type="Node2D" unique_id=1473038844]
 
@@ -15,3 +16,5 @@ tile_set = ExtResource("1_7o122")
 
 [node name="Player" parent="." unique_id=1794392217 instance=ExtResource("2_g1sda")]
 position = Vector2(285, -35)
+
+[node name="HUD" parent="." unique_id=808222231 instance=ExtResource("3_g1sda")]

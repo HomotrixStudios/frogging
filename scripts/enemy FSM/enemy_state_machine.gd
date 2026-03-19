@@ -1,7 +1,7 @@
 class_name EnemyStateMachine extends Node
 
 @export var initial_state : EnemyState
-@export var enemy : Enemy
+@export var enemy : CharacterBody2D
 
 var current_state : EnemyState
 var states: Dictionary[String, EnemyState] = {}
@@ -34,4 +34,5 @@ func change_state(new_state_name : String) -> void:
 		current_state.exit()
 
 	new_state.enter()
+	# print(enemy, new_state.name)
 	current_state = new_state
