@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://fsdqkw8fy5h3"]
+
+[ext_resource type="Shader" uid="uid://dr8efe3yk1y74" path="res://shaders/blur.gdshader" id="1_owx7c"]
+[ext_resource type="Script" uid="uid://dx8b5ul62jv87" path="res://scripts/logics/pause_menu.gd" id="1_srlv6"]
+[ext_resource type="Texture2D" uid="uid://c5o4ustpaiqvj" path="res://images/vertical_parchment.png" id="3_y4amr"]
+[ext_resource type="Theme" uid="uid://c342inpbvwtgh" path="res://resources/pause_menu_button.tres" id="4_y4amr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srlv6"]
+shader = ExtResource("1_owx7c")
+shader_parameter/blur_effect = 0.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lheph"]
+texture = ExtResource("3_y4amr")
+
+[sub_resource type="Animation" id="Animation_srlv6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/blur_effect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_owx7c"]
+resource_name = "blu"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/blur_effect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.800000038]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_srlv6"]
+_data = {
+&"RESET": SubResource("Animation_srlv6"),
+&"blur": SubResource("Animation_owx7c")
+}
+
+[node name="PauseMenu" type="Control" unique_id=1159251429]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_srlv6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=802512703]
+material = SubResource("ShaderMaterial_srlv6")
+layout_mode = 0
+offset_right = 1145.0
+offset_bottom = 643.0
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1259171802]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.5
+offset_top = -329.75
+offset_right = 363.5
+offset_bottom = 329.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lheph")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=683229169]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1292165660]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1019321054]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("4_y4amr")
+text = "RESUME"
+
+[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1699672455]
+layout_mode = 2
+theme = ExtResource("4_y4amr")
+text = "RESTART"
+
+[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=805752623]
+layout_mode = 2
+theme = ExtResource("4_y4amr")
+text = "QUIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1310737428]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_srlv6")
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

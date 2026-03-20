@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://4jokp7eylpfh"]
+
+[ext_resource type="PackedScene" uid="uid://c4n6dl7nnoctk" path="res://scenes/logics/health_bar.tscn" id="1_5mpss"]
+[ext_resource type="Texture2D" uid="uid://mf223vai777r" path="res://images/barra vita.png" id="2_wrfwp"]
+[ext_resource type="PackedScene" uid="uid://fsdqkw8fy5h3" path="res://scenes/logics/pause_menu.tscn" id="3_dyaaj"]
+
+[node name="HUD" type="CanvasLayer" unique_id=808222231]
+
+[node name="HealthBar" parent="." unique_id=310604749 instance=ExtResource("1_5mpss")]
+scale = Vector2(3, 3)
+texture_over = null
+texture_progress = ExtResource("2_wrfwp")
+
+[node name="PauseMenu" parent="." unique_id=1159251429 instance=ExtResource("3_dyaaj")]

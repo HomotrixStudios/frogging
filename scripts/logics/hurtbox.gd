@@ -13,7 +13,11 @@ func _ready() -> void:
 			set_collision_layer_value(2, true) 
 		Stats.Faction.ENEMY:
 			set_collision_layer_value(1, true)
-	
+
 
 func receive_hit(damage : int) -> void:
-	owner_stats.take_damage(damage)
+	var animation = owner.animation_player
+	owner_stats.take_damage(damage) 
+	animation.play("flash_hit")
+	if owner is Player:
+		owner.animation_priority = true

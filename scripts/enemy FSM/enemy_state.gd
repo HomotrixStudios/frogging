@@ -1,7 +1,7 @@
 class_name EnemyState extends Node
 
-var state_machine : EnemyStateMachine
-var enemy : Enemy
+@export var state_machine : EnemyStateMachine
+@export var enemy : CharacterBody2D
 var player : Player
 
 func enter() -> void:
