@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1elthykoyi20" path="res://scripts/enemies/flyEnemy/fly_enemy.gd" id="1_ainqx"]
 [ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_3ex3d"]
 [ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="2_dvxfj"]
+[ext_resource type="Texture2D" uid="uid://xff8yj78ee5b" path="res://sprites/enemies/fly/fly-projectile animation-Sheet.png" id="4_slyqx"]
 [ext_resource type="Texture2D" uid="uid://b4r1d8ai0pc5w" path="res://sprites/enemies/fly/mosca movimentoSheet.png" id="4_twhab"]
 [ext_resource type="Script" uid="uid://cmd25kq76nkhd" path="res://scripts/enemy FSM/followState_enemy.gd" id="5_ainqx"]
 [ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="6_bfqo4"]
@@ -172,13 +173,77 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rm8ax"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_slyqx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667, 0.53333336, 0.6, 0.7, 0.8, 0.9, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hkte3"]
 _data = {
 &"RESET": SubResource("Animation_hk0r0"),
 &"flash_hit": SubResource("Animation_i7j5w"),
 &"hit": SubResource("Animation_opnd5"),
-&"idle": SubResource("Animation_bfqo4")
+&"idle": SubResource("Animation_bfqo4"),
+&"shoot": SubResource("Animation_rm8ax")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7j5w"]

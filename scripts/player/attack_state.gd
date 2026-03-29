@@ -2,6 +2,7 @@ extends PlayerState
 
 @export var hitbox_shape : Shape2D
 @export var spin_hitbox_shape : Shape2D
+var hitbox_spawn : Vector2
 #I don't remember the diff between these two, I hardcoded them
 @onready var attack_cooldown = $AttackCooldown
 @onready var attack_timer = $AttackTimer
@@ -32,7 +33,7 @@ func enter():
 	if attack_timer.is_stopped():
 		attack_timer.start()
 
-	#HOLY CODE (fanculo)
+	#HOLY CODE
 	if attack_timer.time_left > 0 and attack_timer.time_left < attack_timer.wait_time:
 		combo += 1
 		attack_timer.start()
@@ -52,10 +53,18 @@ func enter():
 		spin_hitbox.hitting.connect(_on_hit)
 		spin_hitbox.hitbox_collided.connect(_on_spinning_hitbox_hit)
 		return
-	
+
+	if Input.is_action_pressed("up"):
+		hitbox_spawn = player.muzzle.global_position - Vector2(0, 15)
+		hitbox_shape.radius = 16
+		player.last_facing_direction = 0
+	else:
+		hitbox_spawn = player.muzzle.global_position
+		hitbox_shape.radius = 10
+
 	var hitbox = Hitbox.new(player.stats, 0.5, hitbox_shape, player, hit_log)
 	player.add_child(hitbox)
-	hitbox.global_position = player.hitbox_spawn.global_position
+	hitbox.global_position = hitbox_spawn
 	attack_direction = player.last_facing_direction
 	hitbox.hitting.connect(_on_hit)
 	
@@ -105,14 +114,18 @@ func _on_spinning_hitbox_hit(body) -> void:
 # butta tutta la pasta
 
 func handle_animations() -> void:
+	
 	player.animation_priority = true
+	if Input.is_action_pressed("up"):
+		player.animation_player.play("up_attack")
+		return
+
 	if Input.is_action_pressed("lick_attack"):
 		player.animation_player.play("lick_attack")
 		return	
 	
 	if Input.is_action_pressed("down"):
 		player.animation_player.play("spin_attack")
-		
 		return
 
 	if player.velocity.y != 0:

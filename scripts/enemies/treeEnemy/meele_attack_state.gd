@@ -1,0 +1,21 @@
+extends EnemyState
+
+@export var hitbox_shape : Shape2D
+@onready var attack_timer : Timer = $AttackTimer
+
+
+func enter() -> void:
+    attack_timer.start()
+    print("timer started!")
+    enemy.animation_player.play("first_attack")
+    
+func hit() -> void:
+    var hitbox = Hitbox.new(enemy.stats, 0.5, hitbox_shape, enemy)
+    enemy.add_child(hitbox)
+    hitbox.global_position = enemy.muzzle.global_position
+
+func _on_attack_timer_timeout() -> void:
+    print("Timeout!")
+    enemy.cooldown_timer.start()
+    enemy.state_machine.change_state("FollowState")
+

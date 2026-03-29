@@ -24,6 +24,7 @@ var dash_timer := 0.0
 @onready var coyote_timer = $CoyoteTimer
 var is_jumping := false # to avoid double jump
 @onready var jump_buffer_timer = $JumpBufferTimer
+var spiderman : bool = false
 
 
 func update_physics(delta : float) -> void:
@@ -46,8 +47,11 @@ func update_physics(delta : float) -> void:
 	if player.is_on_wall() and Input.is_action_pressed("shift"):
 		#If both the raycasts cast a collision we are on a wall, otherwise we are on a platform
 			if player.wall_check_top.is_colliding() and player.wall_check_bottom.is_colliding():
+				spiderman = true
 				player.velocity = Vector2.ZERO
 				is_jumping = false
+	else:
+		spiderman = false
 
 	if !is_jumping and !jump_buffer_timer.is_stopped():
 		player.velocity.y = jump_force
@@ -96,8 +100,6 @@ func update_physics(delta : float) -> void:
 	if dash_timer > 0:
 		dash_timer -= delta
 		
-
-
 	if player.velocity.length() < 0.1:
 		is_jumping = false
 		player.state_machine.change_state("IdleState")
@@ -114,6 +116,9 @@ func handle_animations():
 	if player.animation_priority:
 		await player.animation_player.animation_finished
 		player.animation_priority = false
+	if spiderman:
+		player.animation_player.play("spiderman")
+		return
 	if not is_jumping:
 		player.animation_player.play("idle")
 	elif is_jumping:
