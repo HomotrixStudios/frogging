@@ -34,5 +34,5 @@ func change_state(new_state_name : String) -> void:
 		current_state.exit()
 
 	new_state.enter()
-	# print(enemy, new_state.name)
+	print(enemy, new_state.name)
 	current_state = new_state

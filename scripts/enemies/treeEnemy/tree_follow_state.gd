@@ -20,7 +20,6 @@ func update_physics(_delta : float) -> void:
 		follow_timer.stop()
 
 	if enemy.is_on_wall():
-		print("wall!")
 		enemy.state_machine.change_state("MovingRandomState")
 
 	if direction.x > 0:

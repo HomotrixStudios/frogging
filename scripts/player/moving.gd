@@ -113,6 +113,7 @@ func exit() -> void:
 	ghost_timer.stop()
 
 func handle_animations(): 
+	#I know, I know
 	if player.animation_priority:
 		await player.animation_player.animation_finished
 		player.animation_priority = false
@@ -120,7 +121,10 @@ func handle_animations():
 		player.animation_player.play("spiderman")
 		return
 	if not is_jumping:
-		player.animation_player.play("idle")
+		if abs(player.velocity.x) > 0.1:
+			player.animation_player.play("walk")
+		else:
+			player.animation_player.play("idle")
 	elif is_jumping:
 		if player.velocity.y < 0:
 			player.animation_player.play("jump")

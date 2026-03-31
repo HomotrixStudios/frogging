@@ -6,7 +6,6 @@ extends EnemyState
 
 func enter() -> void:
     attack_timer.start()
-    print("timer started!")
     enemy.animation_player.play("first_attack")
     
 func hit() -> void:
@@ -15,7 +14,6 @@ func hit() -> void:
     hitbox.global_position = enemy.muzzle.global_position
 
 func _on_attack_timer_timeout() -> void:
-    print("Timeout!")
     enemy.cooldown_timer.start()
     enemy.state_machine.change_state("FollowState")
 
