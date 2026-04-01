@@ -23,6 +23,13 @@ script = ExtResource("2_qyc15")
 damage = 30
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
+[sub_resource type="Resource" id="Resource_dnh0v"]
+resource_local_to_scene = true
+script = ExtResource("2_qyc15")
+damage = 30
+faction = 0
+metadata/_custom_type_script = "uid://bjovqc3gf20nb"
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gdvdk"]
 vertices = PackedVector2Array(199.6875, -257.52344, 247.85938, -262.95313, 252.47656, -263.21875, 285, -262.64063, 287, -225, 197.03125, -241, -51.1875, -320.04688, -52.1875, -242.53906, -56.3125, -273.52344, -152.3125, -209.52344, 356.5078, -225, 374.29688, -221.4375, 378.70313, -181.8125, 355.71094, -175, 255, -175, -154.96875, -193, -58.96875, -257, 199.6875, -81.52344, 266.8672, -119.78125, 277.21875, -118.13281, 301, -110.328125, 303, -47, 299.77344, -47, 247.24219, -263.3203, 239, -263.46875, 151.6875, -129.52344, 259.46875, -132.36719, 262.3828, -129.46875, 188.17188, -95, 149.03125, -113, -67.828125, -287, -49, -41.5, -51.789063, -41.851563, -51, -42.882813, -49, -43.460938, 255, -139.88281, 140.17188, -143, 179.92188, -49, 271.9375, -38.53125, 283.97656, -15, 13, -15, 13, -21.429688, 134.64844, -49, -287.14844, -320.9375, -116.22656, -287, -144.0625, -278.53125, -76.078125, -241, -51, -133.42969, 223, -289, 226.09375, -289, 223.86719, -281.21875, 188.17188, -271, -113, -155.46094, -113, -153.5, -129, -155.46094, -129, -153.5, -145, -155.46094, -172.07813, -177, -145, -153.5, -161, -155.46094, -161, -153.5, -177, -155.46094, -217.35156, -177, -177, -153.5, -193, -155.46094, -193, -153.5, -209, -155.46094, -209, -153.5, -225, -155.46094, -227.65625, -190.29688, -225, -153.5, -241, -155.46094, -240.0625, -214.53125, -241, -153.5, -257, -155.46094, -257, -153.5, -273, -155.46094, -273, -153.5, -288.85156, -155.4375, 71.6875, -161.52344, 60.171875, -175, 285, -262.92188, 287, -262.89063, 301, -118.890625, 303, -118.921875, 197.03125, -65, 64.84375, -302.6875, 223, -299.27344, 139.77344, -271, 69.03125, -145, 139.77344, -95, 131.92188, -97, 111.9375, -86.53125, 86.64844, -97, -17.710938, -43.890625, -23.851563, -40.429688, -24.4375, -40.460938, -41.351563, -129, 239, -268.27344, 236.42188, -269.8203, 228.70313, -276.2422, 228.60938, -278.27344, 111.9375, -262.53125, 59.828125, -238.49219, 124.34375, -238.29688, 124.34375, -62.296875, 6.0234375, -29.8125, 76.34375, -110.296875, -0.0390625, -34.648438, 63.9375, -134.53125, -5.8671875, -36.703125, 51.921875, -129, 91.77344, -143, -51.65625, -142.29688, -57.976563, -141.8125, -64.0625, -166.53125, -64.03906, -146.64844, -69.86719, -148.70313, -81.71094, -155.89063, -36.226563, -175, -87.85156, -152.42969, -88.4375, -152.46094, 179.92188, -225, 134.64844, -225, -121.35156, -241, -163.82813, -223, -131.65625, -254.29688, -212.22656, -223)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8), PackedInt32Array(9, 4, 10, 11, 12, 13, 14, 15), PackedInt32Array(16, 8, 7), PackedInt32Array(17, 18, 19, 20, 21, 22), PackedInt32Array(23, 1, 0, 24), PackedInt32Array(25, 26, 27, 28, 29), PackedInt32Array(6, 8, 30), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(35, 26, 25, 36), PackedInt32Array(37, 38, 39, 40, 41, 42), PackedInt32Array(43, 6, 30, 44), PackedInt32Array(43, 44, 45), PackedInt32Array(46, 16, 7), PackedInt32Array(34, 33, 47), PackedInt32Array(48, 49, 50, 51), PackedInt32Array(52, 53, 54, 15), PackedInt32Array(15, 54, 55, 56, 57), PackedInt32Array(56, 58, 59, 57), PackedInt32Array(57, 59, 60, 61, 62), PackedInt32Array(61, 63, 64, 62), PackedInt32Array(64, 65, 66, 62), PackedInt32Array(62, 66, 67, 68, 69), PackedInt32Array(68, 70, 71, 43, 72), PackedInt32Array(71, 73, 74, 43), PackedInt32Array(74, 75, 76, 43), PackedInt32Array(76, 77, 78, 43), PackedInt32Array(14, 35, 79, 80), PackedInt32Array(3, 81, 82, 4), PackedInt32Array(83, 84, 21, 20), PackedInt32Array(17, 22, 38, 85), PackedInt32Array(86, 87, 48, 51, 88), PackedInt32Array(89, 79, 35, 36), PackedInt32Array(27, 18, 17, 28), PackedInt32Array(29, 28, 90, 91), PackedInt32Array(91, 90, 92, 93), PackedInt32Array(94, 95, 96, 34, 47, 97), PackedInt32Array(98, 24, 0, 99), PackedInt32Array(100, 99, 0, 51), PackedInt32Array(101, 100, 51, 50), PackedInt32Array(86, 88, 102), PackedInt32Array(103, 86, 102, 104), PackedInt32Array(37, 85, 38), PackedInt32Array(105, 42, 41), PackedInt32Array(93, 92, 105, 41, 106), PackedInt32Array(107, 93, 106, 108), PackedInt32Array(109, 107, 108, 110, 94, 111), PackedInt32Array(89, 36, 112), PackedInt32Array(89, 112, 109), PackedInt32Array(111, 89, 109), PackedInt32Array(97, 111, 94), PackedInt32Array(113, 97, 47, 114), PackedInt32Array(115, 113, 114, 116), PackedInt32Array(115, 116, 117, 118), PackedInt32Array(15, 14, 80), PackedInt32Array(15, 80, 119), PackedInt32Array(15, 119, 115), PackedInt32Array(15, 115, 118, 120, 121, 52), PackedInt32Array(122, 5, 4), PackedInt32Array(122, 4, 9), PackedInt32Array(123, 122, 9), PackedInt32Array(104, 123, 9, 103), PackedInt32Array(7, 103, 9, 46), PackedInt32Array(124, 46, 9, 125), PackedInt32Array(126, 124, 125), PackedInt32Array(43, 45, 126, 125, 127), PackedInt32Array(43, 127, 72), PackedInt32Array(68, 72, 69)])
@@ -312,6 +319,13 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_vebqo")
 sources/1 = SubResource("TileSetAtlasSource_bgk1c")
 
+[sub_resource type="Resource" id="Resource_ny3nw"]
+resource_local_to_scene = true
+script = ExtResource("2_qyc15")
+max_health = 200
+damage = 20
+metadata/_custom_type_script = "uid://bjovqc3gf20nb"
+
 [node name="Node2D" type="Node2D" unique_id=1386956649]
 
 [node name="FlyEnemy" parent="." unique_id=1022659570 instance=ExtResource("1_bfulj")]
@@ -324,6 +338,7 @@ volume_db = -15.0
 
 [node name="Player" parent="." unique_id=1060406546 instance=ExtResource("5_3rj45")]
 position = Vector2(12, -10)
+stats = SubResource("Resource_dnh0v")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=937424161]
 
@@ -406,3 +421,4 @@ layer_0/tile_data = PackedInt32Array(0, 917504, 1, 1, 917504, 1, 65535, 131072, 
 
 [node name="tree_enemy" parent="." unique_id=1380487783 instance=ExtResource("17_dnh0v")]
 position = Vector2(82, -31)
+stats = SubResource("Resource_ny3nw")

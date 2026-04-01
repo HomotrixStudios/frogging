@@ -31,7 +31,8 @@ func update_physics(_delta : float) -> void:
 	if enemy.global_position.distance_to(enemy.player.global_position) < 40:
 		enemy.velocity = Vector2.ZERO
 		if enemy.cooldown_timer.is_stopped():
-			enemy.state_machine.change_state("MeeleAttackState")
+			var chosen_attack = enemy.attack_options.pick_random()
+			enemy.state_machine.change_state(chosen_attack)
 	else:
 		enemy.velocity.x = direction.x * enemy.speed
 

@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cfvnslywocwb0" path="res://scenes/logics/custom_health_bar.tscn" id="20_8ydkj"]
 
 [sub_resource type="Resource" id="Resource_qek5x"]
+resource_local_to_scene = true
 script = ExtResource("2_0owmy")
 damage = 30
 faction = 0
