@@ -64,4 +64,3 @@ func _on_area_entered(area : Area2D) -> void:
 func _on_body_entered(body) -> void:
 	if body != get_parent():
 		hitbox_collided.emit(body)
-		print(body)

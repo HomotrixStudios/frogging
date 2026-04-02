@@ -17,7 +17,7 @@ var pos_b : Vector2
 var can_see_player : bool = true
 var player : Player
 
-var attack_options = ["MeeleAttackState", "BarrierAttackState"]
+var attack_options = ["MeeleAttackState", "BarrierAttackState", "GroundAttackState"] 
 
 func _ready() -> void:
     player = get_tree().get_first_node_in_group("Player")

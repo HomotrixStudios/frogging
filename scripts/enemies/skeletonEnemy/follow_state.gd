@@ -3,21 +3,10 @@ extends EnemyState
 @onready var follow_timer = $FollowTimer
 
 var original_speed : float
-var chosen_attack : String
-
-var attack_distance : float
 
 func enter() -> void:
 	original_speed = enemy.speed
 	enemy.speed += 20
-	chosen_attack = enemy.attack_options.pick_random()
-
-	if chosen_attack == "GroundAttackState":
-		attack_distance = 100.0
-	else:
-		attack_distance = 40.0
-	
-	print(chosen_attack)
 
 
 func update_physics(_delta : float) -> void:
@@ -39,9 +28,10 @@ func update_physics(_delta : float) -> void:
 		enemy.pivot.scale.x = -1
 
 
-	if enemy.global_position.distance_to(enemy.player.global_position) < attack_distance:
+	if enemy.global_position.distance_to(enemy.player.global_position) < 40:
 		enemy.velocity = Vector2.ZERO
 		if enemy.cooldown_timer.is_stopped():
+			var chosen_attack = enemy.attack_options.pick_random()
 			enemy.state_machine.change_state(chosen_attack)
 	else:
 		enemy.velocity.x = direction.x * enemy.speed

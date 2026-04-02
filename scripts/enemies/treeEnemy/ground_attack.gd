@@ -16,7 +16,7 @@ func enter() -> void:
     attack_timer.start()
     enemy.velocity = Vector2.ZERO
 
-    enemy.animation_player.play("slam_ground")
+    enemy.animation_player.play("jump")
 
     ground_position_y = enemy.global_position.y
     target_position = enemy.player.global_position
@@ -24,9 +24,9 @@ func enter() -> void:
     enemy.velocity = calculate_arc(enemy.global_position, target_position)
 
 
-
 func update_physics(_delta : float) -> void:
-    pass
+    handle_animations()
+
 
 
 # func hit() -> void:
@@ -65,3 +65,10 @@ func _on_ground_attack_timer_timeout() -> void:
 
 func exit() -> void:
     enemy.velocity = Vector2.ZERO
+
+
+func handle_animations() -> void:
+    if enemy.velocity.y > 0:
+        enemy.animation_player.play("going_down")
+    elif enemy.velocity.y == 0:
+        enemy.animation_player.play("slam_ground")

@@ -6,10 +6,10 @@ extends EnemyState
 
 func enter() -> void:
     attack_timer.start()
-    enemy.animation_player.play("first_attack")
+    enemy.animation_player.play("meele_attack")
     
 func hit() -> void:
-    var hitbox = Hitbox.new(enemy.stats, 0.5, hitbox_shape, enemy)
+    var hitbox = Hitbox.new(enemy.stats, 0.35, hitbox_shape, enemy)
     enemy.add_child(hitbox)
     hitbox.global_position = enemy.muzzle.global_position
 

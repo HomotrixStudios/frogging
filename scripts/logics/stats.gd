@@ -31,5 +31,6 @@ func set_health(new_value : int) -> void:
     health = new_value
     health_changed.emit(health)
     if health <= 0:
+        # print("emitting")
         health_depleted.emit()
    
