@@ -261,6 +261,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyStateMachine/GroundAttackState")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_51vog"]
 resource_name = "idle"
@@ -598,6 +612,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyStateMachine/GroundAttackState")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ogy27"]
 _data = {
@@ -619,7 +647,7 @@ radius = 13.0
 size = Vector2(55, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b0hp"]
-size = Vector2(50, 50)
+size = Vector2(50, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2o7b"]
 radius = 13.0
@@ -676,7 +704,7 @@ script = ExtResource("12_3b0hp")
 hitbox_shape = SubResource("RectangleShape2D_52rqg")
 
 [node name="BarrierTimer" type="Timer" parent="EnemyStateMachine/BarrierAttackState" unique_id=1266185217]
-wait_time = 2.0
+wait_time = 2.5
 
 [node name="GroundAttackState" type="Node" parent="EnemyStateMachine" unique_id=1057115188]
 script = ExtResource("13_3b0hp")

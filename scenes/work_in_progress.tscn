@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bfsatjaypbuqv"]
+
+[ext_resource type="Script" uid="uid://tfkmg788d3my" path="res://scripts/logics/work_in_progress.gd" id="1_ioqkb"]
+[ext_resource type="FontFile" uid="uid://vq2nuaexfs1e" path="res://fonts/Cormorant_Unicase/CormorantUnicase-Medium.ttf" id="1_peg2p"]
+[ext_resource type="Theme" uid="uid://cdi4h7vmq1rpf" path="res://resources/buttonsTheme.tres" id="2_ioqkb"]
+
+[node name="Control" type="Control" unique_id=1114701289]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ioqkb")
+
+[node name="Panel" type="Panel" parent="." unique_id=1499844020]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=366520774]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -23.5
+offset_right = 178.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=469389667]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_peg2p")
+theme_override_font_sizes/font_size = 38
+text = "WORK IN PROGRESS"
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer" unique_id=317561464]
+layout_mode = 2
+theme = ExtResource("2_ioqkb")
+text = "GO BACK"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]

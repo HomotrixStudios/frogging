@@ -99,9 +99,9 @@ texture = ExtResource("6_qe0gg")
 9:1/0 = 0
 9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -1.2230377, 8, 8, -8, 8, -8, 8, -5.32382, 4.53244, -0.8633232, 1.7985878, 5.1799297, -0.21582985)
 10:1/0 = 0
-10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -1.0791512, 8, 8, -8, 8, -8, 8, -8, 3.956892, -8, -2.5180206, 0.28777313, -1.5108128)
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -1.828083, 8, 8, -8, 8, -8, 8, -8, -1.4798775)
 11:1/0 = 0
-11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -1.0791512, 8, 8, -8, 8, -8, 8, -8, 3.956892, -8, -2.5180206, 0.28777313, -1.5108128)
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -1.5837984, 8, 8, -8, 8, -8, 8, -8, -1.6539803)
 12:1/0 = 0
 12:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(2.589964, 2.661909, 5.467703, 4.964102, 8, 8, -8, 8, -8, 8, -8, 3.956892, -8, -2.5180206, -2.3021927, 0.9352665)
 13:1/0 = 0
@@ -342,7 +342,7 @@ metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 [node name="Node2D" type="Node2D" unique_id=1386956649]
 
 [node name="FlyEnemy" parent="." unique_id=1022659570 instance=ExtResource("1_bfulj")]
-position = Vector2(153, -198)
+position = Vector2(-223, -262)
 stats = SubResource("Resource_ny3nw")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=438597446]

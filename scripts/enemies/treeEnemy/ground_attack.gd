@@ -29,10 +29,10 @@ func update_physics(_delta : float) -> void:
 
 
 
-# func hit() -> void:
-#     var hitbox = Hitbox.new(enemy.stats, 1.0, hitbox_shape, enemy)
-#     enemy.add_child(hitbox)
-#     hitbox.global_position = Vector2(enemy.global_position.x, enemy.global_position.y + 10)
+func hit() -> void:
+    var hitbox = Hitbox.new(enemy.stats, 1.0, hitbox_shape, enemy)
+    enemy.add_child(hitbox)
+    hitbox.global_position = Vector2(enemy.global_position.x, enemy.global_position.y + 20)
 
 
 func calculate_arc(start: Vector2, target: Vector2) -> Vector2:
