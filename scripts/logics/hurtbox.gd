@@ -18,6 +18,7 @@ func _ready() -> void:
 func receive_hit(damage : int) -> void:
 	var animation = owner.animation_player
 	owner_stats.take_damage(damage) 
-	animation.play("flash_hit")
+	if owner_stats.health > 0:
+		animation.play("flash_hit")
 	if owner is Player:
 		owner.animation_priority = true

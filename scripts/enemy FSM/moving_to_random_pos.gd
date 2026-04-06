@@ -13,7 +13,7 @@ func enter() -> void:
 	
 	timer.stop() #to make sure the timer won't be running
 	
-	#Time in which fly will be standing
+	#Time in which enemy will be standing
 	await get_tree().create_timer(randf_range(1.0,2.5)).timeout 
 	
 	#If it died or changed state it would be useless to go further

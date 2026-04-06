@@ -10,8 +10,8 @@ class_name Player extends CharacterBody2D
 @onready var pivot : Node2D = $Pivot
 @onready var wall_check_top : RayCast2D = $Pivot/WallCheckTop
 @onready var wall_check_bottom : RayCast2D = $Pivot/WallCheckBottom
-@onready var hitbox_spawn : Marker2D = $Pivot/HitboxSpawn
-
+@onready var muzzle : Marker2D = $Pivot/Muzzle
+@onready var health_bar : ProgressBar = $CanvasLayer/CustomHealthBar
 #helps me to avoid overlapping animations
 var animation_priority : bool = false
 #I think I could avoid using these two, but I won't
@@ -21,7 +21,10 @@ var velocity_before_collision : Vector2
 
 
 func _ready():
+	animation_player.play("RESET")
 	stats.health_depleted.connect(handle_death)
+	health_bar.setup_health_bar(stats.max_health)
+	stats.health_changed.connect(health_bar.change_value)
 	# set_floor_max_angle(35)
 
 func _physics_process(delta: float) -> void:
@@ -48,8 +51,8 @@ func handle_direction() -> void:
 			pivot.rotation_degrees = -90
 		else:
 			pivot.rotation_degrees = 90
-	else:
-		pivot.rotation_degrees = 0
+		return
+	pivot.rotation_degrees = 0
 	if direction.x > 0:
 		pivot.scale.x = 1
 		last_facing_direction = 1

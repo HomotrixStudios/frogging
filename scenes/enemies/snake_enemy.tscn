@@ -158,7 +158,7 @@ position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_3eqri")
 
 [node name="PointA" type="Marker2D" parent="." unique_id=73389637]
-position = Vector2(-55, 0)
+position = Vector2(-48, 0)
 
 [node name="PointB" type="Marker2D" parent="." unique_id=1521260282]
 position = Vector2(71, 0)

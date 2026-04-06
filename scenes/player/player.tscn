@@ -17,8 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://d4jfwus117bh2" path="res://sprites/froggy/froggy-fallsheet_dx.png" id="12_ugbui"]
 [ext_resource type="Texture2D" uid="uid://cfjilqb7a0k8t" path="res://sprites/froggy/frog jumpAttackSheet.png" id="13_fcs02"]
 [ext_resource type="Texture2D" uid="uid://dprmpg38xf322" path="res://sprites/froggy/froggy spiralAttack.png" id="14_myrg7"]
+[ext_resource type="Texture2D" uid="uid://dxnkei5owc3xs" path="res://sprites/froggy/froggy-clinging to wall.png" id="16_uf5tr"]
+[ext_resource type="Texture2D" uid="uid://gpxnj547gknd" path="res://sprites/froggy/frog upwards attacks-Sheet.png" id="18_lgqa7"]
+[ext_resource type="Texture2D" uid="uid://bpu80e1338vwy" path="res://sprites/froggy/frog walk1-Sheet.png" id="19_3j4b4"]
+[ext_resource type="PackedScene" uid="uid://cfvnslywocwb0" path="res://scenes/logics/custom_health_bar.tscn" id="20_8ydkj"]
 
 [sub_resource type="Resource" id="Resource_qek5x"]
+resource_local_to_scene = true
 script = ExtResource("2_0owmy")
 damage = 30
 faction = 0
@@ -541,6 +546,45 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_yj68g"]
+resource_name = "spiderman"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_uf5tr")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_8ydkj"]
 resource_name = "spin_attack"
 length = 0.6
@@ -593,6 +637,111 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_cnsyf"]
+resource_name = "up_attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("18_lgqa7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_007i1"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("19_3j4b4")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uf5tr"]
 _data = {
 &"RESET": SubResource("Animation_fm80t"),
@@ -605,7 +754,10 @@ _data = {
 &"jump": SubResource("Animation_je7p5"),
 &"jumpAttack": SubResource("Animation_uf5tr"),
 &"lick_attack": SubResource("Animation_ugbui"),
-&"spin_attack": SubResource("Animation_8ydkj")
+&"spiderman": SubResource("Animation_yj68g"),
+&"spin_attack": SubResource("Animation_8ydkj"),
+&"up_attack": SubResource("Animation_cnsyf"),
+&"walk": SubResource("Animation_007i1")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm80t"]
@@ -629,6 +781,7 @@ texture = ExtResource("2_qek5x")
 hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460454201]
+visible = false
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_gmlin")
 
@@ -652,7 +805,6 @@ one_shot = true
 
 [node name="GhostTimer" type="Timer" parent="StateMachine/MovingState" unique_id=1063944141]
 wait_time = 0.04
-autostart = true
 
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=151737357]
 script = ExtResource("6_75vfm")
@@ -683,6 +835,7 @@ shake_fade = 10.0
 libraries/ = SubResource("AnimationLibrary_uf5tr")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=902524819]
+visible = false
 collision_layer = 2
 script = ExtResource("12_fm80t")
 metadata/_custom_type_script = "uid://c5c2xnusswlil"
@@ -692,6 +845,7 @@ position = Vector2(1, -1)
 shape = SubResource("CapsuleShape2D_fm80t")
 
 [node name="Pivot" type="Node2D" parent="." unique_id=1809471170]
+visible = false
 
 [node name="WallCheckTop" type="RayCast2D" parent="Pivot" unique_id=1838137011]
 position = Vector2(0, 7)
@@ -703,8 +857,12 @@ position = Vector2(0, -7)
 rotation = -1.5707964
 target_position = Vector2(0, 15)
 
-[node name="HitboxSpawn" type="Marker2D" parent="Pivot" unique_id=688811966]
+[node name="Muzzle" type="Marker2D" parent="Pivot" unique_id=688811966]
 position = Vector2(20, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=145606967]
+
+[node name="CustomHealthBar" parent="CanvasLayer" unique_id=607459533 instance=ExtResource("20_8ydkj")]
 
 [connection signal="timeout" from="StateMachine/MovingState/GhostTimer" to="StateMachine/MovingState" method="_on_ghost_timer_timeout"]
 [connection signal="timeout" from="StateMachine/AttackState/AttackCooldown" to="StateMachine/AttackState" method="_on_attack_cooldown_timeout"]

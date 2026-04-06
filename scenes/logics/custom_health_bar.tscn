@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cfvnslywocwb0"]
+
+[ext_resource type="Script" uid="uid://dbhu25r1k01gm" path="res://scripts/logics/custom_health_bar.gd" id="1_te3kt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh6wo"]
+content_margin_left = 179.0
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te3kt"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_te3kt"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.0046439627, 0.32043344, 0.71671826, 0.998452)
+colors = PackedColorArray(1, 0, 0, 1, 0.97307676, 0.89307266, 1.540184e-06, 1, 0.15319926, 0.4002792, 9.62615e-08, 1, 0.15319926, 0.4002792, 9.62615e-08, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiwrr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xl5m5"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="CustomHealthBar" type="ProgressBar" unique_id=607459533]
+offset_left = 16.0
+offset_top = 17.0
+offset_right = 305.0
+offset_bottom = 43.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jh6wo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_te3kt")
+step = 0.001
+show_percentage = false
+script = ExtResource("1_te3kt")
+health_gradient = SubResource("Gradient_te3kt")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1256939098]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_oiwrr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xl5m5")
+show_percentage = false
+
+[node name="ResetVisibility" type="Timer" parent="." unique_id=1661171702]
+one_shot = true
+
+[connection signal="timeout" from="ResetVisibility" to="." method="_on_reset_visibility_timeout"]

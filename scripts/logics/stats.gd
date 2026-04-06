@@ -8,7 +8,7 @@ enum Faction {
 }
 
 signal health_depleted
-signal health_changed(cur_health : int, max_health : int)
+signal health_changed(cur_health : int)
 
 @export var max_health : int = 100
 @export var defense : int = 10
@@ -29,8 +29,8 @@ func take_damage(amount : int) -> void:
 
 func set_health(new_value : int) -> void:
     health = new_value
-    health_changed.emit(health, max_health)
-  
+    health_changed.emit(health)
     if health <= 0:
+        # print("emitting")
         health_depleted.emit()
    

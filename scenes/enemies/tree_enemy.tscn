@@ -1,0 +1,769 @@
+[gd_scene format=3 uid="uid://dtdtsvkftr5qt"]
+
+[ext_resource type="Texture2D" uid="uid://ofrw3x84yvw2" path="res://sprites/enemies/tree/Idle/tree_idle-Sheet.png" id="1_5228y"]
+[ext_resource type="Script" uid="uid://bmqok3rwl5gmt" path="res://scripts/enemies/treeEnemy/tree_enemy.gd" id="1_sblm5"]
+[ext_resource type="Script" uid="uid://bjovqc3gf20nb" path="res://scripts/logics/stats.gd" id="2_4dfw7"]
+[ext_resource type="Texture2D" uid="uid://b615fbk3yd6ld" path="res://sprites/enemies/tree/Attack/tree_attack first-Sheet.png" id="2_cv8xw"]
+[ext_resource type="Texture2D" uid="uid://dcu5osqk2sovg" path="res://sprites/enemies/tree/Move/tree_move-Sheet.png" id="3_g2o7b"]
+[ext_resource type="Texture2D" uid="uid://bg1qw7oghg28c" path="res://sprites/enemies/tree/Attack/tree second attack-Sheet.png" id="4_sblm5"]
+[ext_resource type="Texture2D" uid="uid://nlesbdhqupbd" path="res://sprites/enemies/tree/Attack/tree-slam to the ground-Sheet.png" id="5_4dfw7"]
+[ext_resource type="Script" uid="uid://bcfcbh1qp81vc" path="res://scripts/enemy FSM/enemy_state_machine.gd" id="6_agl8m"]
+[ext_resource type="Script" uid="uid://c5c2xnusswlil" path="res://scripts/logics/hurtbox.gd" id="7_fdwg3"]
+[ext_resource type="Script" uid="uid://bhq7o3s84s70s" path="res://scripts/enemy FSM/moving_to_random_pos.gd" id="7_g2o7b"]
+[ext_resource type="Shader" uid="uid://cj6n7sqk1wdpk" path="res://shaders/hit_shader.gdshader" id="8_cv8xw"]
+[ext_resource type="Script" uid="uid://bdkc1tf67pf0s" path="res://scripts/enemies/treeEnemy/tree_follow_state.gd" id="10_agl8m"]
+[ext_resource type="Script" uid="uid://ctaieqruyd16h" path="res://scripts/enemies/treeEnemy/barrier_attack.gd" id="12_3b0hp"]
+[ext_resource type="Script" uid="uid://j6srqst233lw" path="res://scripts/enemies/treeEnemy/meele_attack_state.gd" id="12_52rqg"]
+[ext_resource type="Script" uid="uid://srv0bfr84bwe" path="res://scripts/enemies/treeEnemy/ground_attack.gd" id="13_3b0hp"]
+
+[sub_resource type="Resource" id="Resource_agl8m"]
+resource_local_to_scene = true
+script = ExtResource("2_4dfw7")
+max_health = 200
+damage = 20
+metadata/_custom_type_script = "uid://bjovqc3gf20nb"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cv8xw"]
+radius = 12.0
+height = 56.0
+
+[sub_resource type="Animation" id="Animation_52rqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_5228y")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_fw2eq"]
+resource_name = "second_attack"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_sblm5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.8, 0.9, 1, 1.1, 1.1999999, 1.45, 1.6, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.34, 0.34)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyStateMachine/BarrierAttackState")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cv8xw"]
+resource_name = "flash_hit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.19999999, 0.23333333, 0.33333334, 0.4, 0.46666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bkl2u"]
+resource_name = "attack"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_4dfw7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.6, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyStateMachine/GroundAttackState")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_51vog"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_5228y")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ogy27"]
+resource_name = "jump"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_4dfw7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.55, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4, 5, 6, 7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3b0hp"]
+resource_name = "first_attack"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_cv8xw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.65, 0.8, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyStateMachine/MeeleAttackState")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lc2ec"]
+resource_name = "move"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_g2o7b")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.16666667, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w275r"]
+resource_name = "attack"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_4dfw7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.34999996),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [10, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:material:shader_parameter/hit_flash_on")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyStateMachine/GroundAttackState")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogy27"]
+_data = {
+&"RESET": SubResource("Animation_52rqg"),
+&"barrier_attack": SubResource("Animation_fw2eq"),
+&"flash_hit": SubResource("Animation_cv8xw"),
+&"going_down": SubResource("Animation_bkl2u"),
+&"idle": SubResource("Animation_51vog"),
+&"jump": SubResource("Animation_ogy27"),
+&"meele_attack": SubResource("Animation_3b0hp"),
+&"move": SubResource("Animation_lc2ec"),
+&"slam_ground": SubResource("Animation_w275r")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52rqg"]
+radius = 13.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52rqg"]
+size = Vector2(55, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b0hp"]
+size = Vector2(50, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2o7b"]
+radius = 13.0
+height = 58.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cv8xw"]
+shader = ExtResource("8_cv8xw")
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w275r"]
+radius = 53.15073
+
+[node name="tree_enemy" type="CharacterBody2D" unique_id=1380487783]
+script = ExtResource("1_sblm5")
+stats = SubResource("Resource_agl8m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=623688426]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_cv8xw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=344457010]
+libraries/ = SubResource("AnimationLibrary_ogy27")
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1263789000 node_paths=PackedStringArray("initial_state", "enemy")]
+script = ExtResource("6_agl8m")
+initial_state = NodePath("MovingRandomState")
+enemy = NodePath("..")
+metadata/_custom_type_script = "uid://bcfcbh1qp81vc"
+
+[node name="MovingRandomState" type="Node" parent="EnemyStateMachine" unique_id=747209706]
+script = ExtResource("7_g2o7b")
+
+[node name="RandomPosTimer" type="Timer" parent="EnemyStateMachine/MovingRandomState" unique_id=1914089241]
+wait_time = 4.0
+one_shot = true
+
+[node name="FollowState" type="Node" parent="EnemyStateMachine" unique_id=253911852]
+script = ExtResource("10_agl8m")
+
+[node name="FollowTimer" type="Timer" parent="EnemyStateMachine/FollowState" unique_id=1217927267]
+
+[node name="MeeleAttackState" type="Node" parent="EnemyStateMachine" unique_id=1517835219 node_paths=PackedStringArray("state_machine", "enemy")]
+script = ExtResource("12_52rqg")
+hitbox_shape = SubResource("CircleShape2D_52rqg")
+state_machine = NodePath("..")
+enemy = NodePath("../..")
+
+[node name="AttackTimer" type="Timer" parent="EnemyStateMachine/MeeleAttackState" unique_id=1213011866]
+one_shot = true
+
+[node name="BarrierAttackState" type="Node" parent="EnemyStateMachine" unique_id=1521326621]
+script = ExtResource("12_3b0hp")
+hitbox_shape = SubResource("RectangleShape2D_52rqg")
+
+[node name="BarrierTimer" type="Timer" parent="EnemyStateMachine/BarrierAttackState" unique_id=1266185217]
+wait_time = 2.5
+
+[node name="GroundAttackState" type="Node" parent="EnemyStateMachine" unique_id=1057115188]
+script = ExtResource("13_3b0hp")
+hitbox_shape = SubResource("RectangleShape2D_3b0hp")
+jump_height = 50.0
+
+[node name="GroundAttackTimer" type="Timer" parent="EnemyStateMachine/GroundAttackState" unique_id=1492053468]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1995018104]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("7_fdwg3")
+metadata/_custom_type_script = "uid://c5c2xnusswlil"
+
+[node name="HurtShape" type="CollisionShape2D" parent="Hurtbox" unique_id=537606241]
+shape = SubResource("CapsuleShape2D_g2o7b")
+debug_color = Color(0.9529412, 0.14509805, 0, 0.41960785)
+
+[node name="Pivot" type="Node2D" parent="." unique_id=2086717183]
+
+[node name="Muzzle" type="Marker2D" parent="Pivot" unique_id=1300672544]
+position = Vector2(25, 14)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=903154114]
+material = SubResource("ShaderMaterial_cv8xw")
+texture = ExtResource("1_5228y")
+hframes = 4
+
+[node name="PointA" type="Marker2D" parent="." unique_id=1189614515]
+position = Vector2(-55, 0)
+
+[node name="PointB" type="Marker2D" parent="." unique_id=65687204]
+position = Vector2(71, 0)
+
+[node name="SightArea" type="Area2D" parent="." unique_id=674607512]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="SightShape" type="CollisionShape2D" parent="SightArea" unique_id=834911071]
+shape = SubResource("CircleShape2D_w275r")
+debug_color = Color(0.21176471, 0.6313726, 0.31764707, 0.72156864)
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=283087008]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="DamageAreaShape" type="CollisionShape2D" parent="DamageArea" unique_id=1487937482]
+shape = SubResource("CapsuleShape2D_g2o7b")
+debug_color = Color(0.25142902, 0.48963267, 0.9775891, 0.41960785)
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=662187959]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="timeout" from="EnemyStateMachine/MeeleAttackState/AttackTimer" to="EnemyStateMachine/MeeleAttackState" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="EnemyStateMachine/BarrierAttackState/BarrierTimer" to="EnemyStateMachine/BarrierAttackState" method="_on_barrier_timer_timeout"]
+[connection signal="timeout" from="EnemyStateMachine/GroundAttackState/GroundAttackTimer" to="EnemyStateMachine/GroundAttackState" method="_on_ground_attack_timer_timeout"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]

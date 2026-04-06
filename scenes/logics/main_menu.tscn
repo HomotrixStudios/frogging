@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c65vsndh0qvmy"]
+[gd_scene format=3 uid="uid://c65vsndh0qvmy"]
 
 [ext_resource type="Script" uid="uid://l0x3fud5f1d" path="res://scripts/logics/main_menu.gd" id="1_w06se"]
 [ext_resource type="Theme" uid="uid://cdi4h7vmq1rpf" path="res://resources/buttonsTheme.tres" id="3_hok1m"]
@@ -10,7 +10,7 @@ bg_color = Color(0.28583774, 0.21110415, 7.219613e-08, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hok1m"]
 texture = ExtResource("3_w06se")
 
-[node name="Main Menu" type="Control"]
+[node name="Main Menu" type="Control" unique_id=1892427813]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,13 +19,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w06se")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=2035970014]
 layout_mode = 0
 offset_right = 1150.0
 offset_bottom = 644.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nses8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Credits" type="Button" parent="Panel" unique_id=547042271]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 557.0
+offset_right = 258.0
+offset_bottom = 615.0
+size_flags_vertical = 3
+theme = ExtResource("3_hok1m")
+theme_override_colors/font_color = Color(0.6530845, 0.27013025, 0.7890391, 1)
+theme_override_font_sizes/font_size = 30
+text = "CREDITS"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=767643676]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,25 +52,25 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=964471445]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_hok1m")
 text = "PLAY"
 
-[node name="Credits" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=656577631]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_hok1m")
-text = "CREDITS"
+text = "SETTINGS"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1715577273]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_hok1m")
 text = "QUIT"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=491007422]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -70,5 +82,7 @@ offset_bottom = 326.0
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_hok1m")
 
+[connection signal="pressed" from="Panel/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
