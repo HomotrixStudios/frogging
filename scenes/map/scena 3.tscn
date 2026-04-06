@@ -348,6 +348,7 @@ stats = SubResource("Resource_ny3nw")
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=438597446]
 stream = ExtResource("3_bgk1c")
 volume_db = -15.0
+autoplay = true
 
 [node name="Player" parent="." unique_id=1060406546 instance=ExtResource("5_3rj45")]
 position = Vector2(12, -10)
