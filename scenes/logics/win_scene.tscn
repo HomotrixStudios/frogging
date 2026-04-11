@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dvqvkvlqi36j8"]
+
+[ext_resource type="Script" uid="uid://dho6yoi45t54q" path="res://scripts/logics/game_over.gd" id="1_snitm"]
+[ext_resource type="Texture2D" uid="uid://b6as3micbtf3o" path="res://images/sad_froggy.png" id="2_p2e8e"]
+[ext_resource type="FontFile" uid="uid://8b7vlrei7eei" path="res://fonts/Uncial_Antiqua/UncialAntiqua-Regular.ttf" id="3_j0ciy"]
+[ext_resource type="Theme" uid="uid://cdi4h7vmq1rpf" path="res://resources/buttonsTheme.tres" id="4_v6yqr"]
+[ext_resource type="AudioStream" uid="uid://b45kxv6fxxtjv" path="res://sound/songs/area1.ogg" id="5_axnvb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rkwh"]
+texture = ExtResource("2_p2e8e")
+
+[node name="GameOver" type="Control" unique_id=379358140]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_snitm")
+
+[node name="SadFroggy" type="Panel" parent="." unique_id=1620138451]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7rkwh")
+
+[node name="DarkPanel" type="Panel" parent="." unique_id=211289113]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 646.0
+
+[node name="Label" type="Label" parent="." unique_id=106483785]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -251.0
+offset_top = 67.0
+offset_right = 244.0
+offset_bottom = 211.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1.1070073e-06, 0.557079, 0.20515248, 1)
+theme_override_fonts/font = ExtResource("3_j0ciy")
+theme_override_font_sizes/font_size = 105
+text = "YOU WON"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1777129900]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.625
+offset_top = -98.0
+offset_right = 205.625
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_v6yqr")
+
+[node name="PlayAgain" type="Button" parent="VBoxContainer" unique_id=1104582014]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_j0ciy")
+theme_override_font_sizes/font_size = 35
+text = "PLAY AGAIN"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=942702562]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_j0ciy")
+theme_override_font_sizes/font_size = 35
+text = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1531896095]
+stream = ExtResource("5_axnvb")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

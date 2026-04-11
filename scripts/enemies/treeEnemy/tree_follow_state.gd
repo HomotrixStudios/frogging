@@ -17,7 +17,7 @@ func enter() -> void:
 	else:
 		attack_distance = 40.0
 	
-	print(chosen_attack)
+	# print(chosen_attack)
 
 
 func update_physics(_delta : float) -> void:

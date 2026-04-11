@@ -20,6 +20,7 @@ var last_facing_direction : int = 1
 var velocity_before_collision : Vector2
 
 
+
 func _ready():
 	animation_player.play("RESET")
 	stats.health_depleted.connect(handle_death)
