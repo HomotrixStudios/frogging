@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://0uy0p3jpkw1q"]
+[gd_scene format=3 uid="uid://0uy0p3jpkw1q"]
 
 [ext_resource type="Texture2D" uid="uid://b6as3micbtf3o" path="res://images/sad_froggy.png" id="1_i83c6"]
 [ext_resource type="Script" uid="uid://dho6yoi45t54q" path="res://scripts/logics/game_over.gd" id="1_idp8h"]
@@ -9,7 +9,7 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rkwh"]
 texture = ExtResource("1_i83c6")
 
-[node name="GameOver" type="Control"]
+[node name="GameOver" type="Control" unique_id=4596518]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,18 +18,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_idp8h")
 
-[node name="SadFroggy" type="Panel" parent="."]
+[node name="SadFroggy" type="Panel" parent="." unique_id=1123039341]
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7rkwh")
 
-[node name="DarkPanel" type="Panel" parent="."]
+[node name="DarkPanel" type="Panel" parent="." unique_id=1076597772]
 layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 646.0
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1930285541]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -44,7 +44,7 @@ theme_override_fonts/font = ExtResource("1_uvtm3")
 theme_override_font_sizes/font_size = 105
 text = "YOU DIED"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2055127656]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,21 +59,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_yo41k")
 
-[node name="PlayAgain" type="Button" parent="VBoxContainer"]
+[node name="PlayAgain" type="Button" parent="VBoxContainer" unique_id=1389654050]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_uvtm3")
 theme_override_font_sizes/font_size = 35
 text = "PLAY AGAIN"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1441798712]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_uvtm3")
 theme_override_font_sizes/font_size = 35
 text = "QUIT"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1944298587]
 stream = ExtResource("4_q1p3f")
 volume_db = -10.0
 autoplay = true
