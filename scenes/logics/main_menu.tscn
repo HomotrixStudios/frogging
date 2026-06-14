@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://c65vsndh0qvmy"]
 
 [ext_resource type="Script" uid="uid://l0x3fud5f1d" path="res://scripts/logics/main_menu.gd" id="1_w06se"]
+[ext_resource type="Texture2D" uid="uid://ccyltn06qs702" path="res://images/main-menu-background.png" id="2_hok1m"]
 [ext_resource type="Theme" uid="uid://cdi4h7vmq1rpf" path="res://resources/buttonsTheme.tres" id="3_hok1m"]
 [ext_resource type="Texture2D" uid="uid://dm2t55mbv5uih" path="res://images/logo.png" id="3_w06se"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nses8"]
-bg_color = Color(0.28583774, 0.21110415, 7.219613e-08, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qj67"]
+texture = ExtResource("2_hok1m")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hok1m"]
 texture = ExtResource("3_w06se")
@@ -20,10 +21,11 @@ grow_vertical = 2
 script = ExtResource("1_w06se")
 
 [node name="Panel" type="Panel" parent="." unique_id=2035970014]
+modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
 layout_mode = 0
 offset_right = 1150.0
 offset_bottom = 644.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_nses8")
+theme_override_styles/panel = SubResource("StyleBoxTexture_1qj67")
 
 [node name="Credits" type="Button" parent="Panel" unique_id=547042271]
 layout_mode = 0
@@ -44,12 +46,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -242.75
-offset_top = -133.25
-offset_right = 242.75
-offset_bottom = 133.25
+offset_left = -355.0
+offset_top = -11.0
+offset_right = 130.5
+offset_bottom = 255.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.75, 0.75)
 alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer" unique_id=964471445]
@@ -76,9 +79,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -316.0
-offset_top = -118.0
+offset_top = -76.0
 offset_right = 316.0
-offset_bottom = 326.0
+offset_bottom = 368.0
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_hok1m")
 

@@ -12,7 +12,7 @@ var can_see_player : bool = true
 var is_player_in_area : bool = false
 var pos_a : Vector2
 var pos_b : Vector2
-
+var animation_priority : bool = false
 var speed : float = 45.0
 const gravity = 1000
 
@@ -43,6 +43,9 @@ func check_raycast() -> void:
 
 
 func handle_animations():
+	if animation_priority:
+		await animation_player.animation_finished
+		animation_priority = false
 	if not animation_player.is_playing():
 		animation_player.play("idle")
 

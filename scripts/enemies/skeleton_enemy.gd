@@ -16,7 +16,7 @@ var pos_a : Vector2
 var pos_b : Vector2
 var can_see_player : bool = true
 var player : Player
-
+var animation_priority : bool = false
 var attack_options = ["AttackState"] #because it shares the same script of the follow state of tree_enemy
 #I should clear many things but I won't
 
@@ -50,6 +50,9 @@ func die() -> void:
 
 func handle_animations() -> void:
 	if state_machine:
+		if animation_priority:
+			await animation_player.animation_finished
+			animation_priority = false
 		if state_machine.current_state.name == "MovingRandomState" or state_machine.current_state.name == "FollowState":
 			if velocity == Vector2.ZERO:
 				animation_player.play("idle")

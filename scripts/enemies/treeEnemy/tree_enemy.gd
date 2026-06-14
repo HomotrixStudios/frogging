@@ -19,6 +19,8 @@ var player : Player
 
 var attack_options = ["MeeleAttackState", "BarrierAttackState", "GroundAttackState"] 
 
+var animation_priority : bool = false
+
 func _ready() -> void:
     player = get_tree().get_first_node_in_group("Player")
     stats.health_depleted.connect(queue_free) #to fucking die
@@ -51,6 +53,9 @@ func _on_damage_area_area_entered(area: Area2D) -> void:
 
 
 func handle_animations() -> void:
+    if animation_priority:
+        await animation_player.animation_finished
+        animation_priority = false
     if state_machine.current_state.name == "MovingRandomState" or state_machine.current_state.name == "FollowState":
         if velocity == Vector2.ZERO:
             animation_player.play("idle")

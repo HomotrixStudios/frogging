@@ -19,7 +19,7 @@ var pos_b : Vector2
 @onready var sprite : Sprite2D = $Pivot/Sprite2D
 @export var animation_player : AnimationPlayer
 @onready var audio_player : AudioStreamPlayer2D = $AudioStreamPlayer2D
-
+var animation_priority : bool = false
 #movement variables
 @export var speed := 60.0
 var can_see_player : bool = false
@@ -47,6 +47,9 @@ func _physics_process(_delta: float) -> void:
 
 	
 func handle_animations() -> void:
+	if animation_priority:
+		await animation_player.animation_finished
+		animation_priority = false
 	if not animation_player.is_playing():
 		animation_player.play("idle")
 

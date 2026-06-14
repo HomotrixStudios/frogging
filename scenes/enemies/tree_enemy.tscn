@@ -650,7 +650,7 @@ size = Vector2(55, 40)
 size = Vector2(50, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2o7b"]
-radius = 13.0
+radius = 15.0
 height = 58.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cv8xw"]
@@ -714,7 +714,6 @@ jump_height = 50.0
 [node name="GroundAttackTimer" type="Timer" parent="EnemyStateMachine/GroundAttackState" unique_id=1492053468]
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1995018104]
-visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("7_fdwg3")

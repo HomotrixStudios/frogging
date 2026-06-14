@@ -18,11 +18,13 @@ func _process(_delta: float) -> void:
 
 func resume() -> void:
 	self.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 
 
 func pause() -> void:
 	self.show()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = true
 
 
@@ -37,4 +39,5 @@ func _on_restart_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/logics/main_menu.tscn")

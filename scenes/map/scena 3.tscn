@@ -11,22 +11,22 @@
 [ext_resource type="Texture2D" uid="uid://d0xg8a2hgfnd" path="res://tilset/oak_woods_v1.0/decorations/fence_2.png" id="12_vt7tb"]
 [ext_resource type="Texture2D" uid="uid://c3nb6b7f8i646" path="res://tilset/oak_woods_v1.0/decorations/sign.png" id="14_0p53u"]
 [ext_resource type="Texture2D" uid="uid://b0xirt1stjd48" path="res://tilset/Platformer - desert (background)/props/rocks6.png" id="15_si5c7"]
-[ext_resource type="PackedScene" uid="uid://df02kumryxkm2" path="res://scenes/enemies/tree_enemy.tscn" id="16_8ul4p"]
+[ext_resource type="PackedScene" uid="uid://dtdtsvkftr5qt" path="res://scenes/enemies/tree_enemy.tscn" id="16_8ul4p"]
 [ext_resource type="Texture2D" uid="uid://t6l2a728wt7e" path="res://tilset/Platformer - desert (background)/props/rocks4.png" id="16_x4d7g"]
 [ext_resource type="Texture2D" uid="uid://c7xv31i5vdmsd" path="res://tilset/oak_woods_v1.0/decorations/grass_1.png" id="17_c8yr2"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/skeleton_enemy.tscn" id="17_dnh0v"]
+[ext_resource type="PackedScene" uid="uid://c8kkiqgtm4van" path="res://scenes/enemies/skeleton_enemy.tscn" id="17_dnh0v"]
 [ext_resource type="PackedScene" uid="uid://dkcuj87kdpkde" path="res://scenes/enemies/snake_enemy.tscn" id="18_ny3nw"]
 [ext_resource type="Texture2D" uid="uid://bmiv6ueesxcuu" path="res://tilset/oak_woods_v1.0/decorations/grass_2.png" id="18_w3ayv"]
 [ext_resource type="Texture2D" uid="uid://ddneowr4vwoaq" path="res://tilset/oak_woods_v1.0/decorations/grass_3.png" id="19_t7b15"]
 [ext_resource type="PackedScene" uid="uid://4jokp7eylpfh" path="res://scenes/logics/HUD.tscn" id="21_bmu66"]
 
-[sub_resource type="Resource" id="Resource_ny3nw"]
+[sub_resource type="Resource" id="Resource_ajjbo"]
 resource_local_to_scene = true
 script = ExtResource("2_qyc15")
 damage = 30
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
-[sub_resource type="Resource" id="Resource_ajjbo"]
+[sub_resource type="Resource" id="Resource_gdvdk"]
 resource_local_to_scene = true
 script = ExtResource("2_qyc15")
 damage = 30
@@ -322,14 +322,14 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_vebqo")
 sources/1 = SubResource("TileSetAtlasSource_bgk1c")
 
-[sub_resource type="Resource" id="Resource_gdvdk"]
+[sub_resource type="Resource" id="Resource_bmu66"]
 resource_local_to_scene = true
 script = ExtResource("2_qyc15")
 max_health = 200
 damage = 20
 metadata/_custom_type_script = "uid://bjovqc3gf20nb"
 
-[sub_resource type="Resource" id="Resource_bmu66"]
+[sub_resource type="Resource" id="Resource_cpo35"]
 resource_local_to_scene = true
 script = ExtResource("2_qyc15")
 max_health = 40
@@ -345,16 +345,15 @@ script = ExtResource("1_ajjbo")
 
 [node name="FlyEnemy" parent="." unique_id=1022659570 groups=["Enemy"] instance=ExtResource("1_bfulj")]
 position = Vector2(-223, -262)
-stats = SubResource("Resource_ny3nw")
+stats = SubResource("Resource_ajjbo")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=438597446]
 stream = ExtResource("3_bgk1c")
 volume_db = -15.0
-autoplay = true
 
 [node name="Player" parent="." unique_id=1060406546 instance=ExtResource("5_3rj45")]
 position = Vector2(12, -10)
-stats = SubResource("Resource_ajjbo")
+stats = SubResource("Resource_gdvdk")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=937424161]
 
@@ -437,11 +436,11 @@ layer_0/tile_data = PackedInt32Array(0, 917504, 1, 1, 917504, 1, 65535, 131072, 
 
 [node name="tree_enemy" parent="." unique_id=1380487783 groups=["Enemy"] instance=ExtResource("16_8ul4p")]
 position = Vector2(93, -30)
-stats = SubResource("Resource_gdvdk")
+stats = SubResource("Resource_bmu66")
 
 [node name="SkeletonEnemy" parent="." unique_id=575523853 groups=["Enemy"] instance=ExtResource("17_dnh0v")]
 position = Vector2(-271, -161)
-stats = SubResource("Resource_bmu66")
+stats = SubResource("Resource_cpo35")
 
 [node name="SnakeEnemy" parent="." unique_id=1632796958 groups=["Enemy"] instance=ExtResource("18_ny3nw")]
 position = Vector2(321, -176)
