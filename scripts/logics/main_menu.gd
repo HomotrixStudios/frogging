@@ -15,4 +15,4 @@ func _on_credits_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/work_in_progress.tscn")
+	get_tree().change_scene_to_file("res://input settings/input_settings.tscn")

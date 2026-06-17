@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://exml5lseyqex"]
+
+[ext_resource type="PackedScene" uid="uid://bytvlasvwvg2o" path="res://input settings/input_button.tscn" id="1_uclkq"]
+[ext_resource type="Script" uid="uid://dss1kv8hs81cv" path="res://input settings/input_settings.gd" id="1_y0pxv"]
+[ext_resource type="FontFile" uid="uid://8b7vlrei7eei" path="res://fonts/Uncial_Antiqua/UncialAntiqua-Regular.ttf" id="3_osbh5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osbh5"]
+
+[node name="InputSettings" type="Control" unique_id=1103755345]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y0pxv")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=125290777]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -369.0
+offset_top = -235.0
+offset_right = 369.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_osbh5")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=431366949]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=209938563]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=605169773]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=772668751]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="InputButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" unique_id=217295962 instance=ExtResource("1_uclkq")]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=947632359]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_osbh5")
+text = "Reset to default"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bytvlasvwvg2o"]
+
+[ext_resource type="FontFile" uid="uid://8b7vlrei7eei" path="res://fonts/Uncial_Antiqua/UncialAntiqua-Regular.ttf" id="1_36ojd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btlvo"]
+bg_color = Color(0, 0, 0, 0.7254902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji6xe"]
+bg_color = Color(1, 1, 1, 0.7490196)
+
+[node name="InputButton" type="Button" unique_id=217295962]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_btlvo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ji6xe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ji6xe")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=215157491]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1525179405]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1097782255]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("1_36ojd")
+text = "ACTION NAME"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1966607373]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="MarginContainer/HBoxContainer" unique_id=81002592]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("1_36ojd")
+text = "INPUT KEY"
+vertical_alignment = 1

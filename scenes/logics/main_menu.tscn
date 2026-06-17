@@ -61,11 +61,11 @@ size_flags_vertical = 3
 theme = ExtResource("3_hok1m")
 text = "PLAY"
 
-[node name="Settings" type="Button" parent="VBoxContainer" unique_id=656577631]
+[node name="Controls" type="Button" parent="VBoxContainer" unique_id=656577631]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_hok1m")
-text = "SETTINGS"
+text = "CONTROLS"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1715577273]
 layout_mode = 2
@@ -87,5 +87,5 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_hok1m")
 
 [connection signal="pressed" from="Panel/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
